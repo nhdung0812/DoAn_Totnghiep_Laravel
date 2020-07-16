@@ -28,7 +28,7 @@
                                 <h4 class="h6 font-weight-bold mb-2 font-size-17">Thông tin liên hệ </h4>
                                 <address class="pr-4">
                                     <span class="mb-2 h6 font-weight-normal text-gray-1">
-                                        Toà nhà trần dần, Phường này nè , Quận kia kìa
+                                      16 Phạm Đôn, Phường 10, Quận 5
                                     </span>
                                 </address>
                             </div>
@@ -59,20 +59,19 @@
                     <!-- End Contacts -->
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
-                    <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Company</h4>
+                    <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Công Ty</h4>
                     <!-- List Group -->
                     <ul class="list-group list-group-flush list-group-borderless mb-0">
-                        <li><a class="text-decoration-on-hover list-group-item list-group-item-action" href="../others/about.html">About us</a></li>
-                        <li><a class="text-decoration-on-hover list-group-item list-group-item-action" href="../others/contact.html">Careers</a></li>
-                        <li><a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/terms-conditions.html">Terms of Use</a></li>
-                        <li><a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/terms-conditions.html">Privacy Statement</a></li>
-                        <li><a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/terms-conditions.html">Give Us Feedbacks</a></li>
+                        <li><a class="text-decoration-on-hover list-group-item list-group-item-action" href="#">Về chúng tôi</a></li>
+                        <li><a class="list-group-item list-group-item-action text-decoration-on-hover" href="#">Điều khoản sử dụng</a></li>
+                        <li><a class="list-group-item list-group-item-action text-decoration-on-hover" href="#">Cam kết bảo mật</a></li>
+                        <li><a class="list-group-item list-group-item-action text-decoration-on-hover" href="#">Phản hồi từ khách hàng</a></li>
                     </ul>
                     <!-- End List Group -->
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
-                    <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Other Services</h4>
+                    <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Dịch vụ khác</h4>
                     <!-- List Group -->
                     <ul class="list-group list-group-flush list-group-borderless mb-0">
                         <li><a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/about.html">Investor Relations</a></li>
@@ -85,23 +84,23 @@
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4 col-xl-1dot8 mb-6 mb-md-0">
-                    <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Support</h4>
+                    <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Hỗ trợ</h4>
                     <!-- List Group -->
                     <ul class="list-group list-group-flush list-group-borderless mb-0">
                         <li>
-                            <a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/terms-conditions.html">Account</a>
+                            <a class="list-group-item list-group-item-action text-decoration-on-hover" href="#">Tài khoản</a>
                         </li>
                         <li>
                             <a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/terms-conditions.html">Legal</a>
                         </li>
                         <li>
-                            <a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/contact.html">Contact</a>
+                            <a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/contact.html">Liên hệ</a>
                         </li>
                         <li>
                             <a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/terms-conditions.html">Affiliate Program</a>
                         </li>
                         <li>
-                            <a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/terms-conditions.html">Privacy Policy</a>
+                            <a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/terms-conditions.html">Chính sách bảo mật</a>
                         </li>
                     </ul>
                     <!-- End List Group -->
@@ -116,7 +115,7 @@
                         <div class="input-group">
                             <input type="email" class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8" name="email" id="subscribeSrEmailExample1" placeholder="Your Email" aria-label="Your email address" aria-describedby="subscribeButtonExample3" required="" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
                             <div class="input-group-append ml-3">
-                                <button class="btn btn-sea-green border-radius-3 height-54 min-width-112 font-size-14" type="submit" id="subscribeButtonExample3">Subscribes</button>
+                                <button class="btn btn-sea-green border-radius-3 height-54 min-width-112 font-size-14" type="submit" id="subscribeButtonExample3">Đănng ký</button>
                             </div>
                         </div>
                     </form>
