@@ -62,7 +62,7 @@
                         <!-- End Activicity -->
 
                         <!-- Rental -->
-                        <li class="nav-item hs-has-sub-menu u-header__nav-item"  data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
+                        <li class="nav-item hs-has-sub-menu u-header__nav-item"   data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
                             <a id="rentalMenu" class="nav-link u-header__nav-link  u-header__nav-link-border" href="#news" aria-haspopup="true" aria-expanded="false" aria-labelledby="rentalSubMenu">Tin Tức</a>
                             <!-- Rental Submenu -->
                             {{-- <ul id="rentalSubMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="rentalMenu" style="min-width: 230px;">
