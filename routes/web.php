@@ -22,9 +22,9 @@ Route::name('Tous.')->group(function () {
     Route::get('dangky', 'KhachHangController@create')->name('them_kh');
     Route::post('dangky', 'KhachHangController@xulydangky')->name('xu_ly');
     Route::get('/thong-tin-tous/{id}', 'Home\ChuongTrinhTourController@show')->name('single');
-    Route::get('/contact', function () {
-        return view('Fontend/Contact');
-    })->name('contact');
+    Route::get('/tin-tuc', function () {
+        return view('Home/news');
+    })->name('tintuc');
     // Danh sách theo thể loại
     Route::get('theloai/{id}', 'Home\ChuongTrinhTourController@theloaitour')->name('danh-sanh_the_loai');
 });
