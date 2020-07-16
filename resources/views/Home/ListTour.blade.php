@@ -797,7 +797,7 @@
                                         <div class="col-md-6 col-xl-4 mb-3 mb-md-4 pb-1">
                                             <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">
                                                 <div class="position-relative mb-2">
-                                                    <a href="../tour/tour-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5">
+                                                    <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block gradient-overlay-half-bg-gradient-v5">
                                                         <img class="min-height-230 bg-img-hero card-img-top" src="{{ asset('Home/img/tour') }}/{{ $item->hinh_anh }}" alt="img">
                                                     </a>
                                                     <div class="position-absolute top-0 left-0 pt-5 pl-3">
@@ -816,12 +816,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-body px-4 py-2">
-                                                    <a href="../tour/tour-single-v1.html" class="d-block">
+                                                    <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
                                                         <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
                                                             <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Greater London, United Kingdom
                                                         </div>
                                                     </a>
-                                                    <a href="../tour/tour-single-v1.html" class="card-title font-size-17 font-weight-bold mb-0 text-dark">{{ $item->ten_tour }}</a>
+                                                    <a href="{{ route('Tous.single',$item->ma_tour) }}" class="card-title font-size-17 font-weight-bold mb-0 text-dark">{{ $item->ten_tour }}</a>
                                                     <div class="my-2">
                                                         <div class="d-inline-flex align-items-center font-size-17 text-lh-1 text-primary">
                                                             <div class="green-lighter mr-2">

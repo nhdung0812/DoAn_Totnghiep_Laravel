@@ -7,7 +7,7 @@ use App\Http\Requests\ChuongTrinhTourRequest;
 use App\LoaiTour;
 use App\Tour;
 use Illuminate\Http\Request;
-
+use Intervention\Image\Facades\Image;
 class TourController extends Controller
 {
     /**
@@ -18,7 +18,7 @@ class TourController extends Controller
     public function index()
     {
         //
-        $tour = Tour::all();
+        $tour = ChuongTrinhTour::all();
         return view('Admin.ListTour',compact('tour'));
     }
 
@@ -43,33 +43,37 @@ class TourController extends Controller
     public function store(ChuongTrinhTourRequest $request)
     {
 
-        dd($request->validator);
+        $Chuongtrinhtour = new ChuongTrinhTour();
+        $Chuongtrinhtour->ten_tour = $request->ten_tour;
+        $Chuongtrinhtour->gia_tour = $request->gia_tour;
+        $Chuongtrinhtour->ngay_khoi_hanh = $request->ngay_khoi_hanh;
+        $Chuongtrinhtour->ngay_ket_thuc = $request->ngay_ket_thuc;
+        $Chuongtrinhtour->so_ngay = $request->so_ngay;
+        $Chuongtrinhtour->so_dem = $request->so_dem;
+        $Chuongtrinhtour->so_cho = $request->so_cho;
+        $Chuongtrinhtour->noi_dung = $request->noi_dung;
+        $Chuongtrinhtour->ma_loai_tour = $request->loai_tour;
+        $Chuongtrinhtour->khuyen_mai = $request->khuyen_mai;
+        $Chuongtrinhtour->ghi_chu = $request->ghi_chu;
+        if($request->hasFile('hinh_tour')){
+            $file = $request->file('hinh_tour');
+            $name = $file->getClientOriginalName();
+            $exection = $file->getClientOriginalExtension();
+            $path = public_path('/Home/img/tour/');
+            $resize = Image::make($file->getRealPath())->resize(300,230);
+            $resize->resize(300,230, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path.'/'.$name);
+            
+            //$file->move($path,$name);
+            //dd($resize);
+            $Chuongtrinhtour->hinh_anh = $name;
+            
+        }
 
-        // if($request->errors)
-        // {
-        //     $Chuongtrinhtour = new ChuongTrinhTour();
-        //     $Chuongtrinhtour->ten_tour = $request->ten_tour;
-        //     $Chuongtrinhtour->gia_tour = $request->gia_tour;
-        //     $Chuongtrinhtour->ngay_khoi_hanh = $request->ngay_khoi_hanh;
-        //     $Chuongtrinhtour->ngay_ket_thuc = $request->ngay_ket_thuc;
-        //     $Chuongtrinhtour->so_ngay = $request->so_ngay;
-        //     $Chuongtrinhtour->so_dem = $request->so_dem;
-        //     $Chuongtrinhtour->so_cho = $request->so_cho;
-        //     $Chuongtrinhtour->noi_dung = $request->noi_dung;
-        //     $Chuongtrinhtour->ma_loai_tour = $request->loai_tour;
-        //     $Chuongtrinhtour->khuyen_mai = $request->khuyen_mai;
-        //     $Chuongtrinhtour->ghi_chu = $request->ghi_chu;
-        // }
-        // if($request->hasFile('hinh_tour')){
-        //     $file = $request->file('hinh_tour');
-        //     $name = $file->getClientOriginalName();
-        //     $exection = $file->getClientOriginalExtension();
-        //     $file->move(public_path().'/Home/img/tour/',$name);
-        //     $Chuongtrinhtour->hinh_anh = $name;
-        // }
-
-        // $Chuongtrinhtour->save();
-        // return redirect()->route('Quantri.danh_sach_chuong_trinh')->with('message', 'Thêm Thành Công');
+        $Chuongtrinhtour->save();
+        
+        return redirect()->route('Quantri.danh_sach_chuong_trinh')->with('message', 'Thêm Thành Công');
     }
 
     /**
@@ -105,7 +109,13 @@ class TourController extends Controller
     {
         //
     }
-
+    //Trash
+    public function trash()
+    {
+        $trash_tour = ChuongTrinhTour::onlyTrashed()->get();
+        //dd($trash_loai);
+        return view('Admin.TrashTour',compact('trash_tour'));;
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -114,6 +124,8 @@ class TourController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tour = ChuongTrinhTour::find($id);
+        $tour->delete();
+        return redirect("/quantri/Tous");
     }
 }

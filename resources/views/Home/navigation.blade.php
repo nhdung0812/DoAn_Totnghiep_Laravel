@@ -39,9 +39,9 @@
                             <a id="tourMenu" class="nav-link u-header__nav-link  u-header__nav-link-border" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="tourSubMenu">Du Lịch</a>
                             <!-- Tour Submenu -->
                             <ul id="tourSubMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="tourMenu" style="min-width: 230px;">
-                                {{-- @foreach ($loai as $item)
+                                @foreach ($loai as $item)
                                     <li><a class="nav-link u-header__sub-menu-nav-link" href="{{ route('Tous.danh-sanh_the_loai',$item->ma_loai_tour) }}">Du Lịch {{ $item->ten_loai_tour }}</a></li>
-                                @endforeach --}}
+                                @endforeach
                             </ul>
                             <!-- End Tour Submenu -->
                         </li>

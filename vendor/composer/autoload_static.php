@@ -499,6 +499,7 @@ class ComposerStaticInit5b4af4e10633e7565c07062554359e26
     );
 
     public static $classMap = array (
+        'App\\ChuongTrinhTour' => __DIR__ . '/../..' . '/app/ChuongTrinhTour.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/AccountController.php',
@@ -511,7 +512,12 @@ class ComposerStaticInit5b4af4e10633e7565c07062554359e26
         'App\\Http\\Controllers\\ChucVuController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChucVuController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\Home\\ChuongTrinhTourController' => __DIR__ . '/../..' . '/app/Http/Controllers/Home/ChuongTrinhTourController.php',
+        'App\\Http\\Controllers\\Home\\LoaiTourController' => __DIR__ . '/../..' . '/app/Http/Controllers/Home/LoaiTourController.php',
+        'App\\Http\\Controllers\\KhachHangController' => __DIR__ . '/../..' . '/app/Http/Controllers/KhachHangController.php',
+        'App\\Http\\Controllers\\LoaiTourController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoaiTourController.php',
         'App\\Http\\Controllers\\Login\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Login/AuthController.php',
+        'App\\Http\\Controllers\\TourController' => __DIR__ . '/../..' . '/app/Http/Controllers/TourController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -521,7 +527,10 @@ class ComposerStaticInit5b4af4e10633e7565c07062554359e26
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\ChuongTrinhTourRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ChuongTrinhTourRequest.php',
         'App\\Http\\Requests\\TaikhoanRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TaikhoanRequest.php',
+        'App\\KhachHang' => __DIR__ . '/../..' . '/app/KhachHang.php',
+        'App\\LoaiTour' => __DIR__ . '/../..' . '/app/LoaiTour.php',
         'App\\LoginTaiKhoan' => __DIR__ . '/../..' . '/app/LoginTaiKhoan.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

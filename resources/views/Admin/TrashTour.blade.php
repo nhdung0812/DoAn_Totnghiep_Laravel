@@ -1,6 +1,6 @@
 @extends('Admin.Layout')
 @section('css')
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
 @section('content')
 <main id="main-container">
@@ -12,25 +12,13 @@
             <div class="block-header block-header-default">
                 <h3 class="block-title">
                     <div class="block-header block-header-default">
-                        <a href="{{ route('Quantri.them_Tour') }}" class="create-modal_Tour btn btn-success mr-5 mb-5">
-                            <i class="fa fa-plus mr-5"></i>Thêm loại chương trình
-                        </a>
-                        <a href="{{route('Quantri.trash-tour')}}" type="button" class="show-trash btn btn-danger mr-5 mb-5">
-                            <i class="fa fa-trash-o mr-5"></i>Thùng rác
+                        <a href="{{route('Quantri.danh_sach_chuong_trinh')}}" type="button" class="show-trash btn btn-danger mr-5 mb-5">
+                            <i class="fa fa-trash-o mr-5"></i>Quay lại 
                         </a>
                     </div>
                 </h3>
             </div>
             <div class="text-success">
-                @if (session('message'))
-                    <script>
-                        swal({
-                            title: "Thêm thành công",
-                            text: "",
-                            icon: "success",
-                        });
-                    </script>
-                @endif
             </div>
             <div class="block-content">
                 {{-- HIỂN THỊ DANH SÁCH TOUR --}}
@@ -45,7 +33,7 @@
                             <th>Chức Năng</th>
                         </tr>
                     </thead>
-                    @foreach ($tour as $item)
+                    @foreach ($trash_tour as $item)
                     {{-- Tour --}}
                     <tbody class="js-table-sections-header">
                         <tr>
@@ -64,10 +52,10 @@
                             </td>
                             <td>
                                 <a href="" class="edit_tour btn btn-primary min-width-90">
-                                    <i class="fa fa-wrench"></i> Sửa
+                                    <i class="fa fa-wrench"></i> Xoá
                                 </a>
-                                <a href="{{ route('Quantri.Xu_ly_xoa_tour',$item->ma_tour) }}" title="" type="submit" class="delete-confirm btn btn-danger  min-width-10 ">
-                                    <i class="fa fa-trash"></i> Xoá
+                                <a href="{{ route('Quantri.Xu_ly_xoa_tour',$item->ma_tour) }}" title="" type="submit" class="delete-confirm btn btn-success  min-width-10 ">
+                                    Phục hồi
                                 </a>
                             </td>
                         </tr>

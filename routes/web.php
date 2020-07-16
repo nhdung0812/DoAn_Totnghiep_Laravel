@@ -22,9 +22,7 @@ Route::name('Tous.')->group(function () {
     Route::get('dangky', 'KhachHangController@create')->name('them_kh');
     Route::post('dangky', 'KhachHangController@xulydangky')->name('xu_ly');
     Route::get('/thong-tin-tous/{id}', 'Home\ChuongTrinhTourController@show')->name('single');
-    Route::get('/tin-tuc', function () {
-        return view('Home/news');
-    })->name('tintuc');
+    Route::get('/tin-tuc', 'TinTucController@index')->name('tintuc');
     // Danh sách theo thể loại
     Route::get('theloai/{id}', 'Home\ChuongTrinhTourController@theloaitour')->name('danh-sanh_the_loai');
 });
@@ -64,6 +62,8 @@ Route::prefix('quantri')->group(function () {
             Route::get('/Tous', 'TourController@index')->name('danh_sach_chuong_trinh');
             Route::get('/Tous/themtour', 'TourController@create')->name('them_Tour');
             Route::POST('/xu_ly_them', 'TourController@store')->name('Xu_ly_them_tour');
+            Route::GET('/xoaTous/{id}', 'TourController@destroy')->name('Xu_ly_xoa_tour');
+            Route::GET('thungractour','TourController@trash')->name('trash-tour');
         });
     });
 });
