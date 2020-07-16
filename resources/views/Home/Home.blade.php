@@ -1359,7 +1359,7 @@ data-autoplay-speed="5000">
     </div>
     <!-- End Tabs v1 -->
     <!-- Banner v1-->
-    <div class=" banner-block banner-v1 bg-img-hero space-3 " data-aos="fade-up" data-aos-delay="100" id="news" style="background-image: url(Home/img/1920x500/img1.jpg);">
+    <div class=" banner-block banner-v1 bg-img-hero space-3 " data-aos="fade-up" data-aos-delay="100" id="news" style="background-image: url(Home/img/1920x500/banner_tintuc.png);">
         <div class="max-width-650 mx-auto text-center mt-xl-5 mb-xl-2 px-3 px-md-0 " data-aos="fade-up">
             <h6 class="text-white font-size-40 font-weight-bold mb-1">Tin Tức Du Lịch</h6>
             <p class="text-white font-size-18 font-weight-normal mb-4 pb-1 px-md-3 px-lg-0">Tin tức Du lịch - Tin tức Du lịch 2020 cung cấp các thông tin Du lịch Việt Nam, Thông tin Du lịch Thế Giới, các Sự kiện Du lịch diễn ra trong ngày. Thông qua các bài viết được cập nhật liên tục, du khách có thể nắm bắt thêm được nhiều thông tin hữu ích về du lịch.</p>
