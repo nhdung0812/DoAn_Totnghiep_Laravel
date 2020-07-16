@@ -41,7 +41,7 @@
                     </thead>
                     @foreach ($tour as $item)
                     {{-- Tour --}}
-                    <tbody class="js-table-sections-header show table-active">
+                    <tbody class="js-table-sections-header">
                         <tr>
                             <td class="text-center">
                                 <i class="fa fa-angle-right"></i>
