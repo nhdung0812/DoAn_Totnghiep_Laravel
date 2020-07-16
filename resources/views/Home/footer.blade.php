@@ -4,6 +4,7 @@
             <div class="row justify-content-xl-between">
                 <div class="col-12 col-lg-4 col-xl-3dot1 mb-6 mb-md-10 mb-xl-0">
                     <!-- Contacts -->
+                    <!-- Contacts --><!-- Contacts --><!-- Contacts --><!-- Contacts -->
                     <div class ="d-md-flex d-lg-block">
                         <div class="mb-5 mr-md-7 mr-lg-0">
                             <h4 class="h6 mb-4 font-weight-bold">Bạn cần tôi trong chuyến du lịch này ?</h4>
@@ -107,8 +108,8 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg col-xl-3dot1">
                     <div class="mb-4 mb-xl-2">
-                        <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Mailing List</h4>
-                        <p class="m-0 text-gray-1">Sign up for our mailing list to get latest updates and offers.</p>
+                        <h4 class="h6 font-weight-bold mb-2 mb-xl-4">Đăng ký nhận thông tin khuyến mãi</h4>
+                        <p class="m-0 text-gray-1">Nhập email để có cơ hội giảm 50% cho chuyến đi tiếp theo của Quý khách</p>
                     </div>
                     <form class="js-validate js-focus-state js-form-message" novalidate="novalidate">
                         <label class="sr-only text-gray-1" for="subscribeSrEmailExample1">Your Email</label>
