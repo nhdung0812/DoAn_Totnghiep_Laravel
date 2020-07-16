@@ -28,6 +28,7 @@
 
       <!-- CSS MyTravel Template -->
       <link rel="stylesheet" href="{{ asset('Home/css/theme.css')}}">
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
       @yield('css')
 
   </head>

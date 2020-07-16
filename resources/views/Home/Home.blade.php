@@ -1488,4 +1488,8 @@ data-autoplay-speed="5000">
     </div>
     <!-- End Deal Carousel v1 -->
 </main>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    AOS.init();
+  </script>
 @include('Home.footer')

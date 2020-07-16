@@ -51,29 +51,24 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Loại Tour<span class="text-danger">(*)</span></label>
-                                                <select class="form-control {{ $errors->has('noi_dung') ? 'is-invalid' : '' }}" id="loai_tour" name="loai_tour" value="{{ old('gia_tours') }}">
+                                                <select class="form-control {{ $errors->has('loai_tour') ? 'is-invalid' : '' }}" id="loai_tour" name="loai_tour" ">
                                                     <option value="0">Chọn loại Tour</option>
-                                                    @if (old('loai_tour') != null)
-                                                        <option value="" selected>{{ old('loai_tour') }}</option>
-                                                    @endif
                                                     @foreach ($loai_tour as $item)
-                                                        <option value="{{ $item->ma_loai_tour }}">{{ $item->ten_loai_tour }}</option>
+                                                        <option value="{{ $item->ma_loai_tour }}" {{ old('loai_tour') == "$item->ma_loai_tour" ? 'selected' : '' }}>{{ $item->ten_loai_tour }}</option>
                                                     @endforeach
-                                                    <span class="text-danger">{{ $errors->first('loai_tour') }}</span>
-
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="form-group col-lg-6">
                                                 <label for="example-flatpickr-custom">Ngày Khởi hành</label>
-                                                <input class="form-control {{ $errors->has('ngay_khoi_hanh') ? 'is-invalid' : '' }}" type="date" value="" id="ngay_khoi_hanh" name="ngay_khoi_hanh" >
+                                                <input class="form-control {{ $errors->has('ngay_khoi_hanh') ? 'is-invalid' : '' }}" type="date" id="ngay_khoi_hanh" name="ngay_khoi_hanh" value="{{ old('ngay_khoi_hanh', date('d-m-y')) }}">
                                                 <span class="text-danger">{{ $errors->first('ngay_khoi_hanh') }}</span>
 
                                             </div>
                                             <div class="form-group col-lg-6">
                                                 <label for="example-flatpickr-custom">Ngày kết thúc</label>
-                                                <input class="form-control {{ $errors->has('ngay_ket_thuc') ? 'is-invalid' : '' }}" type="date" value="" id="ngay_ket_thuc" name="ngay_ket_thuc" >
+                                                <input class="form-control {{ $errors->has('ngay_ket_thuc') ? 'is-invalid' : '' }}" type="date" value="{{ old('ngay_ket_thuc', date('d-m-y')) }}" id="ngay_ket_thuc" name="ngay_ket_thuc" >
                                                 <span class="text-danger">{{ $errors->first('ngay_ket_thuc') }}</span>
 
                                             </div>
