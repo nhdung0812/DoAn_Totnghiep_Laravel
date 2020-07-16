@@ -49,28 +49,28 @@
 
                         <!-- Activicity -->
                         <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
-                            <a id="tourMenu" class="nav-link u-header__nav-link  u-header__nav-link-border" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="tourSubMenu">Khuyến Mãi</a>
+                            <a id="tourMenu" class="nav-link u-header__nav-link  u-header__nav-link-border" href="#bouns" aria-haspopup="true" aria-expanded="false" aria-labelledby="tourSubMenu">Khuyến Mãi</a>
                             <!-- Tour Submenu -->
-                            <ul id="tourSubMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="tourMenu" style="min-width: 230px;">
+                            {{-- <ul id="tourSubMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="tourMenu" style="min-width: 230px;">
                                 <li><a class="nav-link u-header__sub-menu-nav-link" href="#">List</a></li>
                                 <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Grid</a></li>
                                 <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Sidebar</a></li>
                                 <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Full Width</a></li>
-                            </ul>
+                            </ul> --}}
                             <!-- End Tour Submenu -->
                         </li>
                         <!-- End Activicity -->
 
                         <!-- Rental -->
-                        <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
-                            <a id="rentalMenu" class="nav-link u-header__nav-link  u-header__nav-link-border" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="rentalSubMenu">Tin Tức</a>
+                        <li class="nav-item hs-has-sub-menu u-header__nav-item"  data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
+                            <a id="rentalMenu" class="nav-link u-header__nav-link  u-header__nav-link-border" href="#news" aria-haspopup="true" aria-expanded="false" aria-labelledby="rentalSubMenu">Tin Tức</a>
                             <!-- Rental Submenu -->
-                            <ul id="rentalSubMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="rentalMenu" style="min-width: 230px;">
+                            {{-- <ul id="rentalSubMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="rentalMenu" style="min-width: 230px;">
                                 <li><a class="nav-link u-header__sub-menu-nav-link" href="#">List</a></li>
                                 <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Grid</a></li>
                                 <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Sidebar</a></li>
                                 <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Full Width</a></li>
-                            </ul>
+                            </ul> --}}
                             <!-- End Rental Submenu -->
                         </li>
                         <!-- End Rental -->

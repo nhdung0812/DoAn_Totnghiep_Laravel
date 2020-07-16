@@ -1359,11 +1359,11 @@ data-autoplay-speed="5000">
     </div>
     <!-- End Tabs v1 -->
     <!-- Banner v1-->
-    <div class="banner-block banner-v1 bg-img-hero space-3" style="background-image: url(Home/img/1920x500/img1.jpg);">
+    <div class="banner-block banner-v1 bg-img-hero space-3" id="news" style="background-image: url(Home/img/1920x500/img1.jpg);">
         <div class="max-width-650 mx-auto text-center mt-xl-5 mb-xl-2 px-3 px-md-0">
-            <h6 class="text-white font-size-40 font-weight-bold mb-1">Travel Tips</h6>
-            <p class="text-white font-size-18 font-weight-normal mb-4 pb-1 px-md-3 px-lg-0">Northern Ireland’s is now contingent. Britain is getting a divorce Northern Ireland is being offered a trial separation for Britain there is a one</p>
-            <a class="btn btn-outline-white border-width-2 rounded-xs min-width-200 font-weight-normal transition-3d-hover" href="../blog/blog-list.html">Get Inspired</a>
+            <h6 class="text-white font-size-40 font-weight-bold mb-1">Tin Tức Du Lịch</h6>
+            <p class="text-white font-size-18 font-weight-normal mb-4 pb-1 px-md-3 px-lg-0">Tin tức Du lịch - Tin tức Du lịch 2020 cung cấp các thông tin Du lịch Việt Nam, Thông tin Du lịch Thế Giới, các Sự kiện Du lịch diễn ra trong ngày. Thông qua các bài viết được cập nhật liên tục, du khách có thể nắm bắt thêm được nhiều thông tin hữu ích về du lịch.</p>
+            <a class="btn btn-outline-white border-width-2 rounded-xs min-width-200 font-weight-normal transition-3d-hover" href="../blog/blog-list.html">Xem ngay !</a>
         </div>
     </div>
     <!-- End Banner v1-->
@@ -1411,9 +1411,9 @@ data-autoplay-speed="5000">
     <!-- End Icon Block v1 -->
 
     <!-- Deal Carousel v1 -->
-    <div class="deals-carousel-block deals-carousel-v1 border-bottom border-color-8">
-        <div class="container space-1">
-            <h2 class="section-title text-center mb-5 mt-3">ƯU ĐÃI HÔM NAY</h2>
+    <div class="deals-carousel-block deals-carousel-v1 border-bottom border-color-8" id="bouns">
+        <div class="container space-1" >
+            <h2 class="section-title text-center mb-5 mt-3">TOUR KHUYẾN MÃI</h2>
             <div class="js-slick-carousel u-slick u-slick--gutters-3" data-slides-show="3" data-arrows-classes="d-none d-lg-inline-block u-slick__arrow-classic u-slick__arrow-classic--v2 u-slick__arrow-centered--y rounded-circle" data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-xl-n8" data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-xl-n8"
             data-pagi-classes="d-lg-none text-center u-slick__pagination mt-4" data-responsive='[ { "breakpoint": 1025, "settings": { "slidesToShow": 3 } }, { "breakpoint": 992, "settings": { "slidesToShow": 2 } }, { "breakpoint": 768, "settings": { "slidesToShow": 1 } }, { "breakpoint": 554, "settings": { "slidesToShow": 1 } } ]'>
                 <div class="js-slide mb-4">
