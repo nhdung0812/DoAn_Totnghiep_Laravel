@@ -92,7 +92,7 @@
 
                 <!-- My Account -->
                 <div class="position-relative pl-4 pr-xl-4 u-header__divider-xl ml-auto ml-md-0">
-                    <a href="#" class="d-flex align-items-center text-primary">
+                <a href="{{route ('Tous.them_kh')}}" class="d-flex align-items-center text-primary" >
                         <i class="flaticon-user mx-xl-2"></i>
                         <span class="d-none d-xl-inline-block mr-1">Đăng Nhập và Đăng kí</span>
                     </a>
