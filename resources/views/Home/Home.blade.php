@@ -6,9 +6,9 @@
 <div class="js-slick-carousel u-slick"
 data-autoplay="true"
 data-autoplay-speed="5000">
-    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/1920x720/img1.jpg);"></div>
-    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/1920x720/img1.jpg);"></div>
-    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/1920x720/img1.jpg);"></div>
+    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/1920x720/slider_2.png);"></div>
+    {{-- <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/1920x720/img1.jpg);"></div>
+    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/1920x720/img1.jpg);"></div> --}}
 </div>
 <div class="container" style="margin-top: -190px;">
     <div class="pt-3 pb-6">
