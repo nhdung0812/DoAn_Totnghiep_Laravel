@@ -39,11 +39,12 @@ class KhachHangController extends Controller
      */
     public function store(Request $request)
     {
-
-        dd($request);
+        
+     dd($request);
     }
     public function xulydangky(Request $request)
     {
+         dd($request);
         // $khach_hang = new KhachHang;
         // $khach_hang->ten_kh	= $request->ho_ten;
         // $khach_hang->tuoi = $request->

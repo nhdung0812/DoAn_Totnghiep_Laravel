@@ -18,11 +18,11 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">Họ tên</label>
                                     <div class="col-lg-4">
-                                        <input type="text" class="form-control" id="example-hf-password" name="example-hf-password" placeholder="Họ và tên">
+                                        <input type="text" class="form-control" id="ho_va_ten" name="ho_va_ten" placeholder="Họ và tên">
                                     </div>
-                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Quốc gia<span class="text-danger">(*)</span></label>
+                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Giới tính<span class="text-danger">(*)</span></label>
                                     <div class="col-sm-4">
-                                        <select id="country" name="country" class="form-control">
+                                        <select id="gioi_tinh" name="gioi_tinh" class="form-control">
                                             <option value="" selected="selected">Chọn giới tính</option>
                                             <option value="0">Nữ</option>
                                             <option value="0">Nam</option>
@@ -30,59 +30,78 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Ngày sinh <span class="text-danger">(*)</span></label>
+                                    {{-- <label class="col-sm-2  col-form-label" for="example-hf-password">Ngày sinh <span class="text-danger">(*)</span></label>
                                     <div class="col-lg-4">
                                         <input class="form-control" type="date" value="" id="example-date-input">
-                                    </div>
+                                    </div> --}}
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">Tuổi</label>
                                     <div class="col-lg-4">
-                                        <input type="number" class="form-control" id="example-hf-password" name="example-hf-password" placeholder="3">
+                                        <input type="number" class="form-control"  id="tuoi" name="tuoi" placeholder="3">
+                                    </div>
+                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Ngày sinh <span class="text-danger">(*)</span></label>
+                                    <div class="col-lg-4">
+                                        <input class="form-control" type="date" value="" name="ngay_sinh" id="ngay_sinh">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">Di động <span class="text-danger">(*)</span></label>
                                     <div class="col-lg-4">
-                                        <input class="form-control" type="date" value="" id="example-date-input">
+                                        <input class="form-control" placeholder="Số điện thoại" type="text" value="" name="di_dong" id="di_dong">
                                     </div>
-                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Tuổi</label>
+                                    {{-- <label class="col-sm-2  col-form-label" for="example-hf-password">Tuổi</label>
                                     <div class="col-lg-4">
                                         <input type="number" class="form-control" id="example-hf-password" name="example-hf-password" placeholder="3">
+                                    </div> --}}
+                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Gmail</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" class="form-control" id="gmail" name="gmail" placeholder="Nhập gmail">
                                     </div>
+                                   
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">CMND</label>
                                     <div class="col-lg-4">
-                                        <input type="text" class="form-control" id="example-hf-password" name="example-hf-password" placeholder="Nhập Cmnd  ">
+                                        <input type="text" class="form-control" id="cmnd" name="cmnd" placeholder="Nhập Cmnd  ">
                                     </div>
-                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Ngày sinh <span class="text-danger">(*)</span></label>
+                                    
+                                    {{-- <label class="col-sm-2  col-form-label" for="example-hf-password">Ngày sinh <span class="text-danger">(*)</span></label>
                                     <div class="col-lg-4">
                                         <input class="form-control" type="date" value="" id="example-date-input">
+                                    </div> --}}
+                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Ngày cấp <span class="text-danger">(*)</span></label>
+                                    <div class="col-lg-4">
+                                        <input class="form-control" type="date" value="" name="ngay_cap" id="ngay_cap">
                                     </div>
+                                   
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">Passport</label>
                                     <div class="col-lg-4">
-                                        <input type="text" class="form-control" id="example-hf-password" name="example-hf-password" placeholder="Nhập Passport">
+                                        <input type="text" class="form-control" id="passport" name="passport" placeholder="Nhập Passport">
                                     </div>
-                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Gmail</label>
+                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Tỉnh/Tp<span class="text-danger">(*)</span></label>
+                                    <div class="col-lg-4">
+                                        <input class="form-control" type="text" name="tinh" value="" id="tinh">
+                                    </div>
+                                    {{-- <label class="col-sm-2  col-form-label" for="example-hf-password">Gmail</label>
                                     <div class="col-lg-4">
                                         <input type="text" class="form-control" id="example-hf-password" name="example-hf-password" placeholder="Nhập gmail">
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Ngày cấp <span class="text-danger">(*)</span></label>
+                                    {{-- <label class="col-sm-2  col-form-label" for="example-hf-password">Ngày cấp <span class="text-danger">(*)</span></label>
                                     <div class="col-lg-4">
                                         <input class="form-control" type="date" value="" id="example-date-input">
                                     </div>
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">Ngày hết hạn <span class="text-danger">(*)</span></label>
                                     <div class="col-lg-4">
                                         <input class="form-control" type="date" value="" id="example-date-input">
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">Quốc gia<span class="text-danger">(*)</span></label>
                                     <div class="col-sm-4">
-                                        <select id="country" name="country" class="form-control">
+                                        <select id="country" name="quoc_gia" id="quoc_gia" class="form-control">
                                             <option value="" selected="selected">Vui lòng chọn quốc gia</option>
                                             <option value="AF">Afghanistan</option>
                                             <option value="AL">Albania</option>
@@ -325,23 +344,29 @@
                                             <option value="ZW">Zimbabwe</option>
                                         </select>
                                     </div>
-                                    <label class="col-sm-2  col-form-label" for="example-hf-password">Tỉnh/Tp<span class="text-danger">(*)</span></label>
+                                    {{-- <label class="col-sm-2  col-form-label" for="example-hf-password">Tỉnh/Tp<span class="text-danger">(*)</span></label>
                                     <div class="col-lg-4">
                                         <input class="form-control" type="date" value="" id="example-date-input">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
+                                    </div> --}}
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">Quận/Huyện:<span class="text-danger">(*)</span></label>
                                     <div class="col-sm-4">
-                                        <select id="country" name="country" class="form-control">
+                                        <select id="country" name="quan_huyen" id="quan_huyen" class="form-control">
                                             <option value="" selected="selected">Vui lòng chọn Quận/Huyện</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    {{-- <label class="col-sm-2  col-form-label" for="example-hf-password">Quận/Huyện:<span class="text-danger">(*)</span></label>
+                                    <div class="col-sm-4">
+                                        <select id="country" name="country" class="form-control">
+                                            <option value="" selected="selected">Vui lòng chọn Quận/Huyện</option>
+                                        </select>
+                                    </div> --}}
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">Địa chỉ<span class="text-danger">(*)</span></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="example-hf-password" name="example-hf-password" placeholder="Nhập địa chỉ">
+                                        <input type="text" class="form-control" id="dia_chi" name="dia_chi" placeholder="Nhập địa chỉ">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -358,7 +383,7 @@
                                     <label class="col-sm-2  col-form-label" for="example-hf-password">Xác nhận mật khẩu: </label>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
                                         <div class="input-group" id="show_hide_password">
-                                            <input autocomplete="new-password" type="password" name="Password" id="Password" class="form-control" data-val="true" data-val-required="Vui lòng nhập mật khẩu">
+                                            <input autocomplete="new-password" type="password" name="re_password" id="re_password" class="form-control" data-val="true" data-val-required="Vui lòng nhập mật khẩu">
                                             <div class="input-group-addon">
                                                 <a class="btn btn-gray"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                                             </div>

@@ -25,6 +25,8 @@
       <link rel="stylesheet" href="{{ asset('Home/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}">
       <link rel="stylesheet" href="{{ asset('Home/vendor/slick-carousel/slick/slick.css')}}">
       <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+      <link rel="stylesheet" id="css-main" href="{{ asset('Admin/css/codebase.min.css')}}">
+
 
       <!-- CSS MyTravel Template -->
       <link rel="stylesheet" href="{{ asset('Home/css/theme.css')}}">

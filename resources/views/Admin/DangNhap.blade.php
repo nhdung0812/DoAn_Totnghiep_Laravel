@@ -8,7 +8,7 @@
         <div class="hero-static content content-full bg-white invisible" data-toggle="appear">
             <!-- Header -->
             <div class="py-30 px-5 text-center">
-                <a class="link-effect font-w700" href="index.html">
+            <a class="link-effect font-w700" href="{{ route ('Tous.Tous')}}">
                     <i class="si si-fire"></i>
                     <span class="font-size-xl text-primary-dark">Tous</span><span class="font-size-xl">Nè</span>
                 </a>

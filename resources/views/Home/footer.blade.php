@@ -179,9 +179,14 @@
                $.HSCore.components.HSGoTo.init('.js-go-to');
            });
        </script>
-       <script>
-
-       </script>
+       {{-- <script>
+           $(document).on('click','.signin_member', function() {
+                $('.action').attr('id','add');
+                $('#signin_member').modal('show');
+                // $('.form-horizontal').show();
+                // $('.modal-title .si').text(' Đăng Nhập');
+            });
+                </script> --}}
        @yield('js')
  </body>
 </html>
