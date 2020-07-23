@@ -63,7 +63,7 @@
                                 <em class="text-muted">{{ $item->gia_tour }}</em>
                             </td>
                             <td>
-                                <a href="" class="edit_tour btn btn-primary min-width-90">
+                                <a href="{{ route('Quantri.sua_tour',$item->ma_tour) }}" class="edit_tour btn btn-primary min-width-90">
                                     <i class="fa fa-wrench"></i> Sửa
                                 </a>
                                 <a href="{{ route('Quantri.Xu_ly_xoa_tour',$item->ma_tour) }}" title="" type="submit" class="delete-confirm btn btn-danger  min-width-10 ">
@@ -103,7 +103,7 @@
                         <tr>
                             <td class="text-center"></td>
                             <td class="text-center">Nội dung</td>
-                            <td class="font-w600 text-success" style="width:29%">{{ $item->noi_dung }}</td>
+                            <td class="font-w600 text-success" style="width:29%" id="noidung">{{ $item->noi_dung }}</td>
                             <td class="">Hình ảnh</td>
                             <td><img src="{{ asset('Home/img/tour/')}}/{{ $item->hinh_anh }}" class="img-thumbnail" alt=""></td>
                         </tr>
@@ -121,6 +121,9 @@
                             <td class="">Ghi chú</td>
                             <td class="text-success">{{ $item->ghi_chu }}</td>
                         </tr>
+                        <tr>
+                            
+                        </tr>
                     </tbody>
                     {{-- End Tour --}}
                     @endforeach
@@ -133,7 +136,6 @@
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
        <script>
-
         $('.delete-confirm').on('click', function (event) {
             event.preventDefault();
             const url = $(this).attr('href');

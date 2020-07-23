@@ -6,9 +6,9 @@
 <div class="js-slick-carousel u-slick"
 data-autoplay="true"
 data-autoplay-speed="5000">
-    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/1920x720/img1.jpg);"></div>
-    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/1920x720/img1.jpg);"></div>
-    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/1920x720/img1.jpg);"></div>
+    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/slider/img6.png);"></div>
+    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/slider/img6.png);"></div>
+    <div class="bg-img-hero-bottom min-height-720 space-top-2 text-center space-top-lg-4" style="background-image: url(Home/img/slider/img6.png);"></div>
 </div>
 <div class="container" style="margin-top: -190px;">
     <div class="pt-3 pb-6">
@@ -1048,12 +1048,13 @@ data-autoplay-speed="5000">
                 <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">TOUR NỔI BẬT</h2>
             </div>
             <div class="row mb-1">
-                <!-- Card Block -->
+                {{--  <!-- Card Block -->
+                @foreach ($tour_top_one as $item)
                 <div class="col-md-6 col-xl-6 mb-3 mb-md-6 pb-1">
                     <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">
                         <div class="position-relative mb-2">
-                            <a href="" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                <img class="min-height-230 bg-img-hero card-img-top" src="Home/img/630x350/img1.jpg" alt="img">
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block gradient-overlay-half-bg-gradient-v5">
+                                <img class="min-height-230 bg-img-hero card-img-top" src="Home/img/tour/{{ $item->hinh_anh }}" alt="img">
                             </a>
                             <div class="position-absolute top-0 right-0 pt-5 pr-3">
                               <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
@@ -1062,18 +1063,18 @@ data-autoplay-speed="5000">
                             </div>
                             <div class="position-absolute bottom-0 left-0 right-0">
                                 <div class="px-3 pb-2">
-                                    <span class="text-gray-10 font-weight-normal font-size-14">Attraction Tickets</span>
-                                    <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">From</small>£590.00</h2>
+                                    <span class="text-gray-10 font-weight-normal font-size-14">{{ $item->ten_loai_tour }}</span>
+                                    <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">Giá</small>{{ number_format($item->gia_tour,0,'.','.')."    VNĐ" }}</h2>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body px-4 py-2">
-                            <a href="" class="d-block">
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
                                 <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
                                     <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
                                 </div>
                             </a>
-                            <a href="" class="card-title text-dark font-size-17 font-weight-bold">Two Capitals Tour of 7 days and 6 nights From Moscow</a>
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
                             <div class="my-2">
                                 <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
                                     <div class="text-warning mr-2">
@@ -1087,18 +1088,21 @@ data-autoplay-speed="5000">
                                 </div>
                             </div>
                             <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                                <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> 3 hours 45 minutes
+                                <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> {{ $item->so_ngay}} Ngày {{ $item->so_dem }} Đêm
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
+               
                 <!-- End Card Block -->
                 <!-- Card Block -->
+                @foreach ($tour_top_two  as $item)
                 <div class="col-md-6 col-xl-6 mb-3 mb-md-6 pb-1">
                     <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">
                         <div class="position-relative mb-2">
-                            <a href="" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                <img class="min-height-230 bg-img-hero card-img-top" src="Home/img/630x350/img1.jpg" alt="img">
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block gradient-overlay-half-bg-gradient-v5">
+                                <img class="min-height-230 bg-img-hero card-img-top" src="Home/img/tour/{{ $item->hinh_anh }}" alt="img">
                             </a>
                             <div class="position-absolute top-0 right-0 pt-5 pr-3">
                               <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
@@ -1107,8 +1111,8 @@ data-autoplay-speed="5000">
                             </div>
                             <div class="position-absolute bottom-0 left-0 right-0">
                                 <div class="px-3 pb-2">
-                                    <span class="text-gray-10 font-weight-normal font-size-14">Attraction Tickets</span>
-                                    <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">From</small>£590.00</h2>
+                                    <span class="text-gray-10 font-weight-normal font-size-14">{{ $item->ten_loai_tour }}</span>
+                                    <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">Giá</small>{{ number_format($item->gia_tour,0,'.','.')."    VNĐ" }}</h2>
                                 </div>
                             </div>
                         </div>
@@ -1118,7 +1122,7 @@ data-autoplay-speed="5000">
                                     <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
                                 </div>
                             </a>
-                            <a href="" class="card-title text-dark font-size-17 font-weight-bold">Two Capitals Tour of 7 days and 6 nights From Moscow</a>
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
                             <div class="my-2">
                                 <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
                                     <div class="text-warning mr-2">
@@ -1132,19 +1136,20 @@ data-autoplay-speed="5000">
                                 </div>
                             </div>
                             <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                                <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> 3 hours 45 minutes
+                                <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> {{ $item->so_ngay}} Ngày {{ $item->so_dem }} Đêm
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
                 <!-- End Card Block -->
 
-                {{-- <!-- Card Block -->
-                @foreach ($tour as $item)
+                <!-- Card Block -->
+                @foreach ($top_three_tour as $item)
                 <div class="col-md-6 col-xl-4 mb-3 mb-md-4 pb-1">
                     <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">
                         <div class="position-relative mb-2">
-                            <a href="../tour/tour-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5">
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block gradient-overlay-half-bg-gradient-v5">
                                 <img class="min-height-230 bg-img-hero card-img-top" src="Home/img/tour/dalat.png" alt="img">
                             </a>
                             <div class="position-absolute top-0 right-0 pt-5 pr-3">
@@ -1154,18 +1159,18 @@ data-autoplay-speed="5000">
                             </div>
                             <div class="position-absolute bottom-0 left-0 right-0">
                                 <div class="px-3 pb-2">
-                                    <span class="text-gray-10 font-weight-normal font-size-14">Culturals Tours</span>
+                                    <span class="text-gray-10 font-weight-normal font-size-14">{{ $item->ten_loai_tour }}</span>
                                     <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">Giá: </small> {{ number_format($item->gia_tour)." VNĐ" }}   </h2>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body px-4 py-2">
-                            <a href="../tour/tour-single-v1.html" class="d-block">
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
                                 <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
                                     <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
                                 </div>
                             </a>
-                            <a href="../tour/tour-single-v1.html" class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
                             <div class="my-2">
                                 <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
                                     <div class="text-warning mr-2">
@@ -1179,14 +1184,14 @@ data-autoplay-speed="5000">
                                 </div>
                             </div>
                             <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                                <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> 3 hours 45 minutes
+                                <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> {{ $item->so_ngay}} Ngày {{ $item->so_dem }} Đêm
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach --}}
+                @endforeach
 
-                <!-- End Card Block -->
+                <!-- End Card Block -->  --}}
             </div>
         </div>
     </div>
@@ -1237,7 +1242,7 @@ data-autoplay-speed="5000">
                                 <div class="position-absolute bottom-0 left-0 right-0">
                                     <div class="px-3 pb-2">
                                         <span class="text-white font-weight-normal font-size-14">{{ $item->ten_loai_tour }}</span>
-                                        <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">From</small>{{ $item->gia_tour }}</h2>
+                                        <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">From</small>{{ number_format($item->gia_tour,0,'.','.')."    VNĐ" }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -1261,7 +1266,7 @@ data-autoplay-speed="5000">
                                     </div>
                                 </div>
                                 <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                                    <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> 3 hours 45 minutes
+                                    <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> {{ $item->so_ngay}} Ngày {{ $item->so_dem }} Đêm
                                 </div>
                             </div>
                         </div>
@@ -1304,13 +1309,13 @@ data-autoplay-speed="5000">
                     "slidesToShow": 1
                 }
                 }]'>
-                @foreach ($tour as $item)
-                <div class="js-slide bg-img-hero-center" style="background-image: url(../assets/img/img35.jpg);">
+                @foreach ($tour_nuoc_ngoai as $item)
+                <div class="js-slide bg-img-hero-center" style="background-image: url();">
                     <div class="col-md-6 col-lg-12 col-xl-3mb-3 mb-md-4 pb-1">
                         <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">
                             <div class="position-relative mb-2">
-                                <a href="../tour/tour-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                    <img class="card-img-top" src="Home/img/300x230/img8.jpg" alt="img">
+                                <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block gradient-overlay-half-bg-gradient-v5">
+                                    <img class="card-img-top" src="{{ asset('Home/img/tour').'/'.$item->hinh_anh}}" alt="img">
                                 </a>
                                 <div class="position-absolute top-0 right-0 pt-5 pr-3">
                                     <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
@@ -1319,18 +1324,18 @@ data-autoplay-speed="5000">
                                 </div>
                                 <div class="position-absolute bottom-0 left-0 right-0">
                                     <div class="px-3 pb-2">
-                                        <span class="text-white font-weight-normal font-size-14">Culturals Tours</span>
-                                        <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">From</small>{{ $item->	gia_tour }}</h2>
+                                        <span class="text-white font-weight-normal font-size-14">{{ $item->ten_loai_tour }}</span>
+                                        <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">From</small>{{ number_format($item->gia_tour,0,'.','.')."    VNĐ" }}</h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body px-4 py-2">
-                                <a href="../tour/tour-single-v1.html" class="d-block">
+                                <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
                                     <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
                                         <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
                                     </div>
                                 </a>
-                                <a href="../tour/tour-single-v1.html" class="card-title text-dark font-size-17 font-weight-bold">{{ $item->	ten_tour }}</a>
+                                <a href="{{ route('Tous.single',$item->ma_tour) }}" class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
                                 <div class="my-2">
                                     <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
                                         <div class="text-warning mr-2">
@@ -1344,7 +1349,7 @@ data-autoplay-speed="5000">
                                     </div>
                                 </div>
                                 <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                                    <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> 3 hours 45 minutes
+                                    <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> {{ $item->so_ngay}} Ngày {{ $item->so_dem }} Đêm
                                 </div>
                             </div>
                         </div>
@@ -1416,73 +1421,57 @@ data-autoplay-speed="5000">
             <h2 class="section-title text-center mb-5 mt-3">TOUR KHUYẾN MÃI</h2>
             <div class="js-slick-carousel u-slick u-slick--gutters-3" data-slides-show="3" data-arrows-classes="d-none d-lg-inline-block u-slick__arrow-classic u-slick__arrow-classic--v2 u-slick__arrow-centered--y rounded-circle" data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-xl-n8" data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-xl-n8"
             data-pagi-classes="d-lg-none text-center u-slick__pagination mt-4" data-responsive='[ { "breakpoint": 1025, "settings": { "slidesToShow": 3 } }, { "breakpoint": 992, "settings": { "slidesToShow": 2 } }, { "breakpoint": 768, "settings": { "slidesToShow": 1 } }, { "breakpoint": 554, "settings": { "slidesToShow": 1 } } ]'>
-                <div class="js-slide mb-4">
-                    <a class="d-block rounded-xs overflow-hidden mb-3" href="../blog/blog-single.html">
-                        <img class="img-fluid w-100" src="Home/img/410x300/img1.jpg" alt="Image-Description">
-                    </a>
-                    <h6 class="font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1 text-gray-6">
-                        <a href="../blog/blog-single.html">Earning Asiana Club Miles Just Got Easier!</a>
-                    </h6>
-                    <a class="text-gray-1" href="../blog/blog-single.html">
-                        <span>Book Hotels and Earn Asiana Club Miles!</span>
-                    </a>
+            @foreach ($tour_khuyen_mai as $item)
+            <div class="js-slide bg-img-hero-center" style="background-image: url();">
+                <div class="col-md-6 col-lg-12 col-xl-3mb-3 mb-md-4 pb-1">
+                    <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">
+                        <div class="position-relative mb-2">
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block gradient-overlay-half-bg-gradient-v5">
+                                <img class="card-img-top" src="{{ asset('Home/img/tour').'/'.$item->hinh_anh}}" alt="img">
+                            </a>
+                            <div class="position-absolute top-0 right-0 pt-5 pr-3">
+                                <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
+                                    <span class="flaticon-valentine-heart"></span>
+                                </button>
+                            </div>
+                            <div class="position-absolute bottom-0 left-0 right-0">
+                                <div class="px-3 pb-2">
+                                    <span class="text-white font-weight-normal font-size-20">{{ $item->ten_loai_tour }}</span>
+                                    <h2 class="h5 text-white mb-0 font-size-17 font-weight-bold"><small class="mr-2">Giá</small><strike class="font-size-13">{{ number_format($item->gia_tour,0,'.','.')."    VNĐ" }}</strike>  {{ number_format($item->gia_tour - ($item->gia_tour * ($item->khuyen_mai / 100 )),0,'.','.')."  VNĐ" }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-4 py-2">
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
+                                <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
+                                    <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
+                                </div>
+                            </a>
+                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="card-title text-dark font-size-17 font-weight-bold" data-animation-class="fadeOutDownBig">{{ $item->ten_tour }}</a>
+                            <div class="position-absolute top-0 left-0 pt-5 pl-3">
+                                <span class="badge badge-pill bg-white text-primary px-4 py-2 font-size-14 font-weight-normal">Khuyến mãi</span>
+                                <span class="badge badge-pill bg-white text-danger px-3 ml-3 py-2 font-size-14 font-weight-normal">{{ $item->khuyen_mai }}%</span>
+                            </div>
+                            <div class="my-2">
+                                <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
+                                    <div class="text-warning mr-2">
+                                        <small class="fas fa-star"></small>
+                                        <small class="fas fa-star"></small>
+                                        <small class="fas fa-star"></small>
+                                        <small class="fas fa-star"></small>
+                                        <small class="fas fa-star"></small>
+                                    </div>
+                                    <span class="text-secondary font-size-14 mt-1">48 Reviews</span>
+                                </div>
+                            </div>
+                            <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
+                                <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> {{ $item->so_ngay}} Ngày {{ $item->so_dem }} Đêm
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="js-slide mb-4">
-                    <a class="d-block rounded-xs overflow-hidden mb-3" href="../blog/blog-single.html">
-                        <img class="img-fluid w-100" src="Home/img/410x300/img2.jpg" alt="Image-Description">
-                    </a>
-                    <h6 class="font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1 text-gray-6">
-                        <a href="../blog/blog-single.html">Save big on hotels!</a>
-                    </h6>
-                    <a class="text-gray-1" href="../blog/blog-single.html">
-                        <span>Book and save with Trip.com on your next stay</span>
-                    </a>
-                </div>
-                <div class="js-slide mb-4">
-                    <a class="d-block rounded-xs overflow-hidden mb-3" href="../blog/blog-single.html">
-                        <img class="img-fluid w-100" src="Home/img/410x300/img3.jpg" alt="Image-Description">
-                    </a>
-                    <h6 class="font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1 text-gray-6">
-                        <a href="../blog/blog-single.html">Experience Europe Your Way</a>
-                    </h6>
-                    <a class="text-gray-1" href="../blog/blog-single.html">
-                        <span>With up to 30% Off, experience Europe your way!</span>
-                    </a>
-                </div>
-                <div class="js-slide mb-4">
-                    <a class="d-block rounded-xs overflow-hidden mb-3" href="../blog/blog-single.html">
-                        <img class="img-fluid w-100" src="Home/img/410x300/img1.jpg" alt="Image-Description">
-                    </a>
-                    <h6 class="font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1 text-gray-6">
-                        <a href="../blog/blog-single.html">Earning Asiana Club Miles Just Got Easier!</a>
-                    </h6>
-                    <a class="text-gray-1" href="../blog/blog-single.html">
-                        <span>Book Hotels and Earn Asiana Club Miles!</span>
-                    </a>
-                </div>
-                <div class="js-slide mb-4">
-                    <a class="d-block rounded-xs overflow-hidden mb-3" href="../blog/blog-single.html">
-                        <img class="img-fluid w-100" src="Home/img/410x300/img2.jpg" alt="Image-Description">
-                    </a>
-                    <h6 class="font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1 text-gray-6">
-                        <a href="../blog/blog-single.html">Save big on hotels!</a>
-                    </h6>
-                    <a class="text-gray-1" href="../blog/blog-single.html">
-                        <span>Book and save with Trip.com on your next stay</span>
-                    </a>
-                </div>
-
-                <div class="js-slide mb-4">
-                    <a class="d-block rounded-xs overflow-hidden mb-3" href="../blog/blog-single.html">
-                        <img class="img-fluid w-100" src="Home/img/410x300/img3.jpg" alt="Image-Description">
-                    </a>
-                    <h6 class="font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1 text-gray-6">
-                        <a href="../blog/blog-single.html">Experience Europe Your Way</a>
-                    </h6>
-                    <a class="text-gray-1" href="../blog/blog-single.html">
-                        <span>With up to 30% Off, experience Europe your way!</span>
-                    </a>
-                </div>
+            </div>
+            @endforeach
             </div>
         </div>
     </div>

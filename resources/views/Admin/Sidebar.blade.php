@@ -94,7 +94,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Tour Du Lịch</span></a>
+                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Quản lý </span></a>
                                 <ul>
                                     <li>
                                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản Lý Tour</span></a>
@@ -103,13 +103,26 @@
                                                 <a href="{{ route('Quantri.Danh_sach_tour') }}"><span class="sidebar-mini-hide">Loại Tour</span></a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('Quantri.danh_sach_chuong_trinh') }}"><span class="sidebar-mini-hide">Chương trình Tour</span></a>
+                                                <a href="{{ route('Quantri.Danh-sach-dia-diem') }}"><span class="sidebar-mini-hide">Địa điểm</span></a>
                                             </li>
                                             <li>
-                                                <a href="be_pages_dashboard4.html"><span class="sidebar-mini-hide">Dashboard 4</span></a>
+                                                <a href="{{ route('Quantri.ds_hinh') }}"><span class="sidebar-mini-hide">Hình ảnh địa điểm</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('Quantri.ds_khu_vuc') }}"><span class="sidebar-mini-hide">Khu Vực</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('Quantri.ds_lich_trinh') }}"><span class="sidebar-mini-hide">Lịch Trình</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('Quantri.danh_sach_chuong_trinh') }}"><span class="sidebar-mini-hide">Chương trình Tour</span></a>
                                             </li>
                                         </ul>
+                                    </li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a  href="{{ route('Quantri.ds_tour') }}"><span class="sidebar-mini-hide">TOUR</span></a>
                             </li>
                             <li>
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Khách hàng</span></a>

@@ -92,7 +92,7 @@
         <!-- Page JS Helpers (Flatpickr + BS Datepicker + BS Colorpicker + BS Maxlength + Select2 + Masked Input + Range Sliders + Tags Inputs plugins) -->
         <script>jQuery(function(){ Codebase.helpers(['flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script>
         <script src="{{ asset('Admin/js/plugins/summernote/summernote-bs4.min.js')}}"></script>
-        <script src="{{ asset('Admin/js/plugins/ckeditor/ckeditor.js')}}"></script>
+
         <script src="{{ asset('Admin/js/plugins/simplemde/simplemde.min.js')}}"></script>
 
         <!-- Page JS Helpers (Summernote + CKEditor + SimpleMDE plugins) -->

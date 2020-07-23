@@ -42,7 +42,6 @@ $('#them_loai_tour').click(function(){
     });
 });
 
-
 // FORM SỬA LOẠI TOUR
  // Lấy dữ liệu lên form chức năng sửa
  $(document).on('click','.edit_tour', function(e){
@@ -50,6 +49,7 @@ $('#them_loai_tour').click(function(){
     var me = $(this);
     var title = me.attr('title');
     var url1 = me.attr('href');
+   
     $.ajax({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -62,7 +62,7 @@ $('#them_loai_tour').click(function(){
         $('.action').attr("id", "btn_edit");
         $('#update_tour').modal('show');
         $('.form-horizontal').show();
-        $('.modal-title .si').text('Cập nhật Tài khoản');
+        $('.modal-title .si').text('Cập nhật địa điểm');
     },
     error: function(xhr){
         swal({

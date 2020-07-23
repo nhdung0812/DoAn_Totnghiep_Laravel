@@ -1,5 +1,5 @@
 @include('Admin.header')
-    <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-modern main-content-boxed">
+    <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-modern side-trans-enabled main-content-narrow">
         <!-- Side Overlay-->
         <aside id="side-overlay">
             <!-- Side Header -->

@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+Window.sumernote =  require('summernote');
 window.Swal = require('sweetalert');
 window.flatpickr = require('flatpickr');
 window.flatpickr = require('aos');

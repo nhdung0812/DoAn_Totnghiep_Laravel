@@ -25,7 +25,8 @@
         <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('Admin/media/favicons/favicon-192x192.png')}}">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('Admin/media/favicons/apple-touch-icon-180x180.png')}}">
         <!-- END Icons -->
-
+        <link href="path/to/multiselect.css" media="screen" rel="stylesheet" type="text/css"><font></font>
+        
         <!-- Stylesheets -->
         <!-- Fonts and Codebase framework -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,400i,600,700&display=swap">

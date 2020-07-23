@@ -51,12 +51,13 @@
                                 <em class="text-muted">{{ $item->gia_tour }}</em>
                             </td>
                             <td>
+                                <a href="{{ route('Quantri.xoa_vinh_vien_tour',$item->ma_tour) }}" title="" type="submit" class="delete-confirm btn btn-success  min-width-10 ">
+                                    Xoá
+                                </a>
                                 <a href="" class="edit_tour btn btn-primary min-width-90">
-                                    <i class="fa fa-wrench"></i> Xoá
+                                    <i class="fa fa-wrench"></i> Phục hồi
                                 </a>
-                                <a href="{{ route('Quantri.Xu_ly_xoa_tour',$item->ma_tour) }}" title="" type="submit" class="delete-confirm btn btn-success  min-width-10 ">
-                                    Phục hồi
-                                </a>
+                                
                             </td>
                         </tr>
                     </tbody>

@@ -811,7 +811,7 @@
                                                     </div>
                                                     <div class="position-absolute bottom-0 left-0 right-0">
                                                         <div class="px-3 pb-2">
-                                                            <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">Giá</small>{{ number_format($item->gia_tour,0,'.','.')."    VNĐ" }}</h2>
+                                                            <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">Giá</small>{{ number_format($item->gia_tour,0,'.','.')."  VNĐ" }}</h2>
                                                         </div>
                                                     </div>
                                                 </div>

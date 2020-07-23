@@ -3,7 +3,7 @@
 <main id="main-container">
               <!-- Page Content -->
 
-              <div class="content">
+              <div class="content content_layout_full_width">
               <h2 class="content-heading">Bảng điều khiển <small>Tour Nè    </small></h2>
               <div class="row invisible" data-toggle="appear">
                      <!-- Row #1 -->

@@ -72,7 +72,7 @@
                                 </li>
                                 <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
                                     <i class="flaticon-month text-primary font-size-22 mr-2 d-block"></i>
-                                    <div class="ml-1 text-gray-1">{{$singletour[0]->ngay_khoi_hanh}}</div>
+                                    {{--  <div class="ml-1 text-gray-1">{{$singletour[0]->ngay_khoi_hanh}}</div>  --}}
                                 </li>
                                 <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
                                     <i class="flaticon-user-2 text-primary font-size-22 mr-2 d-block"></i>
@@ -91,26 +91,13 @@
                                     data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-lg-2 ml-xl-4"
                                     data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-lg-2 mr-xl-4"
                                     data-nav-for="#sliderSyncingThumb">
-                                    <div class="js-slide">
-                                        <img class="img-fluid border-radius-3" src="../../Home/img/960x490/img7.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide">
-                                        <img class="img-fluid border-radius-3" src="../../Home/img/960x490/img12.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide">
-                                        <img class="img-fluid border-radius-3" src="../../Home/img/960x490/img11.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide">
-                                        <img class="img-fluid border-radius-3" src="../../Home/img/960x490/img10.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide">
-                                        <img class="img-fluid border-radius-3" src="../../Home/img/960x490/img9.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide">
-                                        <img class="img-fluid border-radius-3" src="../../Home/img/960x490/img8.jpg" alt="Image Description">
-                                    </div>
+                                    @foreach ($hinh_anh as $item)
+                                        <div class="js-slide">
+                                            <img class="img-fluid border-radius-3" src="{{ asset('Home/img/diadiem/') }}/{{ $item->Hinh_anh_1}}" alt="Image Description">
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="position-absolute right-0 mr-3 mt-md-n11 mt-n9">
+                                {{--  <div class="position-absolute right-0 mr-3 mt-md-n11 mt-n9">
                                     <div class="flex-horizontal-center">
                                         <!-- Video -->
                                         <a class="js-fancybox btn btn-white transition-3d-hover py-2 px-md-5 px-3 shadow-6 mr-1" href="javascript:;"
@@ -145,7 +132,7 @@
                                         data-speed="700">
 
                                     </div>
-                                </div>
+                                </div>  --}}
 
                                 <div id="sliderSyncingThumb" class="js-slick-carousel u-slick u-slick--gutters-4 u-slick--transform-off"
                                     data-infinite="true"
@@ -168,24 +155,12 @@
                                             "slidesToShow": 2
                                         }
                                     }]'>
-                                    <div class="js-slide" style="cursor: pointer;">
-                                        <img class="img-fluid border-radius-3 height-110" src="../../Home/img/960x490/img7.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide" style="cursor: pointer;">
-                                        <img class="img-fluid border-radius-3 height-110" src="../../Home/img/960x490/img12.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide" style="cursor: pointer;">
-                                        <img class="img-fluid border-radius-3 height-110" src="../../Home/img/960x490/img11.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide" style="cursor: pointer;">
-                                        <img class="img-fluid border-radius-3 height-110" src="../../Home/img/960x490/img10.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide" style="cursor: pointer;">
-                                        <img class="img-fluid border-radius-3 height-110" src="../../Home/img/960x490/img9.jpg" alt="Image Description">
-                                    </div>
-                                    <div class="js-slide" style="cursor: pointer;">
-                                        <img class="img-fluid border-radius-3 height-110" src="../../Home/img/960x490/img8.jpg" alt="Image Description">
-                                    </div>
+                                    @foreach ($hinh_anh as $item)
+                                        <div class="js-slide" style="cursor: pointer;">
+                                            <img class="img-fluid border-radius-3 height-110" src="{{ asset('Home/img/diadiem/') }}/{{ $item->Hinh_anh_1}}" alt="Image Description">
+                                        </div>
+                                    @endforeach
+                                    
                                 </div>
                                 <!-- End Images Carousel -->
                             </div>
@@ -236,23 +211,24 @@
                                 Mô tả
                             </h5>
 
-                            <p class="mb-4">{{$singletour[0]->noi_dung}}</p>
+                            <p class="mb-4 mt-2" id="noidung" value=''>{{$singletour[0]->noi_dung}}</p>
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="font-weight-bold text-dark mb-2">Highlights</div>
                                     <div class="text-gray-1">John F.K. International Airport (Google Map)</div>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <div class="font-weight-bold text-dark mb-2">Bedroom</div>
-                                    <div class="text-gray-1">4 Bedrooms</div>
+                                    <div class="font-weight-bold text-dark mb-2">Số ngày</div>
+                                    <div class="text-gray-1">{{$singletour[0]->so_ngay}}</div>
                                 </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="font-weight-bold text-dark mb-2">Departure Time</div>
-                                    <div class="text-gray-1">3 Hours Before Flight Time</div>
-                                </div>
+                                
                                 <div class="col-md-6 mb-4">
                                     <div class="font-weight-bold text-dark mb-2">Bathroom</div>
                                     <div class="text-gray-1">6 Bathrooms</div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="font-weight-bold text-dark mb-2">Số Đêm</div>
+                                    <div class="text-gray-1">{{$singletour[0]->so_dem}}</div>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="font-weight-bold text-dark mb-3">Price Includes</div>
@@ -270,44 +246,6 @@
                                     <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-close mr-3 font-size-12 text-primary"></i>Room Service Fees</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border-bottom py-4">
-                            <h5 class="font-size-21 font-weight-bold text-dark mb-4">
-                                What to Expect
-                            </h5>
-                            <p class="mb-3">Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p class="mb-3">Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                            <ul class="list-group list-group-borderless list-group-flush no-gutters">
-                                <li class="flex-horizontal-center mb-3 text-gray-1">
-                                    <i class="fas fa-circle mr-3 font-size-8 text-primary"></i>
-                                    Ipsum Amet Mattis Pellentesque
-                                </li>
-
-                                <li class="flex-horizontal-center mb-3 text-gray-1">
-                                    <i class="fas fa-circle mr-3 font-size-8 text-primary"></i>
-                                    Ultricies Vehicula Mollis Vestibulum Fringilla
-                                </li>
-
-                                <li class="flex-horizontal-center mb-3 text-gray-1">
-                                    <i class="fas fa-circle mr-3 font-size-8 text-primary"></i>
-                                    Condimentum Sollicitudin Fusce Vestibulum Ultricies
-                                </li>
-
-                                <li class="flex-horizontal-center mb-3 text-gray-1">
-                                    <i class="fas fa-circle mr-3 font-size-8 text-primary"></i>
-                                    Sollicitudin Consectetur Quam Ligula Vehicula
-                                </li>
-
-                                <li class="flex-horizontal-center mb-3 text-gray-1">
-                                    <i class="fas fa-circle mr-3 font-size-8 text-primary"></i>
-                                    Cursus Pharetra Purus Porta Parturient
-                                </li>
-
-                                <li class="flex-horizontal-center mb-3 text-gray-1">
-                                    <i class="fas fa-circle mr-3 font-size-8 text-primary"></i>
-                                    Risus Malesuada Tellus Porta Commodo
-                                </li>
-                            </ul>
                         </div>
                         <div class="border-bottom py-4">
                             <h5 id="scroll-itinerary" class="font-size-21 font-weight-bold text-dark mb-4">
@@ -419,7 +357,7 @@
                             <h5 id="scroll-location" class="font-size-21 font-weight-bold text-dark mb-4">
                                 Location
                             </h5>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d7772.225184901051!2d80.28441927545006!3d13.092050163095971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d13.098645!2d80.2916092!4m5!1s0x3a526f5213f46501%3A0x56d2a4b14dba42f2!2sMadras%20High%20Court%2C%20High%20Ct%20Rd%2C%20Parry&#39;s%20Corner%2C%20George%20Town%2C%20Chennai%2C%20Tamil%20Nadu%20600108!3m2!1d13.0867057!2d80.28774949999999!5e0!3m2!1sen!2sin!4v1580358870925!5m2!1sen!2sin" width="100%" height="480" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                            <iframe src="https://www.google.com/maps/place?key=AIzaSyAg-ZY6iL8dzXNTw5_sjAuWwuKS7q-grx8&q=việt nam" width="100%" height="480" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                         </div>
                         <div class="border-bottom py-4">
                             <h5 id="scroll-reviews" class="font-size-21 font-weight-bold text-dark mb-4">
@@ -824,306 +762,76 @@
                         <div class="w-md-80 w-lg-50 text-center mx-md-auto mt-3">
                             <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">You might also like...</h2>
                         </div>
-                        <div class="js-slick-carousel u-slick u-slick--equal-height u-slick--gutters-3"
-                            data-slides-show="4"
+                        <div class="js-slick-carousel u-slick u-slick--gutters-1"
+                            data-slides-show="3"
                             data-slides-scroll="1"
-                            data-arrows-classes="d-none d-xl-inline-block u-slick__arrow-classic v1 u-slick__arrow-classic--v1 u-slick__arrow-centered--y rounded-circle"
-                            data-arrow-left-classes="fas fa-chevron-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left shadow-5"
-                            data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right shadow-5"
-                            data-pagi-classes="text-center d-xl-none u-slick__pagination mt-4"
+                            data-arrows-classes="d-none d-lg-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
+                            data-arrow-left-classes="fas fa-arrow-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-lg-2 ml-xl-4"
+                            data-arrow-right-classes="fas fa-arrow-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-lg-2 mr-xl-4"
                             data-responsive='[{
-                            "breakpoint": 1025,
-                            "settings": {
-                            "slidesToShow": 3
-                            }
-                            }, {
                             "breakpoint": 992,
                             "settings": {
-                            "slidesToShow": 2
+                                "slidesToShow": 2
                             }
                             }, {
                             "breakpoint": 768,
                             "settings": {
-                            "slidesToShow": 1
+                                "slidesToShow": 1
                             }
                             }, {
                             "breakpoint": 554,
                             "settings": {
-                            "slidesToShow": 1
+                                "slidesToShow": 1
                             }
                             }]'>
-                            <div class="js-slide mt-5">
-                                <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
-                                    <div class="position-relative">
-                                        <a href="../tour/tour-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                            <img class="card-img-top" src="../../Home/img/300x230/img13.jpg" alt="Image Description">
-                                        </a>
-                                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                          <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
-                                            <span class="flaticon-heart-1 font-size-20"></span>
-                                          </button>
-                                        </div>
-                                        <div class="position-absolute bottom-0 left-0 right-0">
-                                            <div class="px-4 pb-3">
-                                                <a href="../tour/tour-single-v1.html" class="d-block">
-                                                    <div class="d-flex align-items-center font-size-14 text-white">
-                                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
-                                                    </div>
-                                                </a>
+                            @foreach ($tour as $item)
+                            <div class="js-slide bg-img-hero-center" style="background-image: url();">
+                                <div class="col-md-6 col-lg-12 col-xl-3mb-3 mb-md-4 pb-1">
+                                    <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">
+                                        <div class="position-relative mb-2">
+                                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block gradient-overlay-half-bg-gradient-v5">
+                                                <img class="card-img-top" src="{{ asset('Home/img/tour').'/'.$item->hinh_anh}}" alt="img">
+                                            </a>
+                                            <div class="position-absolute top-0 right-0 pt-5 pr-3">
+                                                <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
+                                                    <span class="flaticon-valentine-heart"></span>
+                                                </button>
+                                            </div>
+                                            <div class="position-absolute bottom-0 left-0 right-0">
+                                                <div class="px-3 pb-2">
+                                                    <span class="text-white font-weight-normal font-size-14">{{ $item->ten_loai_tour }}</span>
+                                                    <h2 class="h5 text-white mb-0 font-weight-bold"><small class="mr-2">From</small>{{ number_format($item->gia_tour,0,'.','.')."    VNĐ" }}</h2>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-body px-4 py-3">
-                                        <a href="../tour/tour-single-v1.html" class="card-title font-size-17 font-weight-medium text-dark">Mangrove Tunnel Kayak Eco <br> Tour</a>
-                                        <div class="mt-2 mb-3">
-                                            <span class="badge badge-pill badge-warning text-white py-1 px-2 font-size-14 border-radius-3 font-weight-normal">4.6/5</span>
-                                            <span class="font-size-14 text-gray-1 ml-2">(166 reviews)</span>
-                                        </div>
-                                        <div class="mb-0">
-                                            <span class="mr-1 font-size-14 text-gray-1">From</span>
-                                            <span class="font-weight-bold">£899.00</span>
+                                        <div class="card-body px-4 py-2">
+                                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
+                                                <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
+                                                    <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
+                                                </div>
+                                            </a>
+                                            <a href="{{ route('Tous.single',$item->ma_tour) }}" class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
+                                            <div class="my-2">
+                                                <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
+                                                    <div class="text-warning mr-2">
+                                                        <small class="fas fa-star"></small>
+                                                        <small class="fas fa-star"></small>
+                                                        <small class="fas fa-star"></small>
+                                                        <small class="fas fa-star"></small>
+                                                        <small class="fas fa-star"></small>
+                                                    </div>
+                                                    <span class="text-secondary font-size-14 mt-1">48 Reviews</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
+                                                <i class="icon flaticon-clock-circular-outline mr-2 font-size-14"></i> {{ $item->so_ngay}} Ngày {{ $item->so_dem }} Đêm
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="js-slide mt-5">
-                                <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
-                                    <div class="position-relative">
-                                        <a href="../tour/tour-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                            <img class="card-img-top" src="../../Home/img/300x230/img14.jpg" alt="Image Description">
-                                        </a>
-                                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                          <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
-                                            <span class="flaticon-heart-1 font-size-20"></span>
-                                          </button>
-                                        </div>
-                                        <div class="position-absolute bottom-0 left-0 right-0">
-                                            <div class="px-4 pb-3">
-                                                <a href="../tour/tour-single-v1.html" class="d-block">
-                                                    <div class="d-flex align-items-center font-size-14 text-white">
-                                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body px-4 py-3">
-                                        <a href="../tour/tour-single-v1.html" class="card-title font-size-17 font-weight-medium text-dark">Mangrove Tunnel Kayak Eco <br> Tour</a>
-                                        <div class="mt-2 mb-3">
-                                            <span class="badge badge-pill badge-warning text-white py-1 px-2 font-size-14 border-radius-3 font-weight-normal">4.6/5</span>
-                                            <span class="font-size-14 text-gray-1 ml-2">(166 reviews)</span>
-                                        </div>
-                                        <div class="mb-0">
-                                            <span class="mr-1 font-size-14 text-gray-1">From</span>
-                                            <span class="font-weight-bold">£899.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide mt-5">
-                                <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
-                                    <div class="position-relative">
-                                        <a href="../tour/tour-single-v2.html" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                            <img class="card-img-top" src="../../Home/img/300x230/img15.jpg" alt="Image Description">
-                                        </a>
-                                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                          <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
-                                            <span class="flaticon-heart-1 font-size-20"></span>
-                                          </button>
-                                        </div>
-                                        <div class="position-absolute bottom-0 left-0 right-0">
-                                            <div class="px-4 pb-3">
-                                                <a href="../tour/tour-single-v2.html" class="d-block">
-                                                    <div class="d-flex align-items-center font-size-14 text-white">
-                                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body px-4 py-3">
-                                        <a href="../tour/tour-single-v2.html" class="card-title font-size-17 font-weight-medium text-dark">Mangrove Tunnel Kayak Eco <br> Tour</a>
-                                        <div class="mt-2 mb-3">
-                                            <span class="badge badge-pill badge-warning text-white py-1 px-2 font-size-14 border-radius-3 font-weight-normal">4.6/5</span>
-                                            <span class="font-size-14 text-gray-1 ml-2">(166 reviews)</span>
-                                        </div>
-                                        <div class="mb-0">
-                                            <span class="mr-1 font-size-14 text-gray-1">From</span>
-                                            <span class="font-weight-bold">£899.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide mt-5">
-                                <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
-                                    <div class="position-relative">
-                                        <a href="../tour/tour-single-v2.html" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                            <img class="card-img-top" src="../../Home/img/300x230/img16.jpg" alt="Image Description">
-                                        </a>
-                                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                          <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
-                                            <span class="flaticon-heart-1 font-size-20"></span>
-                                          </button>
-                                        </div>
-                                        <div class="position-absolute bottom-0 left-0 right-0">
-                                            <div class="px-4 pb-3">
-                                                <a href="../tour/tour-single-v2.html" class="d-block">
-                                                    <div class="d-flex align-items-center font-size-14 text-white">
-                                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body px-4 py-3">
-                                        <a href="../tour/tour-single-v2.html" class="card-title font-size-17 font-weight-medium text-dark">Mangrove Tunnel Kayak Eco <br> Tour</a>
-                                        <div class="mt-2 mb-3">
-                                            <span class="badge badge-pill badge-warning text-white py-1 px-2 font-size-14 border-radius-3 font-weight-normal">4.6/5</span>
-                                            <span class="font-size-14 text-gray-1 ml-2">(166 reviews)</span>
-                                        </div>
-                                        <div class="mb-0">
-                                            <span class="mr-1 font-size-14 text-gray-1">From</span>
-                                            <span class="font-weight-bold">£899.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide mt-5">
-                                <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
-                                    <div class="position-relative">
-                                        <a href="../tour/tour-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                            <img class="card-img-top" src="../../Home/img/300x230/img13.jpg" alt="Image Description">
-                                        </a>
-                                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                          <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
-                                            <span class="flaticon-heart-1 font-size-20"></span>
-                                          </button>
-                                        </div>
-                                        <div class="position-absolute bottom-0 left-0 right-0">
-                                            <div class="px-4 pb-3">
-                                                <a href="../tour/tour-single-v1.html" class="d-block">
-                                                    <div class="d-flex align-items-center font-size-14 text-white">
-                                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body px-4 py-3">
-                                        <a href="../tour/tour-single-v1.html" class="card-title font-size-17 font-weight-medium text-dark">Mangrove Tunnel Kayak Eco <br> Tour</a>
-                                        <div class="mt-2 mb-3">
-                                            <span class="badge badge-pill badge-warning text-white py-1 px-2 font-size-14 border-radius-3 font-weight-normal">4.6/5</span>
-                                            <span class="font-size-14 text-gray-1 ml-2">(166 reviews)</span>
-                                        </div>
-                                        <div class="mb-0">
-                                            <span class="mr-1 font-size-14 text-gray-1">From</span>
-                                            <span class="font-weight-bold">£899.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide mt-5">
-                                <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
-                                    <div class="position-relative">
-                                        <a href="../tour/tour-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                            <img class="card-img-top" src="../../Home/img/300x230/img14.jpg" alt="Image Description">
-                                        </a>
-                                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                          <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
-                                            <span class="flaticon-heart-1 font-size-20"></span>
-                                          </button>
-                                        </div>
-                                        <div class="position-absolute bottom-0 left-0 right-0">
-                                            <div class="px-4 pb-3">
-                                                <a href="../tour/tour-single-v1.html" class="d-block">
-                                                    <div class="d-flex align-items-center font-size-14 text-white">
-                                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body px-4 py-3">
-                                        <a href="../tour/tour-single-v1.html" class="card-title font-size-17 font-weight-medium text-dark">Mangrove Tunnel Kayak Eco <br> Tour</a>
-                                        <div class="mt-2 mb-3">
-                                            <span class="badge badge-pill badge-warning text-white py-1 px-2 font-size-14 border-radius-3 font-weight-normal">4.6/5</span>
-                                            <span class="font-size-14 text-gray-1 ml-2">(166 reviews)</span>
-                                        </div>
-                                        <div class="mb-0">
-                                            <span class="mr-1 font-size-14 text-gray-1">From</span>
-                                            <span class="font-weight-bold">£899.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide mt-5">
-                                <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
-                                    <div class="position-relative">
-                                        <a href="../tour/tour-single-v2.html" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                            <img class="card-img-top" src="../../Home/img/300x230/img15.jpg" alt="Image Description">
-                                        </a>
-                                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                          <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
-                                            <span class="flaticon-heart-1 font-size-20"></span>
-                                          </button>
-                                        </div>
-                                        <div class="position-absolute bottom-0 left-0 right-0">
-                                            <div class="px-4 pb-3">
-                                                <a href="../tour/tour-single-v2.html" class="d-block">
-                                                    <div class="d-flex align-items-center font-size-14 text-white">
-                                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body px-4 py-3">
-                                        <a href="../tour/tour-single-v2.html" class="card-title font-size-17 font-weight-medium text-dark">Mangrove Tunnel Kayak Eco <br> Tour</a>
-                                        <div class="mt-2 mb-3">
-                                            <span class="badge badge-pill badge-warning text-white py-1 px-2 font-size-14 border-radius-3 font-weight-normal">4.6/5</span>
-                                            <span class="font-size-14 text-gray-1 ml-2">(166 reviews)</span>
-                                        </div>
-                                        <div class="mb-0">
-                                            <span class="mr-1 font-size-14 text-gray-1">From</span>
-                                            <span class="font-weight-bold">£899.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide mt-5">
-                                <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
-                                    <div class="position-relative">
-                                        <a href="../tour/tour-single-v2.html" class="d-block gradient-overlay-half-bg-gradient-v5">
-                                            <img class="card-img-top" src="../../Home/img/300x230/img16.jpg" alt="Image Description">
-                                        </a>
-                                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                          <button type="button" class="btn btn-sm btn-icon text-white rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
-                                            <span class="flaticon-heart-1 font-size-20"></span>
-                                          </button>
-                                        </div>
-                                        <div class="position-absolute bottom-0 left-0 right-0">
-                                            <div class="px-4 pb-3">
-                                                <a href="../tour/tour-single-v2.html" class="d-block">
-                                                    <div class="d-flex align-items-center font-size-14 text-white">
-                                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body px-4 py-3">
-                                        <a href="../tour/tour-single-v2.html" class="card-title font-size-17 font-weight-medium text-dark">Mangrove Tunnel Kayak Eco <br> Tour</a>
-                                        <div class="mt-2 mb-3">
-                                            <span class="badge badge-pill badge-warning text-white py-1 px-2 font-size-14 border-radius-3 font-weight-normal">4.6/5</span>
-                                            <span class="font-size-14 text-gray-1 ml-2">(166 reviews)</span>
-                                        </div>
-                                        <div class="mb-0">
-                                            <span class="mr-1 font-size-14 text-gray-1">From</span>
-                                            <span class="font-weight-bold">£899.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -1135,4 +843,10 @@
 
 @section('js')
 <script type="text/javascript" src="{{ asset ('Admin/js/action.js')}}"></script>
+<script>
+    var noidung = $('#noidung').text();
+    var parser = new DOMParser();
+    var doc = parser.parseFromString( noidung, 'text/html');
+    document.getElementById('noidung').innerHTML = doc.body.innerHTML;
+</script>
 @endsection
