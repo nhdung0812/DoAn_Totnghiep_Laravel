@@ -60,7 +60,7 @@
                             <ul class="mb-4 list-group list-group-borderless list-group-horizontal row">
                                 <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
                                     <i class="flaticon-alarm text-primary font-size-22 mr-2 d-block"></i>
-                                    <div class="ml-1 text-gray-1">{{ date('dd/mm/yy',$singletour[0]->so_ngay) ." Ngày"}}</div>
+                                    <div class="ml-1 text-gray-1">{{ date('d/m/y',$singletour[0]->so_ngay) ." Ngày"}}</div>
                                 </li>
                                 <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
                                     <i class="flaticon-social text-primary font-size-22 mr-2 d-block"></i>
@@ -248,108 +248,36 @@
                             </div>
                         </div>
                         <div class="border-bottom py-4">
-                            <h5 id="scroll-itinerary" class="font-size-21 font-weight-bold text-dark mb-4">
-                                Itinerary
-                            </h5>
+                            <h3 id="scroll-itinerary" class=" font-weight-bold text-dark mb-4">
+                               <i class="si si-map "></i>   Lịch Trình
+                            </h3>
                             <div id="basicsAccordion1">
                                 <!-- Card -->
-                                <div class="card border-0 mb-3">
-                                    <div class="card-header border-bottom-0 p-0" id="basicsHeadingOne1">
-                                        <h5 class="mb-0">
-                                            <button type="button" class="collapse-link btn btn-link btn-block d-flex align-items-md-center font-weight-bold p-0"
-                                            data-toggle="collapse" data-target="#basicsCollapseOne1" aria-expanded="true" aria-controls="basicsCollapseOne1">
-                                                <div class="text-primary font-size-22 mb-3 mb-md-0 mr-3">
-                                                    <i class="far fa-circle"></i>
-                                                </div>
+                                @foreach ($lich_trinh as $item)
+                                    <div class="card border-0 mb-3">
+                                        <div class="card-header border-bottom-0 p-0" id="basicsHeadingOne{{ $item->ma_lich_trinh  }}">
+                                            <h5 class="mb-0">
+                                                <button type="button" class="collapse-link btn btn-link btn-block d-flex align-items-md-center font-weight-bold p-0"
+                                                data-toggle="collapse" data-target="#basicsCollapseOne{{ $item->ma_lich_trinh }}" aria-expanded="true" aria-controls="basicsCollapseOne{{ $item->ma_lich_trinh }}">
+                                                    <div class="text-primary font-size-22 mb-3 mb-md-0 mr-3">
+                                                        <i class="far fa-circle"></i>
+                                                    </div>
 
-                                                <div class="text-primary flex-shrink-0">Day 1 <span class="px-2">-</span> </div>
-                                                <h6 class="font-weight-bold text-gray-3 text-left mb-0">Barcelona – Zaragoza – Madrid</h6>
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="basicsCollapseOne1" class="collapse show"
-                                         aria-labelledby="basicsHeadingOne1"
-                                         data-parent="#basicsAccordion1">
-                                        <div class="card-body pl-6 pb-0 pt-0">
-                                            <p class="mb-0">We’ll meet at 4 p.m. at our hotel in Luzern (Lucerne) for a “Welcome to Switzerland” meeting. Then we’ll take a meandering evening walk through Switzerland’s most charming lakeside town, and get acquainted with one another over dinner together. Sleep in Luzern (2 nights). No bus. Walking: light.</p>
+                                                    <div class="text-primary flex-shrink-0">Ngày {{ $stt += 1 }} <span class="px-2">|</span> </div>
+                                                    <h6 class="font-weight-bold text-gray-3 text-left mb-0">{{ $item->tieu_de }}</h6>
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="basicsCollapseOne{{ $item->ma_lich_trinh }}" class="collapse"
+                                            aria-labelledby="basicsHeadingOne{{ $item->ma_lich_trinh}}"
+                                            data-parent="#basicsAccordion1">
+                                            <div class="card-body pl-6 pb-0 pt-0">
+                                                <p class="mb-0">{{ $item->noi_dung_lich_trinh }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- End Card -->
-
-                                <!-- Card -->
-                                <div class="card border-0 mb-3">
-                                    <div class="card-header border-bottom-0 p-0" id="basicsHeadingTwo2">
-                                        <h5 class="mb-0">
-                                            <button type="button" class="collapse-link btn btn-link btn-block d-flex align-items-md-center font-weight-bold p-0"
-                                                data-toggle="collapse" data-target="#basicsCollapseTwo2" aria-expanded="false" aria-controls="basicsCollapseTwo2">
-                                                <div class="text-primary font-size-22 mb-3 mb-md-0 mr-3">
-                                                    <i class="far fa-circle"></i>
-                                                </div>
-
-                                                <div class="text-primary flex-shrink-0">Day 2 <span class="px-2">-</span> </div>
-                                                <h6 class="font-weight-bold text-gray-3 text-left mb-0">Zürich–Biel/Bienne–Neuchâtel–Geneva</h6>
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="basicsCollapseTwo2" class="collapse"
-                                         aria-labelledby="basicsHeadingTwo2"
-                                         data-parent="#basicsAccordion1">
-                                        <div class="card-body pl-6 pb-0 pt-0">
-                                            <p class="mb-0">We’ll meet at 4 p.m. at our hotel in Luzern (Lucerne) for a “Welcome to Switzerland” meeting. Then we’ll take a meandering evening walk through Switzerland’s most charming lakeside town, and get acquainted with one another over dinner together. Sleep in Luzern (2 nights). No bus. Walking: light.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Card -->
-
-                                <!-- Card -->
-                                <div class="card border-0 mb-3">
-                                    <div class="card-header border-bottom-0 p-0" id="basicsHeadingThree3">
-                                        <h5 class="mb-0">
-                                            <button type="button" class="collapse-link btn btn-link btn-block d-flex align-items-md-center font-weight-bold p-0"
-                                                data-toggle="collapse" data-target="#basicsCollapseThree3" aria-expanded="false" aria-controls="basicsCollapseThree3">
-                                                <div class="text-primary font-size-22 mb-3 mb-md-0 mr-3">
-                                                    <i class="far fa-circle"></i>
-                                                </div>
-
-                                                <div class="text-primary flex-shrink-0">Day 3 <span class="px-2">-</span> </div>
-                                                <h6 class="font-weight-bold text-gray-3 text-left mb-0">Enchanting Engelberg</h6>
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="basicsCollapseThree3" class="collapse"
-                                         aria-labelledby="basicsHeadingThree3"
-                                         data-parent="#basicsAccordion1">
-                                        <div class="card-body pl-6 pb-0 pt-0">
-                                            <p class="mb-0">We’ll meet at 4 p.m. at our hotel in Luzern (Lucerne) for a “Welcome to Switzerland” meeting. Then we’ll take a meandering evening walk through Switzerland’s most charming lakeside town, and get acquainted with one another over dinner together. Sleep in Luzern (2 nights). No bus. Walking: light.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Card -->
-
-                                <!-- Card -->
-                                <div class="card border-0 mb-3">
-                                    <div class="card-header border-bottom-0 p-0" id="basicsHeadingFour4">
-                                        <h5 class="mb-0">
-                                            <button type="button" class="collapse-link btn btn-link btn-block d-flex align-items-md-center font-weight-bold p-0"
-                                                data-toggle="collapse" data-target="#basicsCollapseFour4" aria-expanded="false" aria-controls="basicsCollapseFour4">
-                                                <div class="text-primary font-size-22 mb-3 mb-md-0 mr-3">
-                                                    <i class="far fa-circle"></i>
-                                                </div>
-
-                                                <div class="text-primary flex-shrink-0">Day 4 <span class="px-2">-</span> </div>
-                                                <h6 class="font-weight-bold text-gray-3 text-left mb-0">Interlaken Area. Excursion to The Jungfrau Massif</h6>
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="basicsCollapseFour4" class="collapse"
-                                         aria-labelledby="basicsHeadingFour4"
-                                         data-parent="#basicsAccordion1">
-                                        <div class="card-body pl-6 pb-0 pt-0">
-                                            <p class="mb-0">We’ll meet at 4 p.m. at our hotel in Luzern (Lucerne) for a “Welcome to Switzerland” meeting. Then we’ll take a meandering evening walk through Switzerland’s most charming lakeside town, and get acquainted with one another over dinner together. Sleep in Luzern (2 nights). No bus. Walking: light.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                
                                 <!-- End Card -->
                             </div>
                         </div>
@@ -722,7 +650,7 @@
                                     <!-- End Input -->
 
                                     <div class="text-center">
-                                        <a href="../tour/tour-booking.html" class="btn btn-primary d-flex align-items-center justify-content-center  height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold">Đặt Ngay</a>
+                                        <a href="{{ route('Tous.dat-tour')}}" class="btn btn-primary d-flex align-items-center justify-content-center  height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold">Đặt Ngay</a>
                                     </div>
                                 </div>
                             </div>

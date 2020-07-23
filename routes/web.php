@@ -27,6 +27,8 @@ Route::name('Tous.')->group(function () {
     
     // Danh sách theo thể loại
     Route::get('theloai/{id}', 'Home\ChuongTrinhTourController@theloaitour')->name('danh-sanh_the_loai');
+      // Đặt Tour
+      Route::get('/dattour', 'DatTourController@index')->name('dat-tour');
 });
 
 Route::GET('quantri/dangnhap','Login\AuthController@getLogin')->name('dang-nhap');
@@ -104,7 +106,8 @@ Route::prefix('quantri')->group(function () {
            Route::get('/dslichtrinh', 'LichTrinhController@index')->name('ds_lich_trinh');
            Route::get('/themlichtrinh', 'LichTrinhController@create')->name('them_lich_trinh');
            Route::POST('/so_ngay', 'LichTrinhController@layso')->name('lay_so_ngay');
-
+           Route::POST('/xu_ly_lich_trinh', 'LichTrinhController@store')->name('xu_ly_lich_trinh');
+         
         });
     });
 });

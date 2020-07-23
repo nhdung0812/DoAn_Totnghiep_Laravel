@@ -25,36 +25,42 @@
                                         <tr class="post">
                                             <th class="text-center">ID</th>
 
-                                            <th class="d-none d-sm-table-cell">Tên hiển thị</th>
+                                            <th class="d-none d-sm-table-cell">Tên lịch trình</th>
+                                            <th class="d-none d-sm-table-cell">Nội dung</th>
+                                            <th class="d-none d-sm-table-cell">Mã tour</th>
                                             <th class="d-none d-sm-table-cell">Chức Năng</th>
                                         </tr>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   {{-- @foreach($loai as $loais)
+                                   @foreach($lichtrinh as $lt)
                                     <tr>
-                                        <td class="d-none d-sm-table-cell">{{$loais->ma_loai_tour}}</td>
+                                        <td class="d-none d-sm-table-cell">{{$lt->ma_lich_trinh}}</td>
+                                        <td class="d-none d-sm-table-cell">{{$lt->tieu_de}}</td>
                                         <td class="d-none d-sm-table-cell">
-                                            Du lịch <span class="badge badge-info">{{$loais->ten_loai_tour}}</span>
+                                            <span class="badge badge-info">{{$lt->noi_dung}}</span>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <span class="badge badge-info">{{$lt->ma_tour}}</span>
                                         </td>
 
                                         <td class="" style="">
-                                            <a href="{{ route('Quantri.sua_loai',$loais->ma_loai_tour) }}" class="edit_tour btn btn-primary min-width-90">
+                                            <a href="{{ route('Quantri.sua_loai',$lt->ma_lich_trinh) }}" class="edit_tour btn btn-primary min-width-90">
                                                 <i class="fa fa-wrench"></i> Sửa
                                             </a>
-                                            <a href="{{ route('Quantri.trash_tour',$loais->ma_loai_tour) }}" title="" type="submit" class="delect_tour btn btn-danger  min-width-10 ">
+                                            <a href="{{ route('Quantri.trash_tour',$lt->ma_lich_trinh) }}" title="" type="submit" class="delect_tour btn btn-danger  min-width-10 ">
                                                 <i class="fa fa-trash"></i> Xoá
                                             </a>
                                         </td>
                                     </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
               </div>
        </main>
-       @include('Admin/model.model_add');
+       //@include('Admin/model.model_add');
 @endsection
 @section('js')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

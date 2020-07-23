@@ -26,12 +26,22 @@
       <link rel="stylesheet" href="{{ asset('Home/vendor/slick-carousel/slick/slick.css')}}">
       <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
       <link rel="stylesheet" id="css-main" href="{{ asset('Admin/css/codebase.min.css')}}">
-
+      <style>
+        .tab_color .active .number_tab{
+          background-color: #297cbb;
+          color: white !important;
+          border: #67747c !important;
+          
+        }
+        .tab_color .active .text_tab{
+          color: #297cbb !important;
+        }
+      </style>
 
       <!-- CSS MyTravel Template -->
       <link rel="stylesheet" href="{{ asset('Home/css/theme.css')}}">
       <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
       @yield('css')
-
+      
   </head>
   <body>

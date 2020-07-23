@@ -25,7 +25,8 @@
                         </div>
                     </div>
                     <div class="block-content">
-                        <form action="be_forms_elements_bootstrap.html" method="post" id="them_lich_trinh" onsubmit="return false;">
+                        <form action="{{ route('Quantri.xu_ly_lich_trinh') }}" method="post" id="them_lich_trinh">
+                            {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="example-input-small">Chương Trình Tour</label>
                                 <select class="form-control" id="chuong_trinh" name="chuong_trinh">
@@ -36,6 +37,13 @@
                                 </select>
                             </div>
                             <div id="form_lich_trinh">
+                            </div>
+                            <div class="form-group row ">
+                                <div class="col-12 text-right">
+                                    <button type="submit" class="btn btn-success mr-5 p-3 mb-5">
+                                        <i class="fa fa-plus mr-5"></i>Thêm
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -77,7 +85,7 @@
                     var diadiem = JSON.parse(stringified);
                     $('#form_lich_trinh').html("");
                     for(var i = 1 ; i <= diadiem.data[0].so_ngay ; i++){
-                       $('#form_lich_trinh').append('<h4 class="mb-2">Ngày'+i+'</h4> <div class="form-group row">  <div class="col-sm-6"><label class="col-12  pl-0" for="ecom-product-price">Tên lịch trình<span class="text-danger">(*)</span></label><div class="input-group"><input type="text" class="form-control " id="gia_tour" name="gia_tour" placeholder="2000000" value=""></div><span class="text-danger"></span></div><div class="col-sm-6"><label class="col-12 pl-0" for="ecom-product-stock">Nội dung lịch trình</label><div class="input-group"><textarea type="text" class="form-control " id="khuyen_mai" value="" name="khuyen_mai" placeholder="20%"></textarea></div><span class="text-danger"></span></div></div>')             
+                       $('#form_lich_trinh').append('<h4 class="mb-2">Ngày'+i+'</h4> <div class="form-group row">  <div class="col-sm-6"><label class="col-12  pl-0" for="ecom-product-price">Tên lịch trình<span class="text-danger">(*)</span></label><div class="input-group"><input type="text" class="form-control " id="ten_lich_trinh" name="ten_lich_trinh[]" placeholder="2000000" value=""></div><span class="text-danger"></span></div><div class="col-sm-6"><label class="col-12 pl-0" for="ecom-product-stock">Nội dung lịch trình</label><div class="input-group"><textarea type="text" class="form-control " id="khuyen_mai" value="" name="lich_trinh[]" placeholder="20%"></textarea name="noi_dung_lt[]"></div><span class="text-danger"></span></div></div>')             
                    }
                 },
                 error: function(data){

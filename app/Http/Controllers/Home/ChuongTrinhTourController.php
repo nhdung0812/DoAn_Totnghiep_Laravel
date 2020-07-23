@@ -80,13 +80,15 @@ class ChuongTrinhTourController extends Controller
     public function show($id)
     {
         //
+        $stt = 0;
         $temp = (int)$id;
         //var_dump($temp);
         $hinh_anh = DB::select('SELECT Hinh_anh_1 FROM chuongtrinhtour , chitiettour ,diadiem , Hinh_Anh WHERE chuongtrinhtour.ma_tour = chitiettour.ma_tour AND chitiettour.ma_dia_diem = diadiem.ma_dia_diem AND diadiem.ma_dia_diem = Hinh_anh.ma_dia_diem AND chuongtrinhtour.ma_tour = ? ', [$temp]);
         //dd($hinh_anh);
         $tour = DB::select('SELECT * FROM chuongtrinhtour, loaitour WHERE chuongtrinhtour.ma_loai_tour = loaitour.ma_loai_tour');
-        $singletour = DB::select('SELECT tour.ma_tour, tour.ten_tour , tour.gia_tour ,tour.so_ngay ,tour.so_dem , tour.so_cho, tour.noi_dung ,tour.hinh_anh,tour.khuyen_mai, mien.ten_mien , loaitour.ten_loai_tour FROM chuongtrinhtour as tour , chitiettour ct , mien ,loaitour WHERE  tour.ma_tour = tour.ma_tour AND ct.ma_mien = mien.ma_mien AND tour.ma_loai_tour = loaitour.ma_loai_tour and tour.ma_tour = ? ', [$temp]);
-        return View('Home.single', compact( 'singletour','tour','hinh_anh'));
+        $singletour = DB::select('SELECT * FROM chuongtrinhtour as tour , chitiettour ct , mien ,loaitour , lichtrinh WHERE tour.ma_tour = tour.ma_tour AND ct.ma_mien = mien.ma_mien AND tour.ma_loai_tour = loaitour.ma_loai_tour and lichtrinh.ma_tour = Tour.ma_tour and tour.ma_tour = ? ', [$temp]);
+        $lich_trinh = DB::select('SELECT * FROM chuongtrinhtour,lichtrinh WHERE chuongtrinhtour.ma_tour = lichtrinh.ma_tour and chuongtrinhtour.ma_tour = ?' , [$id]);
+        return View('Home.single', compact( 'singletour','tour','hinh_anh','lich_trinh','stt'));
     }
 
     /**
