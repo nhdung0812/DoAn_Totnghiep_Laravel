@@ -92,10 +92,11 @@
 
                 <!-- My Account -->
                 <div class="position-relative pl-4 pr-xl-4 u-header__divider-xl ml-auto ml-md-0">
-                    <a href="#" class="d-flex align-items-center text-primary">
+                <a class="signin_member d-flex align-items-center text-primary" type="button" data-toggle="modal" data-target="#signin_member" >
                         <i class="flaticon-user mx-xl-2"></i>
                         <span class="d-none d-xl-inline-block mr-1">Đăng Nhập và Đăng kí</span>
                     </a>
+
                 </div>
                 <!-- End My Account -->
 
@@ -105,8 +106,10 @@
             <!-- End Nav -->
         </div>
     </div>
+    
 </header>
 <!-- ========== END HEADER ========== -->
+@include('Home.SignIn')
 
 
 

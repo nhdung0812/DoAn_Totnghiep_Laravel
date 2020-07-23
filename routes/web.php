@@ -23,6 +23,8 @@ Route::name('Tous.')->group(function () {
     Route::post('dangky', 'KhachHangController@xulydangky')->name('xu_ly');
     Route::get('/thong-tin-tous/{id}', 'Home\ChuongTrinhTourController@show')->name('single');
     Route::get('/tin-tuc', 'TinTucController@index')->name('tintuc');
+    
+    
     // Danh sách theo thể loại
     Route::get('theloai/{id}', 'Home\ChuongTrinhTourController@theloaitour')->name('danh-sanh_the_loai');
 });
