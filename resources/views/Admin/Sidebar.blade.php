@@ -136,6 +136,18 @@
                                         </ul>
                                 </ul>
                             </li>
+                            <li>
+                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Hội Viên</span></a>
+                                <ul>
+                                    <li>
+                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản lý Hội Viên</span></a>
+                                        <ul>
+                                            <li>
+                                                <a href="{{route('Quantri.list_hoi_vien')}}"><span class="sidebar-mini-hide">Danh sách hội viên</span></a>
+                                            </li>
+                                        </ul>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <!-- END Side Navigation -->

@@ -43,6 +43,7 @@ Route::prefix('quantri')->group(function () {
             Route::get('/','AccountController@coutTour')->name('Admin');
             Route::get('/ds','AccountController@index')->name('danh_sach');
             Route::get('/dskh','KhachHangController@index')->name('list_khach');
+            Route::get('/dshv','HoiVienController@index')->name('list_hoi_vien');
             Route::POST('/themTK', 'AccountController@store')->name('them_tk');
             Route::GET('sua/{id}','AccountController@edit')->name('sua');
             Route::post('update','AccountController@xulysua')->name('xu_ly_sua');
