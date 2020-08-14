@@ -74,7 +74,8 @@
                 $('#textbox1').val(this.checked);
             });
         </script>
-
+        <script src="{{ asset('Admin/dropzone/dist/min/dropzone.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('Admin/js/plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
         <script src="{{ asset('Admin/js/plugins/pwstrength-bootstrap/pwstrength-bootstrap.min.js')}}"></script>
         <script src="{{ asset('Admin/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
         <script src="{{ asset('Admin/js/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js')}}"></script>
@@ -94,9 +95,23 @@
         <script src="{{ asset('Admin/js/plugins/summernote/summernote-bs4.min.js')}}"></script>
 
         <script src="{{ asset('Admin/js/plugins/simplemde/simplemde.min.js')}}"></script>
-
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
         <!-- Page JS Helpers (Summernote + CKEditor + SimpleMDE plugins) -->
 
+        <script>
+            Pusher.logToConsole = true;
+            var pusher = new Pusher('5babdb48d0c7f7018945', {
+                cluster: 'ap1',
+                encrypted: true,
+            });
+            var channel = pusher.subscribe('testChannel');
+            channel.bind('form-submit', function(data) {
+                
+                alert(JSON.stringify(data));
+                //console.log(name);
+                $('#thong_bao').append('<li> <a class="text-body-color-dark media mb-15" href="javascript:void(0)"> <div class="ml-5 mr-15"> <i class="fa fa-fw fa-check text-success"></i> </div> <div class="media-body pr-10"> <p class="mb-0">'+ +'</p> <div class="text-muted font-size-sm font-italic">15 min ago</div> </div> </a> </li>');
+            });
+        </script>
         <script>jQuery(function(){ Codebase.helpers(['summernote', 'ckeditor', 'simplemde']); });</script>
     </body>
 </html>

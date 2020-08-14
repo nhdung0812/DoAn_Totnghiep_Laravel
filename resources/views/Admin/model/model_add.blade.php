@@ -9,10 +9,6 @@
                     </button>
                 </div>
                 <div class="modal-body" style="border-top:1px solid grey">
-                <div class="alert alert-danger print-error-msg" style="display:none">
-                    <ul></ul>
-                </div>
-                <div id="validation-errors"></div>
                 <form class="js-validation-material" enctype="multipart/form-data" id="Update_tour" name="Update_tour" action="">
                     {{ csrf_field() }}
                     <div class="form-group row "></div>
@@ -50,9 +46,6 @@
                     </button>
                 </div>
                 <div class="modal-body" style="border-top:1px solid grey">
-                <div class="alert alert-danger print-error-msg" style="display:none">
-                    <ul></ul>
-                </div>
                 <div id="validation-errors"></div>
                 <form class="js-validation-material" enctype="multipart/form-data" id="Creatr_Product_Tour" name="Creatr_Product_Tour" method="POST" action="">
                     {{ csrf_field() }}

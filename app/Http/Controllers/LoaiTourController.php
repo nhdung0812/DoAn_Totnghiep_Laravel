@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoaiTourRequest;
 use Illuminate\Support\Facades\DB;
 use App\LoaiTour;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class LoaiTourController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LoaiTourRequest $request)
     {
         //dd($request);
         $loai = new LoaiTour;

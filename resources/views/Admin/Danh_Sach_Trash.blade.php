@@ -48,10 +48,10 @@
                                           @endif
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{route('Quantri.phuc_hoi',$tr->ma_quan_tri)}}" class="btn btn-primary min-width-90">
+                                            <a href="{{ route('Quantri.phuc_hoi',$tr->ma_quan_tri)}}" class="btn btn-primary min-width-90">
                                                 <i class="fa fa-wrench"></i> Phục hồi
                                             </a>
-                                            <a href="{{route('Quantri.xoa_vinh_vien',$tr->ma_quan_tri)}}}}" title="" type="submit" class="delect_loai btn btn-danger  min-width-90 ">
+                                            <a href="{{ route('Quantri.xoa_vinh_vien_user',$tr->ma_quan_tri) }}" title="" type="submit" class="delect_loai btn btn-danger  min-width-90 ">
                                                 <i class="fa fa-trash"></i> Xoá Vĩnh Viễn
                                             </a>
                                         </td>

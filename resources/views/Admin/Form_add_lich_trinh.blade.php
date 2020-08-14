@@ -1,9 +1,10 @@
 @extends('Admin.Layout')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/dropzone/dist/min/dropzone.min.css')}}">
-    //<link rel="stylesheet" href="text/css" href="{{ asset('Admin/js/plugins/summernote/summernote.css')}}">
-    <link rel="stylesheet" href="text/css" href="{{ asset('Admin/js/plugins/summernote/summernote-lite.css')}}">
-    
+<link rel="stylesheet" type="text/css" href="{{ asset('Admin/dropzone/dist/min/dropzone.min.css')}}">
+//
+<link rel="stylesheet" href="text/css" href="{{ asset('Admin/js/plugins/summernote/summernote.css')}}">
+<link rel="stylesheet" href="text/css" href="{{ asset('Admin/js/plugins/summernote/summernote-lite.css')}}">
+
 @endsection
 @section('content')
 <main id="main-container" style="min-height: 408px;">
@@ -32,7 +33,7 @@
                                 <select class="form-control" id="chuong_trinh" name="chuong_trinh">
                                     <option disabled selected>Chọn Chương trình Tour</option>
                                     @foreach ($chuong_trinh as $item)
-                                        <option value="{{ $item->ma_tour }}">{{$item->ten_tour}}</option>
+                                    <option value="{{ $item->ma_tour }}">{{$item->ten_tour}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -58,13 +59,13 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('Admin/js/codebase.core.min.js')}}"></script>
-    <script src="{{asset('Admin/dropzone/dist/min/dropzone.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('Admin/js/plugins/summernote/summernote.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('Admin/js/plugins/summernote/summernote.js')}}" type="text/javascript"></script>
-    <script src="{{asset('Admin/js/plugins/summernote/summernote-lite.css')}}" type="text/javascript"></script>
-    <script >
-        // Hiện địa điểm theo khu vực
+<script src="{{ asset('Admin/js/codebase.core.min.js')}}"></script>
+<script src="{{asset('Admin/dropzone/dist/min/dropzone.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('Admin/js/plugins/summernote/summernote.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('Admin/js/plugins/summernote/summernote.js')}}" type="text/javascript"></script>
+<script src="{{asset('Admin/js/plugins/summernote/summernote-lite.css')}}" type="text/javascript"></script>
+<script>
+    // Hiện địa điểm theo khu vực
         $( "#chuong_trinh" ).change(function() {
             var formData = new FormData($('them_lich_trinh')[0]);
             formData.append('ID',$('#chuong_trinh option:selected').val()),
@@ -93,5 +94,5 @@
             });
         });
 
-    </script>
+</script>
 @endsection

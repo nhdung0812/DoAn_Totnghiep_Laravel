@@ -25,8 +25,8 @@
                             <!-- Logo -->
                             <div class="content-header-item">
                                 <a class="link-effect font-w700" href="{{ route('Quantri.Admin') }}">
-                                    <i class="si si-fire text-primary"></i>
-                                    <span class="font-size-xl text-dual-primary-dark">Tous</span><span class="font-size-xl text-primary"> Nè</span>
+                                    <img src="{{ asset('Admin/image/avatar/favi.png') }}" alt="" width="45px" height="43px">
+                                    <span class="font-size-xl text-dual-primary-dark pt-5"  style="color: #0d9cbf !important">TOUR NÈ</span>
                                 </a>
                             </div>
                             <!-- END Logo -->
@@ -75,11 +75,11 @@
                     <div class="content-side content-side-full">
                         <ul class="nav-main">
                             <li>
-                                <a href="{{route('Quantri.Admin')}}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Bảng điều khiển</span></a>
+                                <a href="{{route('Quantri.Admin')}}"><i class="fa fa-dashboard"></i><span class="sidebar-mini-hide">Bảng điều khiển</span></a>
                             </li>
                             <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Quản lý</span></li>
                             <li>
-                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i><span class="sidebar-mini-hide">Quản trị viên</span></a>
+                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-user"></i><span class="sidebar-mini-hide">Quản trị viên</span></a>
                                 <ul>
                                     <li>
                                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản lý quản trị viên</span></a>
@@ -88,54 +88,64 @@
                                                 <a href="{{route('Quantri.danh_sach')}}"><span class="sidebar-mini-hide">Danh sách quản trị viên</span></a>
                                             </li>
                                             <li>
-                                                <a href="{{route('Quantri.chuc_vu')}}"><span class="sidebar-mini-hide">Phân quyền truy cập</span></a>
+                                                <a href="{{route('Quantri.chuc_vu')}}"><span class="sidebar-mini-hide">Quyền truy cập</span></a>
                                             </li>
                                         </ul>
                                 </ul>
                             </li>
-                            <li>
-                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Quản lý </span></a>
-                                <ul>
-                                    <li>
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản Lý Tour</span></a>
-                                        <ul>
-                                            <li>
-                                                <a href="{{ route('Quantri.Danh_sach_tour') }}"><span class="sidebar-mini-hide">Loại Tour</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('Quantri.Danh-sach-dia-diem') }}"><span class="sidebar-mini-hide">Địa điểm</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('Quantri.ds_hinh') }}"><span class="sidebar-mini-hide">Hình ảnh địa điểm</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('Quantri.ds_khu_vuc') }}"><span class="sidebar-mini-hide">Khu Vực</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('Quantri.ds_lich_trinh') }}"><span class="sidebar-mini-hide">Lịch Trình</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ route('Quantri.danh_sach_chuong_trinh') }}"><span class="sidebar-mini-hide">Chương trình Tour</span></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a  href="{{ route('Quantri.ds_tour') }}"><span class="sidebar-mini-hide">TOUR</span></a>
-                            </li>
-                            <li>
-                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Khách hàng</span></a>
-                                <ul>
-                                    <li>
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản lý khách hàng</span></a>
-                                        <ul>
-                                            <li>
-                                                <a href="{{route('Quantri.list_khach')}}"><span class="sidebar-mini-hide">Danh sách khách hàng</span></a>
-                                            </li>
-                                        </ul>
-                                </ul>
-                            </li>
+                        
+                           
+                            
+                                <li>
+                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-folder-open"></i><span class="sidebar-mini-hide">Quản lý </span></a>
+                                    <ul>
+                                        <li>
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản Lý Tour</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('Quantri.Danh_sach_tour') }}"><span class="sidebar-mini-hide">Loại Tour</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('Quantri.Danh-sach-dia-diem') }}"><span class="sidebar-mini-hide">Địa điểm</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('Quantri.ds_hinh') }}"><span class="sidebar-mini-hide">Hình ảnh địa điểm</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('Quantri.ds_khu_vuc') }}"><span class="sidebar-mini-hide">Khu Vực</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('Quantri.ds_lich_trinh') }}"><span class="sidebar-mini-hide">Lịch Trình</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('Quantri.danh_sach_chuong_trinh') }}"><span class="sidebar-mini-hide">Chương trình Tour</span></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a  href="{{ route('Quantri.ds_tour') }}"><i class="fa fa-globe"></i><span class="sidebar-mini-hide">TOUR</span></a>
+                                </li>
+                                {{-- <li>
+                                    <a  href="{{ route('Quantri.dsHanhKhach') }}"><i class="fa fa-globe"></i><span class="sidebar-mini-hide">Dánh Sach Khách Hàng</span></a>
+                                </li> --}}
+                                <li>
+                                    <a  href="{{ route('Quantri.dsDatTour') }}"><i class="fa fa-shopping-cart"></i><span class="sidebar-mini-hide">Đặt TOUR</span></a>
+                                </li>
+                                <li>
+                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-users"></i><span class="sidebar-mini-hide">Khách hàng</span></a>
+                                    <ul>
+                                        <li>
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản lý khách hàng</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{route('Quantri.list_khach')}}"><span class="sidebar-mini-hide">Danh sách khách hàng</span></a>
+                                                </li>
+                                            </ul>
+                                    </ul>
+                                </li>
+                           
                         </ul>
                     </div>
                     <!-- END Side Navigation -->

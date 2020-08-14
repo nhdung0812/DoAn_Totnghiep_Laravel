@@ -24,20 +24,21 @@ $('#them_loai_tour').click(function(){
             if(data.success)
             {
                 $('#create_tour').modal('hide')
-                swal({
-                        title: "Thêm thành công",
-                        text: "",
-                        icon: "success",
-                });
+                // swal({
+                //         title: "Thêm thành công",
+                //         text: "",
+                //         icon: "success",
+                // });
+                
                 location.reload();
             }
         },
         error: function(data){
-            // console.log(error)
             $('#validation-errors').html('');
+            //console.log(data.responseJSON.errors);
             $.each(data.responseJSON.errors, function(key,value) {
-                ('#validation-errors').append('<div class="alert alert-danger">'+value+'</div');
-            });
+                 $('#validation-errors').append('<div class="alert alert-danger">'+value+'</div');
+             });
         }
     });
 });
@@ -95,10 +96,17 @@ $(document).on('click','#update_loai_tour', function(e){
                     {
                     $('#create').modal('hide')
 
-                    swal({
-                            title: "Cập nhật thành công",
-                            text: "",
-                            icon: "success",
+                    // swal({
+                    //         title: "Cập nhật thành công",
+                    //         text: "",
+                    //         icon: "success",
+                    // });
+                    Codebase.helpers('notify', {
+                        align: 'right',             // 'right', 'left', 'center'
+                        from: 'top',                // 'top', 'bottom'
+                        type: 'success',               // 'info', 'success', 'warning', 'danger'
+                        icon: 'fa fa-info mr-5',    // Icon class
+                        message: 'Cập nhật thành công!'
                     });
                     location.reload();
                     }

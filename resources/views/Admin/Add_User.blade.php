@@ -220,7 +220,7 @@
                                     </div>
                                 </div>
                                 <div class="block-content">
-                                    <form action="be_forms_elements_bootstrap.html" method="post" onsubmit="return false;">
+                                    <form action="be_forms_elements_bootstrap.html" method="post" >
                                         <div class="form-group">
                                             <label for="example-nf-email">Email</label>
                                             <input type="email" class="form-control" id="example-nf-email" name="example-nf-email" placeholder="Enter Email..">

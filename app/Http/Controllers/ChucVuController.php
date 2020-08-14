@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\TaiKhoan;
@@ -14,8 +15,18 @@ class ChucVuController extends Controller
      */
     public function index()
     {
-        $taiKhoan = TaiKhoan::all();
-        return view('Admin.Access',compact('taiKhoan'));
+        $taikhoan = DB::table('roles')
+                        ->join('role_has_permissions', 'role_has_permissions.role_id', '=', 'roles.id')                      
+                        ->select('roles.id', 'roles.name')
+                        ->groupBy('roles.id')
+                        ->get();
+        $role = DB::table('role_has_permissions')                   
+                ->select('*')
+                ->get();
+        $phanquyen = DB::table('permissions')                   
+                        ->select('*')
+                        ->get();
+        return view('Admin.Access',compact('taikhoan','phanquyen','role')) ;
     }
 
     /**
@@ -48,6 +59,7 @@ class ChucVuController extends Controller
     public function show($id)
     {
         //
+        return view('Admin.form_edit_quyen');
     }
 
     /**

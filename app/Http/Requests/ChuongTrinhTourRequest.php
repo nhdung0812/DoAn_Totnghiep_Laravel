@@ -33,7 +33,7 @@ class ChuongTrinhTourRequest extends FormRequest
             'so_cho' => 'required',
             'noi_dung' => 'required',
             'loai_tour' => 'required',
-            'khuyen_mai' => 'required',
+           
             'khu_vuc' =>'required',
         ];
 

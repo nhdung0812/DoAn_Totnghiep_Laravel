@@ -46,9 +46,10 @@
                                    <div id="val-username-error" class="invalid-feedback animated fadeInDown">Please enter a username</div>
                                    </div>
                             </div>
-                           
+                            
                    </form>
                </div>
+               
                <div class="modal-footer">
                    <button class=" btn btn-warning" type="submit" value="them_dia_diem" id="them_dia_diem">
                        <span class="glyphicon glyphicon-plus"></span>Thêm
@@ -75,7 +76,7 @@
                        <ul></ul>
                    </div>
                    <div id="validation-errors"></div>
-                   <form class="js-validation-material" action="{{ route('Quantri.dropzone') }}" enctype="multipart/form-data" id="Update_DiaDiem" name="Update_DiaDiem" method="POST" action="">
+                   <form class="js-validation-material" action="" enctype="multipart/form-data" id="Update_DiaDiem" name="Update_DiaDiem" method="POST" action="">
                        {{ csrf_field() }}
                        <div class="form-group row "></div>
                            <input type="hidden" id="_token" name="_token" value="{!! csrf_token() !!}">
@@ -92,11 +93,17 @@
                                     <label for="">Khu Vực<span class="text-danger">(*)</span></label>
                                     <select class="form-control" id="khu_vuc" name="khu_vuc" value="">
                                         <option disabled selected>Chọn Khu Vực</option>
-                                        @if(isset($khuvuc))
+                                        {{-- @if(isset($khuvuc))
                                             @foreach ($khuvuc as $item)
                                                 <option value="{{ $item->ma_mien }} ">{{ $item->ten_mien }}</option>
                                             @endforeach
-                                        @endif
+                                        @endif --}}
+                                        @foreach ($khuvuc as $item)
+                                        <option value="{{ $item->ma_mien }}"
+                                            {{ old('khu_vuc') == $item->ma_mien ? 'selected' : '' }}
+                                            {{ $khuvuc[0]->ma_mien == $item->ma_mien ? 'selected' : '' }}>
+                                            {{ $item->ten_mien }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -109,6 +116,7 @@
                         </div>
                    </form>
                </div>
+               
                <div class="modal-footer">
                    <button class=" btn btn-warning" type="submit" value="Update_dia_diem" id="Update_dia_diem">
                        <span class="glyphicon glyphicon-plus"></span>Cập nhật

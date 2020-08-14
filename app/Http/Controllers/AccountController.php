@@ -15,6 +15,13 @@ use App\LoginTaiKhoan;
 use Illuminate\Support\Facades\Auth;
 use Psy\Util\Json;
 use Illuminate\Http\UploadedFile;
+use App\Post;
+use Illuminate\Auth\Access\Gate;
+use App\Providers\AuthServiceProvider;
+use App\User;
+use DebugBar\DebugBar;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 class AccountController extends Controller
 {
 
@@ -25,14 +32,30 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $taiKhoan = TaiKhoan::all();
-        $so_tour = DB::table('chuongtrinhtour')->count('ma_tour');
-        return view('Admin.ListUser',compact('taiKhoan','so_tour'));
+        $user = Auth::user();
+        if(('isAdmin')){
+            $taiKhoan = TaiKhoan::all();
+            $so_tour = DB::table('chuongtrinhtour')->count('ma_tour');
+            return view('Admin.ListUser',compact('taiKhoan','so_tour'));
+        }
     }
     public function coutTour()
     {
+        $range = \Carbon\Carbon::now()->subYears(5);
+        $orderYear = DB::table('dattour')
+                    ->select(DB::raw('year(ngay_dat) as getYear'), DB::raw('COUNT(*) as value'))
+                    ->where('ngay_dat', '>=', $range)
+                    ->groupBy('getYear')
+                    ->orderBy('getYear', 'ASC')
+                    ->get();
+
         $so_tour = DB::table('chuongtrinhtour')->count('ma_tour');
-        return view('Admin.Dashboard',compact('so_tour'));
+        $so_dat_tour = DB::table('dattour')->count('ma_dat_tour');
+        $doanh_thu = DB::table('dattour')->sum('thanh_tien');
+        $dt = number_format($doanh_thu,0,'.','.');
+        $danh_sach_dat = DB::select('SELECT * FROM dattour, khachhang , chitietdattour, chuongtrinhtour WHERE dattour.ma_dat_tour = chitietdattour.ma_dat_tour and chitietdattour.ma_khach_hang = khachhang.ma_khach_hang and chuongtrinhtour.ma_tour = dattour.ma_tour');
+
+        return view('Admin.Dashboard',compact('so_tour','danh_sach_dat','so_dat_tour','dt','orderYear'));
     }
     public function trash()
     {
@@ -69,8 +92,10 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TaikhoanRequest $request)
+    public function store(Request $request)
     {
+        $users = TaiKhoan::role('admin')->get();
+        $check =  Auth::guard('quantriviens')->user();
         $taiKhoan = new TaiKhoan;
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -79,9 +104,8 @@ class AccountController extends Controller
             $file->move(public_path().'/Admin/image/avatar/',$name);
             $taiKhoan->hinh_anh = $name;
         }
-
-        $taiKhoan->ten_quan_tri = $request->ho_ten;
-        $taiKhoan->ten_dang_nhap = $request->ten_dang_nhap;
+                                                                
+                                     $taiKhoan->ten_dang_nhap = $request->ten_dang_nhap;
         $taiKhoan->mat_khau = Hash::make($request->mat_khau);
         $taiKhoan->gmail = $request->gmail;
         $taiKhoan->dien_thoai = $request->sdt;
@@ -93,7 +117,10 @@ class AccountController extends Controller
 
         //dd($taiKhoan->hinh_anh);
         $taiKhoan->save();
-        return response()->json(['success' => '1']);
+        // if($request->status != 0)
+        //     $taiKhoan->givePermissionTo('edit articles');
+        // return auth()->user()->givePermissionTo('edit articles');
+                return response()->json(['success' => '1']);
     }
 
     /**

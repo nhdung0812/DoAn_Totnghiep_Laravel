@@ -8,7 +8,7 @@
             <h2 class="content-heading">Danh sách Khách Hàng</h2>
             <div class="block">
                 <div class="block-content">
-                    <!--
+                    <!--    
                     Separate your table content with multiple tbody sections. Add one row and add the class .js-table-sections-header to a
                     tbody section to make it clickable. It will then toggle the next tbody section which can have multiple rows. Eg:
 

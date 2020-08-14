@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotificationEvent;
 use App\KhuVuc;
 use Illuminate\Http\Request;
 
@@ -90,6 +91,7 @@ class KhuVucController extends Controller
         $khuvuc->ten_mien = $request->ten_khu_vuc;
         $khuvuc->ghi_chu = $request->ghi_chu;
         $khuvuc->save();
+        event(new NotificationEvent(json_decode($khuvuc)));
         return response()->json(['success' => '1']);
     }
     /**

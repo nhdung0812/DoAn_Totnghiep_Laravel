@@ -110,6 +110,9 @@
         </div>
     </div>
 </footer>
+<a class="js-go-to u-go-to-modern" href="#" data-position='{"bottom": 15, "right": 15 }' data-type="fixed" data-offset-top="400" data-compensation="#header" data-show-effect="slideInUp" data-hide-effect="slideOutDown">
+    <span class="flaticon-arrow u-go-to-modern__inner"></span>
+</a>
        <!-- End Footer -->
        <!-- JS Global Compulsory -->
        <script src="{{ asset('Home/vendor/jquery/dist/jquery.min.js')}}"></script>
@@ -123,7 +126,8 @@
        <script src="{{ asset('Home/vendor/flatpickr/dist/flatpickr.min.js')}}"></script>
        <script src="{{ asset('Home/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
        <script src="{{ asset('Home/vendor/slick-carousel/slick/slick.js')}}"></script>
-
+       <script src="{{ asset('Home/vendor/gmaps/gmaps.min.js')}}"></script>
+       <script src="{{ asset('Home/vendor/ion-rangeslider/js/ion.rangeSlider.min.js')}}"></script>
        <!-- JS MyTravel -->
        <script src="{{ asset('Home/js/hs.core.js')}}"></script>
        <script src="{{ asset('Home/js/components/hs.header.js')}}"></script>
@@ -135,8 +139,11 @@
        <script src="{{ asset('Home/js/components/hs.go-to.js')}}"></script>
        <script src="{{ asset('Home/js/components/hs.slick-carousel.js')}}"></script>
        <script src="{{ asset('Home/js/components/hs.quantity-counter.js')}}"></script>
-
+       <script src="{{ asset('Home/js/components/hs.g-map.js')}}"></script>
+       <script src="{{ asset('Home/js/components/hs.modal-window.js')}}"></script>
+       <script src="{{ asset('Home/js/components/hs.malihu-scrollbar.js')}}"></script>
        <!-- JS Plugins Init. -->
+
        <script>
            $(window).on('load', function () {
                // initialization of HSMegaMenu component
@@ -178,15 +185,32 @@
                // initialization of go to
                $.HSCore.components.HSGoTo.init('.js-go-to');
            });
-       </script>
-       {{-- <script>
+       </script> 
+       
+       <script>
            $(document).on('click','.signin_member', function() {
                 $('.action').attr('id','add');
                 $('#signin_member').modal('show');
                 // $('.form-horizontal').show();
                 // $('.modal-title .si').text(' Đăng Nhập');
             });
-                </script> --}}
+        </script>
+                <script>
+                    $(window).on('load', function () {
+                        // initialization of HSMegaMenu component
+                        $('.js-mega-menu').HSMegaMenu({
+                            event: 'hover',
+                            pageContainer: $('.container'),
+                            breakpoint: 1199.98,
+                            hideTimeOut: 0
+                        });
+        
+                        // Page preloader
+                        setTimeout(function() {
+                          $('#jsPreloader').fadeOut(500)
+                        }, 800);
+                    });
+                </script>
        @yield('js')
  </body>
 </html>

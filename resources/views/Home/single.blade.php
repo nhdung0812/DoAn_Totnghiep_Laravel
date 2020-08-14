@@ -10,11 +10,12 @@
                             <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="#">Home</a></li>
                             <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="#">Tous</a></li>
                             <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="#"> {{"Du lịch ".$singletour[0]->ten_loai_tour}}</a></li>
-                            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page">Park Avenue Baker Street London</li>
+                            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page">{{$singletour[0]->ten_tour}}</li>
                         </ol>
                     </nav>
                 </div>
             </div>
+
             <!-- End Breadcrumb -->
             <div class="container">
                 <div class="row">
@@ -26,20 +27,30 @@
                                 </div>
                                 <div class="d-block d-xl-flex flex-horizontal-center">
                                     <div class="d-block d-md-flex flex-horizontal-center font-size-14 text-gray-1 mb-2 mb-xl-0">
-                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
-                                        <a href="#" class="ml-1 d-block d-md-inline"> - View on map</a>
+                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> {{ $singletour[0]->ten_mien }}
                                     </div>
                                     <div class="mr-4 mb-2 mb-md-0 flex-horizontal-center">
                                         <div class="ml-xl-3 font-size-10 letter-spacing-2">
-                                            <span class="d-block green-lighter ml-1">
-                                                <span class="fas fa-star"></span>
-                                                <span class="fas fa-star"></span>
-                                                <span class="fas fa-star"></span>
-                                                <span class="fas fa-star"></span>
-                                                <span class="fas fa-star"></span>
+                                            <span class="d-block text-warning ml-1">
+                                                <span class="fas fa-star "></span>
+                                                <span class="fas fa-star "></span>
+                                                <span class="fas fa-star "></span>
+                                                <span class="fas fa-star "></span>
+                                                <span class="fas fa-star "></span>
                                             </span>
                                         </div>
-                                        <span class="font-size-14 text-gray-1 ml-2">(1,186 Reviews)</span>
+                                        {{-- <div class="ml-xl-3 font-size-10 letter-spacing-2">
+                                            <!-- Rating Container -->
+                                            <span class="js-rating" style="cursor: pointer;">
+                                                <i data-alt="1" class="fa fa-fw fa-star text-muted" title="Just Bad!">
+                                                </i>&nbsp;<i data-alt="2" class="fa fa-fw fa-star text-muted" title="Almost There!">
+                                                </i>&nbsp;<i data-alt="3" class="fa fa-fw fa-star text-muted" title="It’s ok!">
+                                                </i>&nbsp;<i data-alt="4" class="fa fa-fw fa-star text-muted" title="That’s nice!">
+                                                </i>&nbsp;<i data-alt="5" class="fa fa-fw fa-star text-muted" title="Incredible!">
+                                                </i><input name="score" type="hidden">
+                                            </span>
+                                        </div> --}}
+                                        <span class="font-size-14 text-gray-1 ml-2">({{ $num_reviews[0]->num }} đánh giá)</span>
                                     </div>
                                 </div>
                             </div>
@@ -56,33 +67,8 @@
                                 </li>
                             </ul>
                         </div>
+                       
                         <div class="py-2 mb-4">
-                            <ul class="mb-4 list-group list-group-borderless list-group-horizontal row">
-                                <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
-                                    <i class="flaticon-alarm text-primary font-size-22 mr-2 d-block"></i>
-                                    <div class="ml-1 text-gray-1">{{ date('d/m/y',$singletour[0]->so_ngay) ." Ngày"}}</div>
-                                </li>
-                                <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
-                                    <i class="flaticon-social text-primary font-size-22 mr-2 d-block"></i>
-                                    <div class="ml-1 text-gray-1">Số lượng : {{$singletour[0]->so_cho}}</div>
-                                </li>
-                                <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
-                                    <i class="flaticon-wifi-signal text-primary font-size-22 mr-2 d-block"></i>
-                                    <div class="ml-1 text-gray-1">Có wifi</div>
-                                </li>
-                                <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
-                                    <i class="flaticon-month text-primary font-size-22 mr-2 d-block"></i>
-                                    {{--  <div class="ml-1 text-gray-1">{{$singletour[0]->ngay_khoi_hanh}}</div>  --}}
-                                </li>
-                                <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
-                                    <i class="flaticon-user-2 text-primary font-size-22 mr-2 d-block"></i>
-                                    <div class="ml-1 text-gray-1">Không giới hạn</div>
-                                </li>
-                                <li class="col-md-4 flex-horizontal-center list-group-item text-lh-sm mb-2">
-                                    <i class="flaticon-pin text-primary font-size-22 mr-2 d-block"></i>
-                                    <div class="ml-1 text-gray-1"></div>
-                                </li>
-                            </ul>
                             <div class="position-relative">
                                 <!-- Images Carousel -->
                                 <div id="sliderSyncingNav" class="js-slick-carousel u-slick mb-2"
@@ -212,41 +198,9 @@
                             </h5>
 
                             <p class="mb-4 mt-2" id="noidung" value=''>{{$singletour[0]->noi_dung}}</p>
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <div class="font-weight-bold text-dark mb-2">Highlights</div>
-                                    <div class="text-gray-1">John F.K. International Airport (Google Map)</div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="font-weight-bold text-dark mb-2">Số ngày</div>
-                                    <div class="text-gray-1">{{$singletour[0]->so_ngay}}</div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-4">
-                                    <div class="font-weight-bold text-dark mb-2">Bathroom</div>
-                                    <div class="text-gray-1">6 Bathrooms</div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="font-weight-bold text-dark mb-2">Số Đêm</div>
-                                    <div class="text-gray-1">{{$singletour[0]->so_dem}}</div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="font-weight-bold text-dark mb-3">Price Includes</div>
-                                    <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-tick mr-3 font-size-16 text-primary"></i>Air fares</div>
-                                    <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-tick mr-3 font-size-16 text-primary"></i>3 Nights Hotel Accomodation</div>
-                                    <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-tick mr-3 font-size-16 text-primary"></i>Tour Guide</div>
-                                    <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-tick mr-3 font-size-16 text-primary"></i>Entrance Fees</div>
-                                    <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-tick mr-3 font-size-16 text-primary"></i>All transportation in destination location</div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="font-weight-bold text-dark mb-3">Price Excludes</div>
-                                    <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-close mr-3 font-size-12 text-primary"></i>Guide Service Fee</div>
-                                    <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-close mr-3 font-size-12 text-primary"></i>Driver Service Fee</div>
-                                    <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-close mr-3 font-size-12 text-primary"></i>Any Private Expenses</div>
-                                    <div class="flex-horizontal-center mb-3 text-gray-1"><i class="flaticon-close mr-3 font-size-12 text-primary"></i>Room Service Fees</div>
-                                </div>
-                            </div>
+                           
                         </div>
+                        
                         <div class="border-bottom py-4">
                             <h3 id="scroll-itinerary" class=" font-weight-bold text-dark mb-4">
                                <i class="si si-map "></i>   Lịch Trình
@@ -281,15 +235,10 @@
                                 <!-- End Card -->
                             </div>
                         </div>
-                        <div class="border-bottom py-4">
-                            <h5 id="scroll-location" class="font-size-21 font-weight-bold text-dark mb-4">
-                                Location
-                            </h5>
-                            <iframe src="https://www.google.com/maps/place?key=AIzaSyAg-ZY6iL8dzXNTw5_sjAuWwuKS7q-grx8&q=việt nam" width="100%" height="480" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                        </div>
-                        <div class="border-bottom py-4">
+                        
+                        {{-- <div class="border-bottom py-4">
                             <h5 id="scroll-reviews" class="font-size-21 font-weight-bold text-dark mb-4">
-                                Average Reviews
+                                Đánh Giá
                             </h5>
                             <div class="row">
                                 <div class="col-md-4 mb-4 mb-md-0">
@@ -299,7 +248,7 @@
                                                 4.2<span class="font-size-20">/5</span>
                                             </h2>
                                             <div class="font-size-25 text-dark mb-3">Very Good</div>
-                                            <div class="text-gray-1">From 40 reviews</div>
+                                            <div class="text-gray-1">Từ 40 Nhận Xét</div>
                                         </div>
                                     </div>
                                 </div>
@@ -373,12 +322,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div id="stickyBlockEndPoint"></div>
                         <div class="border-bottom py-4">
                             <h5 class="font-size-21 font-weight-bold text-dark mb-8">
-                                Showing 16 verified guest comments
+                                Hiện {{ $num_reviews[0]->num }} bình luận
                             </h5>
+                            @foreach ($comment as $item)
                             <div class="media flex-column flex-md-row align-items-center align-items-md-start mb-4">
                                 <div class="mr-md-5">
                                     <a class="d-block" href="#">
@@ -388,14 +338,14 @@
                                 <div class="media-body text-center text-md-left">
                                     <div class="mb-4">
                                         <h6 class="font-weight-bold text-gray-3">
-                                            <a href="#">Helena</a>
+                                            <a href="#">{{ $item->ten}}</a>
                                         </h6>
-                                        <div class="font-weight-normal font-size-14 text-gray-9 mb-2">April 25, 2019 at 10:46 am</div>
-                                        <div class="d-flex align-items-center flex-column flex-md-row mb-2">
+                                        <div class="font-weight-normal font-size-14 text-gray-9 mb-2">{{ $item->Ngay_commnet }}</div>
+                                        {{-- <div class="d-flex align-items-center flex-column flex-md-row mb-2">
                                             <button type="button" class="btn btn-xs btn-primary rounded-xs font-size-14 py-1 px-2 mr-2 mb-2 mb-md-0">4.6 /5 </button>
                                             <span class="font-weight-bold font-italic text-gray-3">The worst hotel ever ”</span>
-                                        </div>
-                                        <p class="text-lh-1dot6 mb-0 pr-lg-5">Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
+                                        </div> --}}
+                                        <p class="text-lh-1dot6 mb-0 pr-lg-5">{{ $item->noidung }}</p>
                                     </div>
                                     <div class="review">
                                         <div class="row no-gutters justify-content-between align-items-center border border-color-8 border-width-2 rounded-xs p-3 px-md-3 py-md-2 pr-xl-5">
@@ -422,108 +372,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="media flex-column flex-md-row align-items-center align-items-md-start mb-0">
-                                <div class="mr-md-5">
-                                    <a class="d-block" href="#">
-                                        <img class="img-fluid mb-3 mb-md-0 rounded-circle" src="../../Home/img/85x85/img2.jpg" alt="Image-Description">
-                                    </a>
-                                </div>
-                                <div class="media-body text-center text-md-left">
-                                    <div class="mb-4">
-                                        <h6 class="font-weight-bold text-gray-3">
-                                            <a href="#">Ashleigh</a>
-                                        </h6>
-                                        <div class="font-weight-normal font-size-14 text-gray-9 mb-2">April 25, 2019 at 10:46 am</div>
-                                        <div class="d-flex align-items-center flex-column flex-md-row mb-2">
-                                            <button type="button" class="btn btn-xs btn-primary rounded-xs font-size-14 py-1 px-2 mr-2 mb-2 mb-md-0">4.6 /5 </button>
-                                            <span class="font-weight-bold font-italic text-gray-3">Was too noisy and not suitable for business meetings.”</span>
-                                        </div>
-                                        <p class="text-lh-1dot6 pr-lg-5 mb-0">Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
-                                    </div>
-                                    <div class="review">
-                                        <div class="row no-gutters justify-content-between align-items-center border border-color-8 border-width-2 rounded-xs p-3 px-md-3 py-md-2 pr-xl-5">
-                                            <div class="col">
-                                                <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">Was This Review...?</div>
-                                            </div>
-                                            <div class="col-md-6 col-lg-7 col-xl-4">
-                                                <div class="d-flex justify-content-between my-lg-1">
-                                                    <a class="text-indigo-light" href="#">
-                                                        <i class="flaticon-like-1 font-size-15 mr-1"></i>
-                                                        <span class="font-size-14 font-weight-normal">Like</span>
-                                                    </a>
-                                                    <a class="text-gray-7" href="#">
-                                                        <i class="flaticon-dislike font-size-15 mr-1"></i>
-                                                        <span class="font-size-14 font-weight-normal">Dislike</span>
-                                                    </a>
-                                                    <a class="text-red-light-2" href="#">
-                                                        <i class="flaticon-like font-size-15 mr-1"></i>
-                                                        <span class="font-size-14 font-weight-normal">Love</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                            
                         </div>
                         <div class="py-4">
                             <h5 class="font-size-21 font-weight-bold text-dark mb-6">
-                                Write a Review
+                                Viết đánh giá
                             </h5>
                             <div class="row">
                                 <div class="col-md-4 mb-6">
                                     <h6 class="font-weight-bold text-dark mb-1">
-                                        Cleanliness
-                                    </h6>
-                                    <span class="text-primary font-size-20 letter-spacing-3">
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile text-muted"></small>
-                                        <small class="far fa-smile text-muted"></small>
-                                    </span>
-                                </div>
-                                <div class="col-md-4 mb-6">
-                                    <h6 class="font-weight-bold text-dark mb-1">
-                                        Facilities
-                                    </h6>
-                                    <span class="text-primary font-size-20 letter-spacing-3">
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile text-muted"></small>
-                                        <small class="far fa-smile text-muted"></small>
-                                    </span>
-                                </div>
-                                <div class="col-md-4 mb-6">
-                                    <h6 class="font-weight-bold text-dark mb-1">
-                                        Value for money
-                                    </h6>
-                                    <span class="text-primary font-size-20 letter-spacing-3">
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                    </span>
-                                </div>
-                                <div class="col-md-4 mb-6">
-                                    <h6 class="font-weight-bold text-dark mb-1">
-                                        Service
-                                    </h6>
-                                    <span class="text-primary font-size-20 letter-spacing-3">
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile text-muted"></small>
-                                        <small class="far fa-smile text-muted"></small>
-                                    </span>
-                                </div>
-                                <div class="col-md-4 mb-6">
-                                    <h6 class="font-weight-bold text-dark mb-1">
                                         Location
                                     </h6>
-                                    <span class="text-primary font-size-20 letter-spacing-3">
+                                    <span class="text-primary font-size-50 letter-spacing-3">
                                         <small class="far fa-smile"></small>
                                         <small class="far fa-smile"></small>
                                         <small class="far fa-smile"></small>
@@ -532,7 +393,8 @@
                                     </span>
                                 </div>
                             </div>
-                            <form class="js-validate" novalidate="novalidate">
+                            <form class="js-validate" novalidate="novalidate" method="POST" action="/comment/{{$singletour[0]->ma_tour}}">
+                                {{ csrf_field() }}
                                 <div class="row mb-5 mb-lg-0">
                                     <!-- Input -->
                                     <div class="col-sm-6 mb-5">
@@ -545,20 +407,20 @@
                                     <!-- Input -->
                                     <div class="col-sm-6 mb-5">
                                         <div class="js-form-message">
-                                            <input type="email" class="form-control" name="email" placeholder="Email" aria-label="jackwayley@gmail.com" required="" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+                                            <input type="email" class="form-control" name="gmail" placeholder="Email" aria-label="jackwayley@gmail.com" required="" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
                                         </div>
                                     </div>
                                     <!-- End Input -->
                                     <div class="col-sm-12 mb-5">
                                         <div class="js-form-message">
                                             <div class="input-group">
-                                                <textarea class="form-control" rows="6" cols="77" name="text" placeholder="Comment" aria-label="Hi there, I would like to ..." required="" data-msg="Please enter a reason." data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
+                                                <textarea class="form-control" rows="6" cols="77" name="content" placeholder="Comment" aria-label="Hi there, I would like to ..." required="" data-msg="Please enter a reason." data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- End Input -->
                                     <div class="col d-flex justify-content-center justify-content-lg-start">
-                                        <button type="submit" class="btn rounded-xs bg-blue-dark-1 text-white p-2 height-51 width-190 transition-3d-hover">Submit Review</button>
+                                        <button type="submit" class="btn rounded-xs bg-blue-dark-1 text-white p-2 height-51 width-190 transition-3d-hover">Đánh giá</button>
                                     </div>
                                 </div>
                             </form>
@@ -575,109 +437,74 @@
                                 </div>
                                 <div class="p-4">
                                     <!-- Input -->
-                                    <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">Ngày</span>
+                                    <span class="d-block text-gray-1 font-weight-normal mb-0 text-left"><b>Mã Tour : </b>{{ $singletour[0]->ma_tour}}</span>
                                     <div class="mb-4">
-                                        <div class="border-bottom border-width-2 border-color-1">
-                                            <div id="datepickerWrapperPick" class="u-datepicker input-group">
-                                                <input class="js-range-datepicker w-auto height-40 font-size-16 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0" type="text" placeholder="July 7/2019" date("Y-m-d") aria-label="July 7/2019"
-                                                data-rp-wrapper="#datepickerWrapperPick"
-                                                data-rp-date-format="d-M-Y"
-                                                data-rp-default-date='["Jul 7 / 2020"]'>
-                                            </div>
-                                            <!-- End Datepicker -->
+                                        <div class="border-bottom pb-1 border-width-2 border-color-1">              
                                         </div>
                                     </div>
                                     <!-- End Input -->
 
                                     <!-- Input -->
-                                    <span class="d-block text-gray-1 font-weight-normal mb-2 text-left">Người lớn</span>
+                                    <span class="d-block text-gray-1 font-weight-normal mb-2 text-left"><b>Thời gian :</b> {{ $singletour[0]->so_ngay}} Ngày {{ $singletour[0]->so_dem}} Đêm</span>
                                     <div class="mb-4">
                                         <div class="border-bottom border-width-2 border-color-1 pb-1">
                                             <div class="js-quantity flex-center-between mb-1 text-dark font-weight-bold">
-                                                <span class="d-block">Tuổi 18+</span>
-                                                <div class="flex-horizontal-center">
-                                                    <a class="js-plus font-size-10 text-dark" href="javascript:;">
-                                                        <i class="fas fa-chevron-up"></i>
-                                                    </a>
-                                                    <input class="js-result form-control h-auto width-30 font-weight-bold font-size-16 shadow-none bg-tranparent border-0 rounded p-0 mx-1 text-center" type="text" value="0" min="1" max="100">
-                                                    <a class="js-minus font-size-10 text-dark" href="javascript:;">
-                                                        <i class="fas fa-chevron-down"></i>
-                                                    </a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     <!-- End Input -->
 
                                     <!-- Input -->
-                                    <span class="d-block text-gray-1 font-weight-normal mb-2 text-left">Trẻ em</span>
+                                    <span class="d-block text-gray-1 font-weight-normal mb-2 text-left"><b>Khởi Hành :</b>{{ $singletour[0]->ngay_khoi_hanh}}</span>
                                     <div class="mb-4">
                                         <div class="border-bottom border-width-2 border-color-1 pb-1">
                                             <div class="js-quantity flex-center-between mb-1 text-dark font-weight-bold">
-                                                <span class="d-block">Tuổi 6-17</span>
-                                                <div class="flex-horizontal-center">
-                                                    <a class="js-plus font-size-10 text-dark" href="javascript:;">
-                                                        <i class="fas fa-chevron-up"></i>
-                                                    </a>
-                                                    <input class="js-result form-control h-auto width-30 font-weight-bold font-size-16 shadow-none bg-tranparent border-0 rounded p-0 mx-1 text-center" type="text" value="0" min="1" max="100">
-                                                    <a class="js-minus font-size-10 text-dark" href="javascript:;">
-                                                        <i class="fas fa-chevron-down"></i>
-                                                    </a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     <!-- End Input -->
 
                                     <!-- Input -->
-                                    <span class="d-block text-gray-1 font-weight-normal mb-2 text-left">Trẻ sơ sinh</span>
+                                    <span class="d-block text-gray-1 font-weight-normal mb-2 text-left"> <b>Số lượng: </b> {{ $singletour[0]->so_cho}} chỗ</span>
                                     <div class="mb-4">
                                         <div class="border-bottom border-width-2 border-color-1 pb-1">
                                             <div class="js-quantity flex-center-between mb-1 text-dark font-weight-bold">
-                                                <span class="d-block">Tuổi 0-5</span>
-                                                <div class="flex-horizontal-center">
-                                                    <a class="js-plus font-size-10 text-dark" href="javascript:;">
-                                                        <i class="fas fa-chevron-up"></i>
-                                                    </a>
-                                                    <input class="js-result form-control h-auto width-30 font-weight-bold font-size-16 shadow-none bg-tranparent border-0 rounded p-0 mx-1 text-center" type="text" value="0" min="1" max="100">
-                                                    <a class="js-minus font-size-10 text-dark" href="javascript:;">
-                                                        <i class="fas fa-chevron-down"></i>
-                                                    </a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- End Input -->
 
                                     <div class="text-center">
-                                        <a href="{{ route('Tous.dat-tour')}}" class="btn btn-primary d-flex align-items-center justify-content-center  height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold">Đặt Ngay</a>
+                                        <a href="{{ route('Tous.dat-tour',$singletour[0]->ma_chuog_trinh )}}" class="btn btn-primary d-flex align-items-center justify-content-center  height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold">Đặt Ngay</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="border border-color-7 rounded p-4 mb-5">
-                                <h6 class="font-size-17 font-weight-bold text-gray-3 mx-1 mb-3 pb-1">Why Book With Us?</h6>
+                                <h6 class="font-size-17 font-weight-bold text-gray-3 mx-1 mb-3 pb-1">Tại sao bạn đặt chúng tôi ?</h6>
                                 <div class="d-flex align-items-center mb-3">
                                     <i class="flaticon-star font-size-25 text-primary mr-3 pr-1"></i>
                                     <h6 class="mb-0 font-size-14 text-gray-1">
-                                        <a href="#">No-hassle best price guarantee</a>
+                                        <a href="#">Đảm bảo giá tốt nhất</a>
                                     </h6>
                                 </div>
                                 <div class="d-flex align-items-center mb-3">
                                     <i class="flaticon-support font-size-25 text-primary mr-3 pr-1"></i>
                                     <h6 class="mb-0 font-size-14 text-gray-1">
-                                        <a href="#">Customer care available 24/7</a>
+                                        <a href="#">Chăm sóc khách hàng 24/7</a>
                                     </h6>
                                 </div>
                                 <div class="d-flex align-items-center mb-3">
                                     <i class="flaticon-favorites-button font-size-25 text-primary mr-3 pr-1"></i>
                                     <h6 class="mb-0 font-size-14 text-gray-1">
-                                        <a href="#">Hand-picked Tours &amp; Activities</a>
+                                        <a href="#">Chuyến tham quan & hoạt động được lựa chọn</a>
                                     </h6>
                                 </div>
                                 <div class="d-flex align-items-center mb-0">
                                     <i class="flaticon-airplane font-size-25 text-primary mr-3 pr-1"></i>
                                     <h6 class="mb-0 font-size-14 text-gray-1">
-                                        <a href="#">Free Travel Insureance</a>
+                                        <a href="#">Bảo hiềm du lịch miễn phí</a>
                                     </h6>
                                 </div>
                             </div>
@@ -688,7 +515,7 @@
                 <div class="product-card-carousel-block product-card-carousel-v5">
                     <div class="space-1">
                         <div class="w-md-80 w-lg-50 text-center mx-md-auto mt-3">
-                            <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">You might also like...</h2>
+                            <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">Tour Tương Tự</h2>
                         </div>
                         <div class="js-slick-carousel u-slick u-slick--gutters-1"
                             data-slides-show="3"

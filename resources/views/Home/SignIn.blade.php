@@ -1,4 +1,7 @@
 
+@section('css')
+    <link rel="stylesheet" id="css-main" href="{{ asset('Admin/css/codebase.min.css')}}">
+@endsection
 <div id="signin_member" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use app\Events;
+use App\Events\NotificationEvent;
 
 class AuthController extends Controller
 {
@@ -34,12 +36,11 @@ class AuthController extends Controller
         //dd(Auth::guard('quantriviens')->attempt(['gmail' => $ten_dang_nhap, 'password' => $mat_khau, 'deleted_at' => null, 'trang_thai' => 1]));
         if(Auth::guard('quantriviens')->attempt(['gmail' => $ten_dang_nhap, 'password' => $mat_khau, 'deleted_at' => null, 'trang_thai' => 1]))
         {
-
             return Redirect()->route('Quantri.Admin');
         }
-        else{
-            dd("Dang nhap khong thanh cong");
-        }
+        // else{
+        //     event(new NotificationEvent('Đăng nhập thành công'));
+        // }
 
 
     }

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Codebase - Bootstrap 4 Admin Template &amp; UI Framework</title>
+        <title>Quản trị Tour Nè !!!</title>
 
         <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
@@ -22,7 +22,7 @@
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
         <link rel="shortcut icon" href="{{ asset('Admin/media/favicons/ ')}}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('Admin/media/favicons/favicon-192x192.png')}}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('Admin/image/avatar/favi.png') }}">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('Admin/media/favicons/apple-touch-icon-180x180.png')}}">
         <!-- END Icons -->
         <link href="path/to/multiselect.css" media="screen" rel="stylesheet" type="text/css"><font></font>

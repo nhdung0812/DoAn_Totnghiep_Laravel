@@ -36,8 +36,8 @@ return [
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
-                'cluster' => env('PUSHER_APP_CLUSTER'),
-                'useTLS' => true,
+                'cluster' => "ap1", 
+                'encrypted' => true,
             ],
         ],
 
@@ -53,7 +53,10 @@ return [
         'null' => [
             'driver' => 'null',
         ],
-
+        'options' => [
+            'cluster' => 'ap1',
+            'useTLS' => true
+          ],
     ],
 
 ];

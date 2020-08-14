@@ -94,16 +94,17 @@ $(document).on('click','.edit_diadiem', function(e){
    
                data:formData,
                success: function(data){
+                   //console.log(data);
                        if(data.success)
                        {
-                       $('#Update_diadiem').modal('hide')
-   
-                       swal({
-                               title: "Cập nhật thành công",
-                               text: "",
-                               icon: "success",
-                       });
-                       location.reload();
+                            $('#Update_diadiem').modal('hide')
+        
+                            swal({
+                                    title: "Cập nhật thành công",
+                                    text: "",
+                                    icon: "success",
+                            });
+                            location.reload();
                        }
                },
                error: function(data){

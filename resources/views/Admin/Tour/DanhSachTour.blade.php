@@ -5,7 +5,16 @@
 @section('content')
 <main id="main-container">
        <!-- Page Content -->
-
+       {{-- @if(Session::has('success'))
+            <script>
+                swal({
+                    title: "Thêm thành công",
+                    text: "",
+                    icon: "success",
+                });
+                location.reload();
+            </script>
+       @endif --}}
        <div class="content">
            <h2 class="content-heading">
                <i class="fa fa-word mr-2"></i>
@@ -21,8 +30,8 @@
                                </div>
                            </div>
                            <div class="py-20 text-center">
-                               <div class="font-size-h2 font-w700 mb-0 text-info js-count-to-enabled" data-toggle="countTo" data-to="39">39</div>
-                               <div class="font-size-sm font-w600 text-uppercase text-muted">Địa Điểm</div>
+                               <div class="font-size-h2 font-w700 mb-0 text-info js-count-to-enabled" data-toggle="countTo" data-to="{{ $cout_tour}}">{{ $cout_tour }}</div>
+                               <div class="font-size-sm font-w600 text-uppercase text-muted">Tất Cả Tour</div>
                            </div>
                        </div>
                    </a>
@@ -39,8 +48,8 @@
                                </div>
                            </div>
                            <div class="py-20 text-center">
-                               <div class="font-size-h2 font-w700 mb-0 text-success js-count-to-enabled" data-toggle="countTo" data-to="85">85</div>
-                               <div class="font-size-sm font-w600 text-uppercase text-muted">Trong Nước</div>
+                               <div class="font-size-h2 font-w700 mb-0 text-success js-count-to-enabled" data-toggle="countTo" data-to="{{ $cout_tour_active }}">{{ $cout_tour_active }}</div>
+                               <div class="font-size-sm font-w600 text-uppercase text-muted">Tour Hoạt Động</div>
                            </div>
                        </div>
                    </a>
@@ -53,14 +62,12 @@
                        <div class="block-content block-content-full block-sticky-options">
                            <div class="block-options">
                                <div class="block-options-item">
-                                   <i class="fa fa-archive fa-2x text-danger-light"></i>
+                                   <i class="fa fa-times fa-2x text-danger-light"></i>
                                </div>
                            </div>
                            <div class="py-20 text-center">
-                               <div class="font-size-h2 font-w700 mb-0 text-danger">
-                                   <i class="fa fa-times"></i>
-                               </div>
-                               <div class="font-size-sm font-w600 text-uppercase text-muted">Ngoài nước </div>
+                                <div class="font-size-h2 font-w700 mb-0 text-danger js-count-to-enabled" data-toggle="countTo" data-to="{{ $cout_tour_off }}">{{ $cout_tour_off }}</div>
+                               <div class="font-size-sm font-w600 text-uppercase text-muted">Tour Hết Hạn</div>
                            </div>
                        </div>
                    </a>
@@ -73,9 +80,9 @@
            <!-- Dynamic Table Full -->
            <div class="block">
                <div class="block-header block-header-default">
-                   <button type="button" class="create-modal_Diadiem btn btn-success mr-5 mb-5">
-                       <i class="fa fa-plus mr-5"></i>Thêm địa điểm
-                   </button>
+                   <a href="{{ route('Quantri.mo-tour') }}" type="button" class="create-modal_Diadiem btn btn-success mr-5 mb-5">
+                       <i class="fa fa-plus mr-5"></i>Mở thêm tour
+                   </a>
                    <a href="{{route('Quantri.box-trash-dia-diem')}}" type="button" class="show-trash btn btn-danger mr-5 mb-5">
                        <i class="fa fa-trash-o mr-5"></i>Thùng rác
                    </a>
@@ -89,38 +96,41 @@
                                <tr class="post">
                                    <th class="text-center">STT</th>
                                    <th class="d-none d-sm-table-cell">Tên Tour</th>
-                                   <th class="d-none d-sm-table-cell">Tên khu vực</th>
-                                   <th class="d-none d-sm-table-cell">Thông tin</th>
+                                   <th class="d-none d-sm-table-cell">Ngày khởi hành</th>
+                                   <th class="d-none d-sm-table-cell">Ngày Kết Thúc</th>
+                                   <th class="d-none d-sm-table-cell">Trạng Thái</th>
                                    <th class="d-none d-sm-table-cell">Chức Năng</th>
                                </tr>
                            </tr>
                        </thead>
                        <tbody>
-                          @foreach($tourdulich as $dd)
-                           <tr>
-                               <td class="d-none d-sm-table-cell">{{$stt += 1}}</td>
-                               <td class="d-none d-sm-table-cell">
-                                   Địa Điểm <span class="badge badge-success">{{$dd->ma_chuog_trinh}}</span>
-                               </td>
-                               @foreach ($khuvuc as $item)
-                                   @if ($item->ma_mien == $dd->ma_mien)
-                                       <td class="d-none d-sm-table-cell">{{$item->ten_mien}}</td>
-                                   @endif
-                               @endforeach
+                            @foreach ($tourdulich as $item)
+                            <tr>
+                                <td class="d-none d-sm-table-cell">{{$stt += 1}}</td>
+                                <td class="d-none d-sm-table-cell">
+                                     <span class="badge badge-success">{{ $item->Tieu_de }}</span>
+                                </td>
                                
-                               <td class="d-none d-sm-table-cell">{{$dd->ngay_khoi_hanh}}</td>
-                               <td class="d-none d-sm-table-cell">{{$dd->ngay_ket_thuc}}</td>
-                               <td class="d-none d-sm-table-cell">{{$dd->so_cho_da_dat}}</td>
-                               <td class="" style="">
-                                   <a href="{{ route('Quantri.sua_dia_diem',$dd->ma_dia_diem) }}" class="edit_diadiem btn btn-primary min-width-90">
-                                       <i class="fa fa-wrench"></i> Sửa
-                                   </a>
-                                   <a href="{{ route('Quantri.trash_dia_diem',$dd->ma_dia_diem) }}" title=""  class="delect-diadiem btn btn-danger  min-width-10 ">
-                                       <i class="fa fa-trash"></i> Xoá
-                                   </a>
-                               </td>
-                           </tr>
-                           @endforeach
+                                
+                                <td class="d-none d-sm-table-cell">{{ $item->ngay_khoi_hanh }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $item->ngay_ket_thuc }}</td>
+                                <td class="text-center d-none d-sm-table-cell">
+                                    @if($item->Trang_thai == 1)
+                                        <span class="text-center badge badge-success">Đang mở</span>
+                                    @else 
+                                    <span class="text-center badge badge-danger">Đã Đóng</span>
+                                    @endif
+                                </td>
+                                <td class="" style="">
+                                    <a href="{{ route('Quantri.edit_dl',[$item->ma_chuog_trinh,$item->ma_tour_open])}}" class="edit_diadiem btn btn-primary min-width-90">
+                                        <i class="fa fa-wrench"></i> Sửa
+                                    </a>
+                                    <a href="" title=""  class="delect-diadiem btn btn-danger  min-width-10 ">
+                                        <i class="fa fa-trash"></i> Xoá
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
                        </tbody>
                    </table>
                </div>

@@ -10,6 +10,6 @@ class TourDuLich extends Model
     //
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $table = 'tour';
-    protected $primaryKey = 'ma_tour';
+    protected $table = 'Tour';
+    protected $primaryKey = 'ma_tour_open';
 }

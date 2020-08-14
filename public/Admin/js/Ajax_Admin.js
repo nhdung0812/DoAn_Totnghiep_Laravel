@@ -74,10 +74,10 @@ $(document).on('click','#add', function(e){
                     }
             },
             error: function(data){
-                    // $('#validation-errors').html('');
-                    // $.each(data.responseJSON.errors, function(key,value) {
-                    //     $('#validation-errors').append('<div class="alert alert-danger">'+value+'</div');
-                    // });
+                    $('#validation-errors').html('');
+                    $.each(data.responseJSON.errors, function(key,value) {
+                         $('#validation-errors').append('<div class="alert alert-danger">'+value+'</div');
+               });
             }
     });
 });

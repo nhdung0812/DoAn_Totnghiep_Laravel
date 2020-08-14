@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\DiaDiem;
+use App\Events\NotificationEvent;
 use App\HinhAnh;
 use App\Http\Requests\DiaDiemRequest;
 use App\KhuVuc;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 class DiaDiemController extends Controller
@@ -54,15 +57,35 @@ class DiaDiemController extends Controller
     {
         $diadiem =  DiaDiem::all();
         $hinhanh = HinhAnh::all();
+        //dd($diadiem);
         return view('Admin.ListHinhAnh', compact('diadiem','hinhanh'));
     }
 
-    public function Xu_ly_upload(Request $request)
+    public function form_them()
     {
-        $photos = $request->file('file');
+        $diadiem =  DiaDiem::all();
+        return view('Admin.Form_them_hinh' , compact('diadiem'));
+    }
+    public function form_sua($id, $mahinh)
+    {
+        $hinh = DB::table('diadiem')
+                        ->join('Hinh_Anh', 'diadiem.ma_dia_diem', '=', 'Hinh_Anh.ma_dia_diem')    
+                        ->where('diadiem.ma_dia_diem', '=' , $id)
+                        ->where('Hinh_Anh.ma_hinh_anh', '=', $mahinh)                  
+                        ->select('*')
+                        ->get();
+        return view('Admin.Form_sua_hinh' , compact('hinh'));
+    }
+    
+    public function Xu_ly_Them(Request $request)
+    {
+        //dd($request);
+        $photos = $request->file('hinh_dd');
+        //dd($photos);
         if (!is_array($photos)) {
             $photos = [$photos];
         }
+        $hinh = [];
         for ($i = 0; $i < count($photos); $i++) {
             $photo = $photos[$i];
             $name = $photo->getClientOriginalName();
@@ -71,17 +94,39 @@ class DiaDiemController extends Controller
             $path = public_path('/Home/img/diadiem');
 
         
-            $resize = Image::make($photo)->resize(300,230);
-            $resize->resize(300,230, function($constraint){
+            $resize = Image::make($photo)->resize(960,490);
+            $resize->resize(960,490, function($constraint){
                 $constraint->aspectRatio();
             })->save($path.'/'.$name);
+
             $hinhanh = new HinhAnh;
             $hinhanh->Hinh_anh_1 = $name;
-            $hinhanh->ma_dia_diem = 1;
+            $hinhanh->ma_dia_diem = $request->ma_dia_diem;
             $hinhanh->save();
         }
-        return redirect()->route('Quantri.ds_hinh')->with('message', 'Thêm Thành Công');
+        return redirect()->route('Quantri.ds_hinh');
     }
+    // sửa hình ảnh
+    public function Xu_ly_sua(Request $request)
+    {
+        $photo = $request->file('hinh_dd');
+        $name = $photo->getClientOriginalName();
+        $save_name = $name . '.' . $photo->getClientOriginalExtension();
+        $resize_name = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
+        $path = public_path('/Home/img/diadiem');
+
+    
+        $resize = Image::make($photo)->resize(960,490);
+        $resize->resize(960,490, function($constraint){
+            $constraint->aspectRatio();
+        })->save($path.'/'.$name);
+
+        $hinhanh = HinhAnh::where('ma_dia_diem',$request->ma_dia_diem)
+                            ->where('ma_hinh_anh',$request->hinh)
+                            ->update(['Hinh_anh_1' => $name]);
+        return redirect()->route('Quantri.ds_hinh');
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -126,7 +171,12 @@ class DiaDiemController extends Controller
         $diadiem->ten_dia_diem = $request->ten_dia_diem;
         $diadiem->thongtin = $request->Thong_tin;
         $diadiem->save();
-        return response()->json(['success' => '1']);
+        $user = Auth::guard('quantriviens')->user();
+        dd($user);
+        // $account_detail = ['fname'=>$diadiem->ten_dia_diem,'lname'=>$diadiem->thongtin];
+        // //dd('hahah');
+        // event(new NotificationEvent($account_detail));
+        // return response()->json(['success' => '1']);
     }
     /**
      * Remove the specified resource from storage.

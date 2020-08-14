@@ -24,7 +24,7 @@
                                    <div class="float-right mt-15 d-none d-sm-block">
                                    <i class="si si-wallet fa-3x text-earth-light"></i>
                                    </div>
-                                   <div class="font-size-h3 font-w600 text-earth"><span data-toggle="countTo" data-speed="1000" data-to="780">0</span> VNĐ</div>
+                                   <div class="font-size-h5 font-w600 text-earth"><span>{{ $dt }}</span> VNĐ</div>
                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Doanh thu</div>
                             </div>
                      </a>
@@ -35,7 +35,7 @@
                                    <div class="float-right mt-15 d-none d-sm-block">
                                    <i class="fa fa-cart-arrow-down fa-3x text-elegance-light"></i>
                                    </div>
-                                   <div class="font-size-h3 font-w600 text-elegance" data-toggle="countTo" data-speed="1000" data-to="15">0</div>
+                                   <div class="font-size-h3 font-w600 text-elegance" data-toggle="countTo" data-speed="1000" data-to="{{ $so_dat_tour}}"></div>
                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Đơn đặt tour</div>
                             </div>
                      </a>
@@ -74,7 +74,7 @@
                                    <div class="pull-all pt-50">
                                    <!-- Lines Chart Container functionality is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _es6/pages/be_pages_dashboard.js -->
                                    <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
-                                   <canvas class="js-chartjs-dashboard-lines"></canvas>
+                                   <canvas id="container" class="js-chartjs-dashboard-lines" data-order="{{ $orderYear }}"></canvas>
                                    </div>
                             </div>
                             <div class="block-content">
@@ -105,51 +105,22 @@
                      </div>
                      </div>
                      <div class="col-md-6">
+                     <div class="block-header block-header-default border-b">
+                            <h3 class="block-title">
+                            Thống kê <small>theo năm</small>
+                            </h3>
+                            <div class="block-options">
+                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                                   <i class="si si-refresh"></i>
+                            </button>
+                            <button type="button" class="btn-block-option">
+                                   <i class="si si-wrench"></i>
+                            </button>
+                            </div>
+                     </div>
                      <div class="block block-rounded block-bordered">
-                            <div class="block-header block-header-default border-b">
-                                   <h3 class="block-title">
-                                   Earnings <small>This week</small>
-                                   </h3>
-                                   <div class="block-options">
-                                   <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                          <i class="si si-refresh"></i>
-                                   </button>
-                                   <button type="button" class="btn-block-option">
-                                          <i class="si si-wrench"></i>
-                                   </button>
-                                   </div>
-                            </div>
-                            <div class="block-content block-content-full">
-                                   <div class="pull-all pt-50">
-                                   <!-- Lines Chart Container functionality is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _es6/pages/be_pages_dashboard.js -->
-                                   <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
-                                   <canvas class="js-chartjs-dashboard-lines2"></canvas>
-                                   </div>
-                            </div>
-                            <div class="block-content bg-white">
-                                   <div class="row items-push text-center">
-                                   <div class="col-6 col-sm-4">
-                                          <div class="font-w600 text-success">
-                                          <i class="fa fa-caret-up"></i> +4%
-                                          </div>
-                                          <div class="font-size-h4 font-w600">$ 6,540</div>
-                                          <div class="font-size-sm font-w600 text-uppercase text-muted">This Month</div>
-                                   </div>
-                                   <div class="col-6 col-sm-4">
-                                          <div class="font-w600 text-danger">
-                                          <i class="fa fa-caret-down"></i> -7%
-                                          </div>
-                                          <div class="font-size-h4 font-w600">$ 1,525</div>
-                                          <div class="font-size-sm font-w600 text-uppercase text-muted">This Week</div>
-                                   </div>
-                                   <div class="col-12 col-sm-4">
-                                          <div class="font-w600 text-success">
-                                          <i class="fa fa-caret-up"></i> +35%
-                                          </div>
-                                          <div class="font-size-h4 font-w600">$ 9,352</div>
-                                          <div class="font-size-sm font-w600 text-uppercase text-muted">Balance</div>
-                                   </div>
-                                   </div>
+                            <div class="pull-all pt-50">
+                                   <canvas id="line-chart"></canvas>
                             </div>
                      </div>
                      </div>
@@ -181,75 +152,39 @@
                                           </tr>
                                    </thead>
                                    <tbody>
-                                          <tr>
-                                            <td>
-                                                <a class="font-w600" href="be_pages_ecom_order.html">ORD.1851</a>
-                                            </td>
-                                            <td>
-                                                    <span class="badge badge-info">Processing</span>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <a href="be_pages_ecom_customer.html">Jack Greene</a>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <a href="be_pages_ecom_customer.html">Jack Greene</a>
-                                            </td>
-                                            <td class="">
-                                                <span class="text-black">$443</span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-danger">Chưa thanh toán</span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-danger">Chưa xử lý</span>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                                <a class="font-w600" href="be_pages_ecom_order.html">ORD.1851</a>
-                                            </td>
-                                            <td>
-                                                    <span class="badge badge-info">Processing</span>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <a href="be_pages_ecom_customer.html">Jack Greene</a>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <a href="be_pages_ecom_customer.html">Jack Greene</a>
-                                            </td>
-                                            <td class="">
-                                                <span class="text-black">$443</span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-danger">Chưa thanh toán</span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-warning">Đang xử lý</span>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                                <a class="font-w600" href="be_pages_ecom_order.html">ORD.1851</a>
-                                            </td>
-                                            <td>
-                                                    <span class="badge badge-info">Processing</span>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <a href="be_pages_ecom_customer.html">Jack Greene</a>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <a href="be_pages_ecom_customer.html">Jack Greene</a>
-                                            </td>
-                                            <td class="">
-                                                <span class="text-black">$443</span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-success">Đã thanh toán</span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-success">Đã xử lý</span>
-                                            </td>
-                                          </tr>
+                                          @foreach ($danh_sach_dat as $item)
+                                                 <tr>
+                                                        <td>
+                                                        <a class="font-w600" href="be_pages_ecom_order.html">ORD.{{ $item->ma_dat_tour }}</a>
+                                                        </td>
+                                                        <td>
+                                                               {{ $item->ten_tour }}
+                                                        </td>
+                                                        <td class="d-none d-sm-table-cell">
+                                                               {{ $item->ngay_dat }}
+                                                        </td>
+                                                        <td class="d-none d-sm-table-cell">
+                                                               {{ $item->ngay_dat }}
+                                                        </td>
+                                                        <td class="">
+                                                        <span class="text-black">{{ number_format($item->thanh_tien,0,'.','.')."  VNĐ" }}</span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                               @if ($item->Phuong_thuc_thanh_toan == 0)
+                                                                      <span class="text-center badge badge-success">Trực Tiếp</span>
+                                                                      
+                                                               @else 
+                                                                      <span class="text-center badge badge-success">Online</span>
+
+                                                               @endif
+
+                                                        </td>
+                                                        <td>
+                                                               <span class="badge badge-danger">Chưa xử lý</span>
+                                                        </td>
+                                                 </tr>
+                                          @endforeach
+                                          
                                    </tbody>
                                    </table>
                             </div>
@@ -260,4 +195,112 @@
        </div>
               <!-- END Page Content -->
 </main>
+@endsection
+@section('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="{{asset('Admin/dropzone/dist/min/dropzone.min.js')}}" type="text/javascript"></script>
+<script>
+      
+
+          window.onload = function () {
+              var order = $('#container').data('order');
+              var listOfValue = [];
+              var listOfYear = [];
+              order.forEach(function(element){
+                     listOfYear.push(element.getYear);
+                     listOfValue.push(element.value);
+              });
+              Chart.defaults.global.defaultFontColor = '#000000';
+              Chart.defaults.global.defaultFontFamily = 'Arial';
+              var lineChart = document.getElementById('line-chart');
+              var myChart = new Chart(lineChart, {
+                  type: 'bar',
+                  data: {
+                      labels: listOfYear,
+                      datasets: [
+                          {
+                              label: 'Số Tour',
+                              data: listOfValue,
+                              backgroundColor: 'rgba(0, 128, 128, 0.3)',
+                              borderColor: 'rgba(0, 128, 128, 0.7)',
+                              borderWidth: 1,
+                              backgroundColor: [
+                                   'rgba(255, 99, 132, 0.2)',
+                                   'rgba(54, 162, 235, 0.2)',
+                                   'rgba(255, 206, 86, 0.2)',
+                                   'rgba(75, 192, 192, 0.2)',
+                                   'rgba(153, 102, 255, 0.2)',
+                                   'rgba(255, 159, 64, 0.2)'
+                                   ],
+                                   borderColor: [
+                                          'rgba(255, 99, 132, 1)',
+                                          'rgba(54, 162, 235, 1)',
+                                          'rgba(255, 206, 86, 1)',
+                                          'rgba(75, 192, 192, 1)',
+                                          'rgba(153, 102, 255, 1)',
+                                          'rgba(255, 159, 64, 1)'
+                                   ],
+                                   borderWidth: 1,
+                          },
+                      ]
+                  },
+                  options: {
+                     layout: {
+                            padding: {
+                              left: 5,
+                              top: 5,
+                              right: 10,
+                              bottom: 5,
+                            },
+                          },
+                     title: {
+                            display: true,
+                            text: 'Doanh Thu Theo Năm',
+                            fontSize: 20,
+                            lineHeight:1.2,      
+                        },
+                     scales: {
+                         xAxes: [{
+                                
+                            display: true,
+                             gridLines: {
+                                 offsetGridLines: true,
+                             },
+                             stacked: true,
+                             
+                             scaleLabel: {
+                                   display: true,
+                                   labelString: 'Năm',
+                                   fontSize: 18,
+                                   padding:4,
+                                 },
+                            ticks: {
+                                   fontSize: 15,
+                            }
+                            
+                         }],
+                         yAxes: [{
+                            display: true,
+                             gridLines: {
+                                 offsetGridLines: true,
+                             },
+                             
+                             scaleLabel: {
+                                   display: true,
+                                   labelString: 'Số Tour',
+                                   fontSize: 18,
+                                   padding: 25,
+                                 },
+                            ticks: {
+                                   fontSize: 15,
+                                   responsive:true,	
+                            }
+                         }]
+
+                      }
+              },
+              });
+          };
+</script>
 @endsection

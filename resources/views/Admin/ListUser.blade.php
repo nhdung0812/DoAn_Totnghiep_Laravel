@@ -16,8 +16,6 @@
 
             </div>
             <div class="block-content block-content-full">
-
-
                 <div class="block">
                     <div class="block-header block-header-default">
                         <h3 class="block-title ">Quản trị viên</h3>
@@ -93,14 +91,7 @@
                 <div class="alert alert-danger print-error-msg" style="display:none">
                     <ul></ul>
                 </div>
-                {{-- <div id="validation-errors"></div> --}}
-                @if ( isset($errors))
-                    <div class="alert alert-danger">
-                    <ul>
-                       <li></li>
-                    </ul>
-                    </div>
-                @endif
+                <div id="validation-errors"></div>
 
                 <form class="js-validation-material" enctype="multipart/form-data" id="addForm" name="addForm" method="POST" action="">
                     {{ csrf_field() }}
@@ -190,6 +181,7 @@
                     </button>
                 </div>
                 <div class="modal-body" style="border-top:1px solid grey">
+               
                 <div class="alert alert-danger print-error-msg" style="display:none">
                     <ul></ul>
                 </div>

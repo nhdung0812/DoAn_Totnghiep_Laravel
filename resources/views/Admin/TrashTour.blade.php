@@ -54,7 +54,7 @@
                                 <a href="{{ route('Quantri.xoa_vinh_vien_tour',$item->ma_tour) }}" title="" type="submit" class="delete-confirm btn btn-success  min-width-10 ">
                                     Xoá
                                 </a>
-                                <a href="" class="edit_tour btn btn-primary min-width-90">
+                                <a href="{{ route('Quantri.phuc_hoi_tour',$item->ma_tour) }}" class="edit_tour btn btn-primary min-width-90">
                                     <i class="fa fa-wrench"></i> Phục hồi
                                 </a>
                                 

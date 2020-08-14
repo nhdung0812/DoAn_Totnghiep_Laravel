@@ -171,12 +171,16 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
+        Barryvdh\Debugbar\ServiceProvider::class,
+        awssat\Visits\VisitsServiceProvider::class,
+        NotificationChannels\WebPush\WebPushServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*
@@ -231,6 +235,8 @@ return [
         'Input' => Illuminate\Support\Facades\Input::class,
         'Input' => Illuminate\Support\Facades\Request::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
     ],
 
 ];

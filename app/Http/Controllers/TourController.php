@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ChiTietTour;
 use App\ChuongTrinhTour;
 use App\DiaDiem;
+use App\HinhAnh;
 use App\Http\Requests\ChuongTrinhTourRequest;
 use App\KhuVuc;
 use App\LoaiTour;
@@ -49,6 +50,7 @@ class TourController extends Controller
      */
     public function store(ChuongTrinhTourRequest $request)
     {
+        //dd($request);
         $Chuongtrinhtour = new ChuongTrinhTour();
         $Chuongtrinhtour->ten_tour = $request->ten_tour;
         $Chuongtrinhtour->gia_tour = $request->gia_tour;
@@ -76,9 +78,16 @@ class TourController extends Controller
         }
         
         $Chuongtrinhtour->save();
+        // for($i = 0 ; $i < count($request->image);$i++)
+        // {
+        //     $hinhanh = new HinhAnh();
+        //     $hinhanh->ma_dia_diem = $Chuongtrinhtour->ma_tour;
+        //     $hinhanh->Hinh_anh_1 = $request->image[$i];
+        //     $hinhanh->save();
+        // }
         for($i = 0 ; $i < count($request->dia_diem);$i++)
         {
-            $chitiettour = new ChiTietTour;
+            $chitiettour = new ChiTietTour();
             $chitiettour->ma_tour = $Chuongtrinhtour->ma_tour;
             $chitiettour->ma_dia_diem = $request->dia_diem[$i];
             $chitiettour->ma_mien = $request->khu_vuc;
@@ -97,13 +106,20 @@ class TourController extends Controller
     public function show( $id)
     {
         //
+        $loai_tour = LoaiTour::all();
+        $diadiem = DiaDiem::all();
         
+        $get_khuvuc = KhuVuc::all();
+       
+        $khuvuc = DB::select("SELECT * FROM chuongtrinhtour, chitiettour , mien WHERE chuongtrinhtour.ma_tour = chitiettour.ma_tour and chitiettour.ma_mien = mien.ma_mien AND chuongtrinhtour.ma_tour = ? limit 1,1 ", [$id]);
+        $get_diadiem = DB::select('SELECT * FROM chuongtrinhtour, chitiettour , mien , diadiem WHERE chuongtrinhtour.ma_tour = chitiettour.ma_tour and chitiettour.ma_mien = mien.ma_mien AND chitiettour.ma_dia_diem = diadiem.ma_dia_diem and chuongtrinhtour.ma_tour = ?', [$id]);
         $tour = DB::table('chuongtrinhtour')
         ->join('loaitour', 'chuongtrinhtour.ma_loai_tour', '=', 'loaitour.ma_loai_tour')
-        ->select('*', 'ten_loai_tour')
+        ->select('*')
         ->where('chuongtrinhtour.ma_tour', '=', $id)
         ->get();
-        return view('Admin.Form_update_tour',compact('tour'));
+        //dd($get_diadiem);
+        return view('Admin.Form_update_tour',compact('tour','loai_tour','diadiem','khuvuc','get_khuvuc','get_diadiem'));
 
     }
 
@@ -155,10 +171,16 @@ class TourController extends Controller
         $tour->forceDelete();
         return redirect()->back();
     }
-
+    public function ustrash($id)
+    {
+        $restore = ChuongTrinhTour::withTrashed()->find($id);
+        $restore->restore();
+        return redirect()->back();
+    }
     // Hiện địa điểm theo khu vực
     public function hiendiadiem(Request $request)
     {
+        
         $diadiem = DB::table('diadiem')
         ->select('*', 'ten_dia_diem')
         ->where('ma_mien','=' , $request->ID )
