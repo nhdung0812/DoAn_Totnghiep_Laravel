@@ -5,10 +5,10 @@
         <!-- Page Content -->
         <div class="content">
             <!-- Table Sections (.js-table-sections class is initialized in Helpers.tableToolsSections()) -->
-            <h2 class="content-heading">Danh sách Khách Hàng</h2>
+            <h2 class="content-heading">Danh sách Hội Viên</h2>
             <div class="block">
                 <div class="block-content">
-                    <!--    
+                    <!--
                     Separate your table content with multiple tbody sections. Add one row and add the class .js-table-sections-header to a
                     tbody section to make it clickable. It will then toggle the next tbody section which can have multiple rows. Eg:
 
@@ -90,24 +90,6 @@
                                 <td class="font-size-sm text-bold">Trạng thái thanh toán:</td>
                                 <td class="d-none d-sm-table-cell text-success">x</td>
                                 <td class="font-size-sm text-bold">Tuổi</td>
-                                <td class="d-none d-sm-table-cell text-success">x</td>
-                            </tr>
-                            <tr> 
-                                <th style="width: 30px;"></th>
-                                <th>Hành Khách</th>
-                                <th style="width: 30px;">Gmail</th>
-                                <th style="width: 30px;">Số chổ</th>
-                                <th style="width: 30px;"></th>
-                                <th style="width: 15%;">Trạng Thái</th>
-                                <th class="d-none d-sm-table-cell" style="width: 20%;">Chức năng</th>
-                            </tr>
-                            <tr>
-                                <td class="text-center"></td>
-                                <td class="text-center">Giới tính:</td>
-                                <td class="font-w600 text-success"> x</td>
-                                <td class="font-size-sm text-bold">Tuổi:</td>
-                                <td class="d-none d-sm-table-cell text-success">x</td>
-                                <td class="font-size-sm text-bold">CMND:</td>
                                 <td class="d-none d-sm-table-cell text-success">x</td>
                             </tr>
                         </tbody>
