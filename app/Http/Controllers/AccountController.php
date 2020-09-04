@@ -18,6 +18,7 @@ use Illuminate\Http\UploadedFile;
 use App\Post;
 use Illuminate\Auth\Access\Gate;
 use App\Providers\AuthServiceProvider;
+use App\RoleUser;
 use App\User;
 use DebugBar\DebugBar;
 use Spatie\Permission\Models\Role;
@@ -33,10 +34,11 @@ class AccountController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $role = Role::all();
         if(('isAdmin')){
             $taiKhoan = TaiKhoan::all();
             $so_tour = DB::table('chuongtrinhtour')->count('ma_tour');
-            return view('Admin.ListUser',compact('taiKhoan','so_tour'));
+            return view('Admin.ListUser',compact('taiKhoan','so_tour','role'));
         }
     }
     public function coutTour()
@@ -94,8 +96,9 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        $users = TaiKhoan::role('admin')->get();
-        $check =  Auth::guard('quantriviens')->user();
+        // $users = TaiKhoan::role('admin')->get();
+        // $check =  Auth::guard('quantriviens')->user();
+        //dd($request);
         $taiKhoan = new TaiKhoan;
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -105,22 +108,28 @@ class AccountController extends Controller
             $taiKhoan->hinh_anh = $name;
         }
                                                                 
-                                     $taiKhoan->ten_dang_nhap = $request->ten_dang_nhap;
+        $taiKhoan->ten_dang_nhap = $request->ten_dang_nhap;
+        $taiKhoan->ten_quan_tri = $request->ho_ten;
         $taiKhoan->mat_khau = Hash::make($request->mat_khau);
         $taiKhoan->gmail = $request->gmail;
         $taiKhoan->dien_thoai = $request->sdt;
         $taiKhoan->dia_chi = $request->dia_chi;
-        if($request->status != 0)
-            $taiKhoan->trang_thai = $request->status ;
+        if($request->phanquan != 2)
+            $taiKhoan->trang_thai = $request->phanquyen ;
         else
-            $taiKhoan->trang_thai = 0;
-
+            $taiKhoan->phanquyen = 2;
         //dd($taiKhoan->hinh_anh);
         $taiKhoan->save();
         // if($request->status != 0)
         //     $taiKhoan->givePermissionTo('edit articles');
         // return auth()->user()->givePermissionTo('edit articles');
-                return response()->json(['success' => '1']);
+
+        // Thêm Phân Quyền
+        $UserRoles = new RoleUser();
+        $UserRoles->role_id = $request->phanquyen;
+        $UserRoles->user_id = $taiKhoan->ma_quan_tri;
+        $UserRoles->save();
+        return response()->json(['success' => '1']);
     }
 
     /**
@@ -170,12 +179,10 @@ class AccountController extends Controller
         $user->gmail = $request->gmail;
         $user->dien_thoai = $request->sdt;
         $user->dia_chi = $request->dia_chi;
-        if($request->up_checkbox != 0)
-            $user->trang_thai = $request->up_checkbox ;
-        else
-            $user->trang_thai = 0;
-
+        $user->trang_thai = $request->phanquyen ;
         $user->save();
+
+        $UserRoles =  DB::table('Role_user')->where('user_id', $request->ID)->update(['role_id' => $request->phanquyen]);
         return response()->json(['success' => '1']);
     }
     /**

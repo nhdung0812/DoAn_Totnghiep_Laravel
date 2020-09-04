@@ -46,7 +46,7 @@
 
                         <!-- Activicity -->
                         <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
-                            <a id="tourMenu" class="nav-link u-header__nav-link  u-header__nav-link-border" href="#bouns" aria-haspopup="true" aria-expanded="false" aria-labelledby="tourSubMenu">Khuyến Mãi</a>
+                            <a id="tourMenu" class="nav-link u-header__nav-link  u-header__nav-link-border" href="{{ route('Tous.khuyen_mai_tour') }}" aria-haspopup="true" aria-expanded="false" aria-labelledby="tourSubMenu">Khuyến Mãi</a>
                             <!-- Tour Submenu -->
                             {{-- <ul id="tourSubMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="tourMenu" style="min-width: 230px;">
                                 <li><a class="nav-link u-header__sub-menu-nav-link" href="#">List</a></li>
@@ -89,10 +89,10 @@
 
                 <!-- My Account -->
                 <div class="position-relative pl-4 pr-xl-4 u-header__divider-xl ml-auto ml-md-0">
-                <a class="signin_member d-flex align-items-center text-primary" type="button" data-toggle="modal" data-target="#signin_member" >
+                {{-- <a class="signin_member d-flex align-items-center text-primary" type="button" data-toggle="modal" data-target="#signin_member" >
                         <i class="flaticon-user mx-xl-2"></i>
                         <span class="d-none d-xl-inline-block mr-1">Đăng Nhập và Đăng kí</span>
-                    </a>
+                    </a> --}}
 
                 </div>
                 <!-- End My Account -->

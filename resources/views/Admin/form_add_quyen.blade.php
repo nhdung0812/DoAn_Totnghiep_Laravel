@@ -9,19 +9,19 @@
         <div class="block">
             <div class="block-content">
                 <form class="js-validation-material" enctype="multipart/form-data"
-                    action="{{route('Quantri.xu_ly_edit_chuc_vu', $role->id)}}" role="form" id=""
+                    action="{{route('Quantri.xu_ly_them_chuc_vu')}}" role="form" id=""
                     name="" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Tên Chức Vụ</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" id="name" name="name" value="{{ $role->name }}" placeholder="Nhân Viên hoặc kế toán">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Nhân Viên hoặc kế toán">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-12" for="example-text-input">Tên Hiển Thị</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" id="display_name" name="display_name" value="{{ $role->display_name }}" placeholder="Xoá Thêm Sửa ">
+                            <input type="text" class="form-control" id="display_name" name="display_name" placeholder="Xoá Thêm Sửa ">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -29,7 +29,7 @@
                         <div class="col-12">
                             @foreach ($permissions as $permi)
                                 <div class="col-sm-3 custom-control custom-checkbox custom-control-inline mb-5 pb-4 ">
-                                    <input class="custom-control-input" type="checkbox" name="quyentruycap[]" id="quyentruycap{{$permi->id}}" value="{{ $permi->id}}" {{ $getAllPermissionsofRole->contains($permi->id) ? 'checked' : '' }}>
+                                    <input class="custom-control-input" type="checkbox" name="quyentruycap[]" id="quyentruycap{{$permi->id}}" value="{{ $permi->id}}">
                                     <label class="custom-control-label" for="quyentruycap{{ $permi->id}}">{{ $permi->display_name}}</label>
                                 </div>
                             @endforeach
@@ -38,7 +38,7 @@
                     <div class="form-group row ">
                         <div class="col-12 text-right">
                             <button type="submit" class=" btn btn-success mr-5 p-3 mb-5">
-                                <i class="fa fa-plus mr-5"></i> Sửa
+                                <i class="fa fa-plus mr-5"></i> Thêm
                             </button>
                         </div>
                     </div>

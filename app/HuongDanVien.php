@@ -5,11 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Permission extends Model
+class HuongDanVien extends Model
 {
-    //
-    use SoftDeletes;   
+    use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $table = 'permissions';
-    protected $primaryKey = 'id';
+    protected $table = 'huongdanvien';
+    protected $primaryKey = 'ma_hdv';
 }

@@ -47,6 +47,7 @@ $(document).on('click','#add', function(e){
     formData.append('mat_khau_confirmation',$('input[name=mat_khau_confirmation]').val()),
     formData.append('sdt', $('input[name=sdt]').val())
     formData.append('gmail',$('input[name=gmail]').val()),
+    formData.append('phanquyen',$('#phanquyen').val()),
     formData.append('dia_chi', $('input[name=dia_chi]').val())
     formData.append('status', checkbox),
     $.ajax({
@@ -131,7 +132,7 @@ $(document).on('click','.edit', function(e){
     var me = $(this);
     var title = me.attr('title');
     var url1 = me.attr('href');
-
+    
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -139,6 +140,7 @@ $(document).on('click','.edit', function(e){
         url : url1,
         type: 'POST',
         success: function(html){
+              console.log(html);
             $('input[name=up_ID]').val(html.data.ma_quan_tri);
             $('input[name=up_ho_ten]').val(html.data.ten_quan_tri);
             $('input[name=up_ten_dang_nhap]').val(html.data.ten_dang_nhap);
@@ -147,7 +149,7 @@ $(document).on('click','.edit', function(e){
             $('input[name=up_sdt]').val(html.data.dien_thoai);
             $('input[name=up_dia_chi]').val(html.data.dia_chi);
             $('input[name=up_checkbox]').val(html.data.trang_thai);
-            $('input[name=up_checkbox]').prop("checked", html.data.trang_thai);
+            $('#phanquyen_edit option[value="'+ html.data.trang_thai +'"]').prop("selected", true );
             $('#up_holder').attr("src",'/Admin/image/avatar/'+html.data.hinh_anh);
             $('.action').attr("id", "btn_edit");
             $('#update').modal('show');
@@ -162,4 +164,6 @@ $(document).on('click','.edit', function(e){
                });
             }
         })
+
+       
 });

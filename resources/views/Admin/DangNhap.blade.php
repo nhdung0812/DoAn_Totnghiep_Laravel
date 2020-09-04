@@ -16,12 +16,15 @@
                 <h2 class="h4 font-w400 text-muted mb-0">Vui lòng đăng nhập</h2>
             </div>
             <!-- END Header -->
-
+           
             <!-- Sign In Form -->
             <div class="row justify-content-center px-5">
                 <div class="col-sm-8 col-md-6 col-xl-4">
-                    <!-- jQuery Validation functionality is initialized with .js-validation-signin class in js/pages/op_auth_signin.min.js which was auto compiled from _es6/pages/op_auth_signin.js -->
-                    <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+                    @if (session('login'))
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{ session('login') }} </strong>
+                    </div>
+                    @endif
                     <form class="js-validation-signin" action="{{url('quantri/dangnhap')}}" method="POST" role="form">
                             {{ csrf_field() }}
                         <div class="form-group row">

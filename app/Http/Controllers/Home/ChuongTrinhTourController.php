@@ -35,11 +35,14 @@ class ChuongTrinhTourController extends Controller
         // Tour Nước ngoài
         $tour_nuoc_ngoai = DB::select('SELECT * FROM chuongtrinhtour, loaitour , Tour WHERE chuongtrinhtour.ma_loai_tour = loaitour.ma_loai_tour And Tour.ma_chuog_trinh = chuongtrinhtour.ma_tour And loaitour.ma_loai_tour= 1 AND Tour.Trang_thai = 1');
         // Tour khuyến mãi
-        $tour_khuyen_mai = DB::table('chuongtrinhtour')
-                            ->join('loaitour', 'chuongtrinhtour.ma_loai_tour', '=', 'loaitour.ma_loai_tour')
-                            ->select('*', 'ten_loai_tour')
-                            ->where('khuyen_mai','<>' ,'0' )
-                            ->get();
+        $tour_khuyen_mai =   DB::table('chuongtrinhtour')
+                                ->join('loaitour', 'chuongtrinhtour.ma_loai_tour', '=', 'loaitour.ma_loai_tour')
+                                ->join('Tour','chuongtrinhtour.ma_tour','=','Tour.ma_chuog_trinh')
+                                ->select('*')
+                                ->where('chuongtrinhtour.khuyen_mai','!=' , 0)
+                                ->where('Tour.Trang_thai', '=', 1)
+                                ->distinct()
+                                ->get();
         // Tour nỗi bật nhất
         $tour_top_one = DB::select('SELECT * FROM chuongtrinhtour,loaitour,Tour WHERE  chuongtrinhtour.ma_tour = Tour.ma_chuog_trinh and chuongtrinhtour.ma_loai_tour = loaitour.ma_loai_tour and so_cho_da_dat =( SELECT MAX( so_cho_da_dat ) FROM Tour)');
         // Tour nỗi bật thứ 2
@@ -51,14 +54,24 @@ class ChuongTrinhTourController extends Controller
     }
     // Danh sách thể loại tour
     public function theloaitour($id)
-    {
-        
+    {   
+        $count =  DB::table('chuongtrinhtour')
+                    ->join('loaitour', 'chuongtrinhtour.ma_loai_tour', '=', 'loaitour.ma_loai_tour')
+                    ->join('Tour','chuongtrinhtour.ma_tour','=','Tour.ma_chuog_trinh')
+                    ->select('*')
+                    ->where('loaitour.ma_loai_tour', '=', $id)
+                    ->where('Tour.Trang_thai', '=', 1)
+                    ->distinct()
+                    ->count();
         $list_tour = DB::table('chuongtrinhtour')
                             ->join('loaitour', 'chuongtrinhtour.ma_loai_tour', '=', 'loaitour.ma_loai_tour')
-                            ->select('*', 'ten_loai_tour')
+                            ->join('Tour','chuongtrinhtour.ma_tour','=','Tour.ma_chuog_trinh')
+                            ->select('*')
                             ->where('loaitour.ma_loai_tour', '=', $id)
-                            ->paginate(6);
-        return view('Home.ListTour', compact('list_tour'));
+                            ->where('Tour.Trang_thai', '=', 1)
+                            ->distinct()
+                            ->paginate(10);
+        return view('Home.ListTour', compact('list_tour','count'));
     }
     /**
      * Show the form for creating a new resource.
@@ -98,23 +111,11 @@ class ChuongTrinhTourController extends Controller
         //
         $stt = 0;
         $temp = (int)$id;   
-        //var_dump($temp);
-        //dd($id);
-        $comment = DB::select('SELECT * FROM comment WHERE ma_tour = ?', [$id]);
-        $num_reviews = DB::select('SELECT count(*) as num FROM comment WHERE ma_tour = ?', [$id]);
+        $comment = DB::select('SELECT * FROM comment WHERE ma_tour = ? and trang_thai = 1 ', [$id]);
+        $num_reviews = DB::select('SELECT count(*) as num FROM comment WHERE ma_tour = ? and trang_thai = 1 ', [$id]);
         $hinh_anh = DB::select('SELECT Hinh_anh_1 FROM chuongtrinhtour , chitiettour ,diadiem , Hinh_Anh WHERE chuongtrinhtour.ma_tour = chitiettour.ma_tour AND chitiettour.ma_dia_diem = diadiem.ma_dia_diem AND diadiem.ma_dia_diem = Hinh_anh.ma_dia_diem AND chuongtrinhtour.ma_tour = ? ', [$temp]);
-        //dd($hinh_anh);
-        $tour = DB::select('SELECT * FROM chuongtrinhtour, loaitour WHERE chuongtrinhtour.ma_loai_tour = loaitour.ma_loai_tour');
+        $tour = DB::select('SELECT * FROM Tour,chuongtrinhtour, loaitour WHERE chuongtrinhtour.ma_tour = Tour.ma_chuog_trinh and chuongtrinhtour.ma_loai_tour = loaitour.ma_loai_tour and Trang_thai = 1');
         $singletour = DB::select('SELECT * , ctt.ma_tour FROM chuongtrinhtour as ctt , chitiettour ct , mien ,loaitour, Tour WHERE Tour.ma_chuog_trinh = ctt.ma_tour AND ct.ma_mien = mien.ma_mien AND ctt.ma_loai_tour = loaitour.ma_loai_tour  and ctt.ma_tour = ? LIMIT 1,1' ,[$id]   );
-        // $singletour = DB::table('chuongtrinhtour')
-        //                     ->join('Tour','chuongtrinhtour.ma_tour','=','Tour.ma_chuog_trinh')
-        //                     ->join('loaitour', 'chuongtrinhtour.ma_loai_tour', '=', 'loaitour.ma_loai_tour')
-        //                     //->join('chitiettour' , 'chuongtrinhtour.ma_tour','=' ,'chitiettour.ma_tour')
-        //                     //->join('mien' , 'chitiettour.ma_mien','=' ,'mien.ma_mien')
-        //                     ->select('*')
-        //                     ->where('chuongtrinhtour.ma_tour', '=', $id)
-        //                     ->get();
-        //dd($singletour);
         $lich_trinh = DB::select('SELECT * FROM chuongtrinhtour,lichtrinh WHERE chuongtrinhtour.ma_tour = lichtrinh.ma_chuong_trinh and chuongtrinhtour.ma_tour = ?' , [$id]);
         return View('Home.single', compact( 'singletour','tour','hinh_anh','lich_trinh','stt','comment','num_reviews'));
     }
@@ -131,8 +132,16 @@ class ChuongTrinhTourController extends Controller
                             ->where('mien.ma_mien', '=', $request->dia_diem)
                             ->orWhere('ngay_khoi_hanh','=',$request->ngay)
                             ->paginate(6);
-        //dd($list_tour);
-        return view('Home.ListTour', compact('list_tour'));
+        $count =     DB::table('chuongtrinhtour')
+                            ->join('loaitour', 'chuongtrinhtour.ma_loai_tour', '=', 'loaitour.ma_loai_tour')
+                            ->join('chitiettour' , 'chuongtrinhtour.ma_tour','=' ,'chitiettour.ma_tour')
+                            ->join('mien' , 'chitiettour.ma_mien','=' ,'mien.ma_mien')
+                            ->join('Tour','chuongtrinhtour.ma_tour','=','Tour.ma_chuog_trinh')
+                            ->select('*')
+                            ->where('mien.ma_mien', '=', $request->dia_diem)
+                            ->orWhere('ngay_khoi_hanh','=',$request->ngay)
+                            ->count();
+        return view('Home.ListTour', compact('list_tour','count'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -163,8 +172,25 @@ class ChuongTrinhTourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function khuyenmai()
     {
         //
+        $count =  DB::table('chuongtrinhtour')
+                    ->join('loaitour', 'chuongtrinhtour.ma_loai_tour', '=', 'loaitour.ma_loai_tour')
+                    ->join('Tour','chuongtrinhtour.ma_tour','=','Tour.ma_chuog_trinh')
+                    ->select('*')
+                    ->where('chuongtrinhtour.khuyen_mai','!=' , 0)
+                    ->where('Tour.Trang_thai', '=', 1)
+                    ->distinct()
+                    ->paginate(10);
+    $list_tour =        DB::table('chuongtrinhtour')
+                        ->join('loaitour', 'chuongtrinhtour.ma_loai_tour', '=', 'loaitour.ma_loai_tour')
+                        ->join('Tour','chuongtrinhtour.ma_tour','=','Tour.ma_chuog_trinh')
+                        ->select('*')
+                        ->where('chuongtrinhtour.khuyen_mai','!=' , 0)
+                        ->where('Tour.Trang_thai', '=', 1)
+                        ->distinct()
+                        ->paginate(10);
+        return view('Home.ListTour', compact('list_tour','count'));
     }
 }

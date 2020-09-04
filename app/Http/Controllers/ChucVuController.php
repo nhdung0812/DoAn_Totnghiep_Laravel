@@ -6,6 +6,7 @@ use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\TaiKhoan;
+use App\Permission;
 class ChucVuController extends Controller
 {
     /**
@@ -13,14 +14,15 @@ class ChucVuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $taikhoan = DB::table('roles')
-                        ->join('role_has_permissions', 'role_has_permissions.role_id', '=', 'roles.id')                      
-                        ->select('roles.id', 'roles.name')
-                        ->groupBy('roles.id')
-                        ->get();
-        $role = DB::table('role_has_permissions')                   
+        // $taikhoan = DB::table('roles')
+        //                 ->join('role_permission', 'role_permission.role_id', '=', 'roles.id')                      
+        //                 ->select('roles.id', 'roles.name', 'roles.display_name')
+        //                 ->groupBy('roles.id')
+        //                 ->get();
+        $taikhoan = Role::all();
+        $role = DB::table('role_permission')                   
                 ->select('*')
                 ->get();
         $phanquyen = DB::table('permissions')                   
@@ -29,6 +31,12 @@ class ChucVuController extends Controller
         return view('Admin.Access',compact('taikhoan','phanquyen','role')) ;
     }
 
+    // Load permissions
+    public function load_role(Request $request)
+    {
+        $role = Role::all();
+        return response()->json(['data_pq'=> $role]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -37,6 +45,8 @@ class ChucVuController extends Controller
     public function create()
     {
         //
+        $permissions = Permission::all();
+        return view('Admin.form_add_quyen', compact('permissions'));
     }
 
     /**
@@ -48,6 +58,15 @@ class ChucVuController extends Controller
     public function store(Request $request)
     {
         //
+        $role = new Role();
+        $role->name = $request->name;
+        $role->display_name = $request->display_name;
+        $role->save();
+
+        // Thêm dữ kiệu role_permission
+        $role->permission()->attach($request->quyentruycap);
+
+        return redirect()->route('Quantri.chuc_vu');
     }
 
     /**
@@ -59,7 +78,10 @@ class ChucVuController extends Controller
     public function show($id)
     {
         //
-        return view('Admin.form_edit_quyen');
+        $permissions = Permission::all();
+        $role = Role::findOrFail($id);
+        $getAllPermissionsofRole = DB::table('role_permission')->where('role_id', $id)->pluck('permission_id');
+        return view('Admin.form_edit_quyen', compact('permissions', 'role','getAllPermissionsofRole'));
     }
 
     /**
@@ -83,6 +105,17 @@ class ChucVuController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $role = Role::findOrFail($id);
+        $role->name = $request->name;
+        $role->display_name = $request->display_name;
+        $role->save();
+
+        DB::table('role_permission')->where('role_id', $id)->delete();
+        $roleedit = Role::findOrFail($id);
+        $roleedit->permission()->attach($request->quyentruycap);
+
+
+        return redirect()->route('Quantri.chuc_vu');
     }
 
     /**
@@ -94,5 +127,9 @@ class ChucVuController extends Controller
     public function destroy($id)
     {
         //
+         $role = Role::find($id);
+         $role->delete($id);
+         $role->permission()->detach();
+         return redirect()->route('Quantri.chuc_vu');
     }
 }

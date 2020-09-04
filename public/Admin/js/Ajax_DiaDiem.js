@@ -5,6 +5,7 @@ $(document).on('click','.create-modal_Diadiem', function() {
        $('.form-horizontal').show();
        $('.modal-title .si').text(' Thêm địa điểm');
 });
+
 $('#them_dia_diem').click(function(){
        var formData = new FormData($('Creatr_DiaDiem')[0]);
        formData.append('ten_dia_diem', $('input[name=ten_diadiem]').val())
@@ -61,8 +62,7 @@ $(document).on('click','.edit_diadiem', function(e){
            $('input[name=ID]').val(html.data.ma_dia_diem);
            $('input[name=up_ten_diadiem]').val(html.data.ten_dia_diem);
            $('input[name=up_thongtin_dd]').val(html.data.thongtin);
-           $('select[name=khu_vuc]').append("<option value='"+ html.data.ma_mien +"' selected>hahaahh</option>");
-           
+           $('select[name=khu_vuc] option[value="'+ html.data.ma_mien  +'"]').prop("selected", true );
            $('.action').attr("id", "btn_edit");
            $('#Update_diadiem').modal('show');
            $('.form-horizontal').show();
@@ -104,7 +104,7 @@ $(document).on('click','.edit_diadiem', function(e){
                                     text: "",
                                     icon: "success",
                             });
-                            location.reload();
+                            location.replace();
                        }
                },
                error: function(data){

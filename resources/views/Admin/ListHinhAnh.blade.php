@@ -16,9 +16,9 @@
                 <a href="{{ route('Quantri.form_them_hinh') }}" class="create-modal_Tour btn btn-success mr-5 mb-5">
                     <i class="fa fa-plus mr-5"></i>Thêm hình địa điểm
                 </a>
-                <a href="http://localhost:8000/quantri/thungracloai" type="button" class="show-trash btn btn-danger mr-5 mb-5">
+                {{-- <a href="http://localhost:8000/quantri/thungracloai" type="button" class="show-trash btn btn-danger mr-5 mb-5">
                     <i class="fa fa-trash-o mr-5"></i>Thùng rác
-                </a>
+                </a> --}}
             </div>
         </div>
         @foreach ($diadiem as $item)

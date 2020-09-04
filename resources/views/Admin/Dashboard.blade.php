@@ -56,73 +56,44 @@
               <div class="row invisible" data-toggle="appear">
                      <!-- Row #2 -->
                      <div class="col-md-6">
-                     <div class="block block-rounded block-bordered">
                             <div class="block-header block-header-default border-b">
                                    <h3 class="block-title">
-                                   Sales <small>This week</small>
+                                   Thống kê <small>theo năm</small>
                                    </h3>
                                    <div class="block-options">
-                                   <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                          <i class="si si-refresh"></i>
-                                   </button>
-                                   <button type="button" class="btn-block-option">
-                                          <i class="si si-wrench"></i>
-                                   </button>
+                                          <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                                                 <i class="si si-refresh"></i>
+                                          </button>
+                                          <button type="button" class="btn-block-option">
+                                                 <i class="si si-wrench"></i>
+                                          </button>
                                    </div>
                             </div>
-                            <div class="block-content block-content-full">
-                                   <div class="pull-all pt-50">
-                                   <!-- Lines Chart Container functionality is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _es6/pages/be_pages_dashboard.js -->
-                                   <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
-                                   <canvas id="container" class="js-chartjs-dashboard-lines" data-order="{{ $orderYear }}"></canvas>
+                            <div class="block block-rounded block-bordered">
+                                   <div class="pull-all pt-30 mb-20" >
+                                          <canvas id="myPieChart"></canvas>
                                    </div>
                             </div>
-                            <div class="block-content">
-                                   <div class="row items-push text-center">
-                                   <div class="col-6 col-sm-4">
-                                          <div class="font-w600 text-success">
-                                          <i class="fa fa-caret-up"></i> +16%
-                                          </div>
-                                          <div class="font-size-h4 font-w600">720</div>
-                                          <div class="font-size-sm font-w600 text-uppercase text-muted">This Month</div>
-                                   </div>
-                                   <div class="col-6 col-sm-4">
-                                          <div class="font-w600 text-danger">
-                                          <i class="fa fa-caret-down"></i> -3%
-                                          </div>
-                                          <div class="font-size-h4 font-w600">160</div>
-                                          <div class="font-size-sm font-w600 text-uppercase text-muted">This Week</div>
-                                   </div>
-                                   <div class="col-12 col-sm-4">
-                                          <div class="font-w600 text-success">
-                                          <i class="fa fa-caret-up"></i> +9%
-                                          </div>
-                                          <div class="font-size-h4 font-w600">24.3</div>
-                                          <div class="font-size-sm font-w600 text-uppercase text-muted">Average</div>
-                                   </div>
-                                   </div>
-                            </div>
-                     </div>
                      </div>
                      <div class="col-md-6">
-                     <div class="block-header block-header-default border-b">
-                            <h3 class="block-title">
-                            Thống kê <small>theo năm</small>
-                            </h3>
-                            <div class="block-options">
-                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                   <i class="si si-refresh"></i>
-                            </button>
-                            <button type="button" class="btn-block-option">
-                                   <i class="si si-wrench"></i>
-                            </button>
+                            <div class="block-header block-header-default border-b">
+                                   <h3 class="block-title">
+                                   Thống kê <small>theo năm</small>
+                                   </h3>
+                                   <div class="block-options">
+                                          <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                                                 <i class="si si-refresh"></i>
+                                          </button>
+                                          <button type="button" class="btn-block-option">
+                                                 <i class="si si-wrench"></i>
+                                          </button>
+                                   </div>
                             </div>
-                     </div>
-                     <div class="block block-rounded block-bordered">
-                            <div class="pull-all pt-50">
-                                   <canvas id="line-chart"></canvas>
+                            <div class="block block-rounded block-bordered">
+                                   <div class="pull-all pt-50">
+                                          <canvas id="line-chart"  data-order="{{ $orderYear }}"></canvas>
+                                   </div>
                             </div>
-                     </div>
                      </div>
                      <!-- END Row #2 -->
               </div>
@@ -201,10 +172,44 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="{{asset('Admin/dropzone/dist/min/dropzone.min.js')}}" type="text/javascript"></script>
 <script>
-      
-
-          window.onload = function () {
-              var order = $('#container').data('order');
+       
+       window.onload = function () {
+              var PieChart = document.getElementById('myPieChart');
+              var myPieChart = new Chart(PieChart, {
+                     type: 'pie',
+                     data: {
+                            labels: ["Green", "Blue", "Gray", "Purple", "Yellow", "Red", "Black"],
+                            datasets: [{
+                                   backgroundColor: [
+                                   "#2ecc71",
+                                   "#3498db",
+                                   "#95a5a6",
+                                   "#9b59b6",
+                                   "#f1c40f",
+                                   "#e74c3c",
+                                   "#34495e"
+                                   ],
+                                   data: [12, 19, 3, 17, 28, 24, 7],
+                                   label: 'Dataset 1',
+                            }]
+                     },
+                     options: {
+                            responsive: true,
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Biểu đồ Tour '
+                            },
+                            animation: {
+                                animateScale: true,
+                                animateRotate: true
+                            }
+                     }
+              });
+              var order = $('#line-chart').data('order');
               var listOfValue = [];
               var listOfYear = [];
               order.forEach(function(element){

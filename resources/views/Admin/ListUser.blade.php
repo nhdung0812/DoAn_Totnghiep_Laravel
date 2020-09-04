@@ -39,7 +39,7 @@
                                     <tr>
 
                                         <td class="text-center  d-none d-sm-table-cell avt nav-justified">
-                                            <img src="http://localhost:8000/Admin/image/avatar/{{$tk->hinh_anh}} " class="img-avatar img-avatar48" />
+                                            <img src="{{ asset('Admin/image/avatar/')}}/{{$tk->hinh_anh }} " class="img-avatar img-avatar48" />
                                         </td>
                                         <td class="text-center">{{ $tk->ma_quan_tri }}</td>
                                         <td class="text-center font-w600" >{{ $tk->ten_quan_tri}}</td>
@@ -50,21 +50,26 @@
                                         <td class="text-center d-none d-sm-table-cell">
                                             @if($tk->trang_thai == 1)
                                                     <span class="text-center badge badge-success">Admin</span>
+                                            @elseif($tk->trang_thai == -1)
+                                                    <span class="text-center badge badge-info">Supper Admin</span>
                                             @else
                                                     <span class="text-center badge badge-danger">Nhân Viên</span>
                                             @endif
-
+                                                    
                                         </td>
                                         <td class="text-center">
-
-                                            <a href="{{route('Quantri.update',$tk->ma_quan_tri)}}" type="submit" class="edit btn btn-primary min-width-90">
-                                                <i class="fa fa-wrench"></i> Sửa
-                                            </a>
-                                            <a href="{{route('Quantri.xoa',$tk->ma_quan_tri)}}" title="{{ $tk->ten_quan_tri}}" type="submit" class="delect btn btn-danger  min-width-90 ">
-                                                <i class="fa fa-trash"></i> Xoá
-                                            </a>
+                                            @if($tk->trang_thai == -1)
+                                                <span class="h3">😅🤣😊😌😉</span>
+                                            @else
+                                                <a href="{{route('Quantri.update',$tk->ma_quan_tri)}}" type="submit" class="edit btn btn-primary min-width-90">
+                                                    <i class="fa fa-wrench"></i> Sửa
+                                                </a>
+                                                <a href="{{route('Quantri.xoa',$tk->ma_quan_tri)}}" title="{{ $tk->ten_quan_tri}}" type="submit" class="delect btn btn-danger  min-width-90 ">
+                                                    <i class="fa fa-trash"></i> Xoá
+                                                </a>
+                                            @endif
                                         </td>
-
+                                        
 
                                     </tr>
                                      @endforeach
@@ -147,14 +152,25 @@
                             <label class="col-12">Hình đại diện</label>
                             <div class="col-9 mt-3">
                                 <div class="custom-file">
-                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                    <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
                                     <input type="file" class="custom-file-input" id="avatar" name="avatar" data-toggle="custom-file-input"  required>
                                     <label class="custom-file-label" for="example-file-multiple-input-custom">Choose files</label>
                                 </div>
                             </div>
                             <div class="col-md-3 ">
-                                <img id="holder" class="img-avatar" src="{{ asset('Admin/media/avatars/avatar15.jpg')}}" alt="" style="max-height:100px;">
+                                <img id="holder" class="img-avatar" src="" alt="" style="max-height:100px;">
+                            </div>
+                        </div>
+                        <div class="row no-gutters items-push" id="role">
+                            <div class="col-12">
+                                <h3 class="mb-0">Phân Quyền</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <select class="form-control " id="phanquyen" name="phanquyen">
+                                    @foreach ($role as $item)
+                                        <option value="{{ $item->id}}">{{$item->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger"></span>
                             </div>
                         </div>
                 </form>
@@ -170,7 +186,7 @@
         </div>
     </div>
 </div>
-<!-- {{-- Modal Form edit Tài Khoản --}} -->
+{{--  Modal Form edit Tài Khoản  --}}
 <div id="update" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -244,14 +260,23 @@
                             <label class="col-12">Hình đại diện</label>
                             <div class="col-9 mt-3">
                                 <div class="custom-file">
-                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                    <!-- When multiple files are selected, we use the word 'Files'. You can easily change it to your own language by adding the following to the input, eg for DE: data-lang-files="Dateien" -->
                                     <input type="file" class="custom-file-input" id="up_avatar" name="up_avatar" data-toggle="custom-file-input"  required>
                                     <label class="custom-file-label" for="example-file-multiple-input-custom">Choose files</label>
                                 </div>
                             </div>
                             <div class="col-md-3 ">
-                                <img id="up_holder" class="img-avatar" src="{{ asset('Admin/media/avatars/avatar15.jpg')}}" alt="" style="max-height:100px;">
+                                <img id="up_holder" class="img-avatar" src="" alt="" style="max-height:100px;">
+                            </div>
+                        </div>
+                        <div class="row no-gutters items-push" id="role">
+                            <div class="col-12">
+                                <h3 class="mb-0">Phân Quyền</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <select class="form-control " id="phanquyen_edit" name="phanquyen">
+                                    
+                                </select>
+                                <span class="text-danger"></span>
                             </div>
                         </div>
                 </form>
@@ -261,22 +286,41 @@
                     <span class="glyphicon glyphicon-plus"></span>Cập nhật
                 </button>
                 <button class="btn btn-warning" type="button" data-dismiss="modal">
-                <span class="glyphicon glyphicon-remobe"></span>Thoát
+                    <span class="glyphicon glyphicon-remobe"></span>Thoát
                 </button>
             </div>
         </div>
     </div>
 </div>
-
-<span class="si-user-follow"></span>
 @endsection
-
-@section('js')
-
+@section("js")      
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="{{asset('Admin/js/pages/be_forms_validation.min.js')}}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
+        <script>
+            $(document).on('click','.edit', function(e){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    url: '{{ route('Quantri.load_permissions') }}',
+                    success: function(data){
+                        console.log(data);
+                        var stringified = JSON.stringify(data);
+                        var phanquyen = JSON.parse(stringified);
+                        $('#phanquyen_edit').html('<option disabled="" selected="">Chọn chức vụ</option>');
+                        for(var i = 0 ; i < phanquyen.data_pq.length ; i++){
+                           $('#phanquyen_edit').append('<option value="' + phanquyen.data_pq[i].id +'">'+ phanquyen.data_pq[i].name +'</option>')             
+                        }
+                    },
+                    error: function(data){
+                    }
+                });
+            });
+        </script>   
         <script type="text/javascript" src="{{ asset ('Admin/js/Ajax_Admin.js')}}"></script>
         <script type="text/javascript" src="{{ asset ('Admin/js/update_action.js')}}"></script>
+        
 @endsection

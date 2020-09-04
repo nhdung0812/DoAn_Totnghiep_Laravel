@@ -65,7 +65,7 @@
                                 </div>
 
                                 <div class="col-sm-12 col-lg-2dot8 mb-4 mb-lg-0 dropdown-custom">
-                                    <!-- Input -->
+                                    {{-- <!-- Input -->
                                     <span class="d-block text-gray-1 text-left font-weight-normal mb-0">Rooms and
                                         Guests</span>
                                     <a id="basicDropdownClickInvoker"
@@ -147,7 +147,7 @@
                                             <a class="text-primary font-weight-semi-bold font-size-16" href="#">Done</a>
                                         </div>
                                     </div>
-                                    <!-- End Input -->
+                                    <!-- End Input --> --}}
                                 </div>
 
                                 <div class="col-sm-12 col-lg-1dot8 align-self-lg-end text-md-right">
@@ -1218,7 +1218,7 @@
                     </div>
                 </a>
                 <a href="{{ route('Tous.single',$item->ma_tour) }}"
-                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
+                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->Tieu_de }}</a>
                 <div class="my-2">
                     <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
                         <div class="text-warning mr-2">
@@ -1268,11 +1268,11 @@
             <div class="card-body px-4 py-2">
                 <a href="" class="d-block">
                     <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                        <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
+                        
                     </div>
                 </a>
                 <a href="{{ route('Tous.single',$item->ma_tour) }}"
-                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
+                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->Tieu_de }}</a>
                 <div class="my-2">
                     <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
                         <div class="text-warning mr-2">
@@ -1321,11 +1321,11 @@
             <div class="card-body px-4 py-2">
                 <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
                     <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                        <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
+                        
                     </div>
                 </a>
                 <a href="{{ route('Tous.single',$item->ma_tour) }}"
-                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
+                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->Tieu_de }}</a>
                 <div class="my-2">
                     <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
                         <div class="text-warning mr-2">
@@ -1410,11 +1410,11 @@
                             <div class="card-body px-4 py-2">
                                 <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
                                     <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                                        <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
+                                        
                                     </div>
                                 </a>
                                 <a href="{{ route('Tous.single',$item->ma_tour) }}"
-                                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
+                                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->Tieu_de }}</a>
                                 <div class="my-2">
                                     <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
                                         <div class="text-warning mr-2">
@@ -1500,11 +1500,11 @@
                             <div class="card-body px-4 py-2">
                                 <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
                                     <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                                        <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
+                                        
                                     </div>
                                 </a>
                                 <a href="{{ route('Tous.single',$item->ma_tour) }}"
-                                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->ten_tour }}</a>
+                                    class="card-title text-dark font-size-17 font-weight-bold">{{ $item->Tieu_de }}</a>
                                 <div class="my-2">
                                     <div class="d-inline-flex align-items-center font-size-17 text-lh-1">
                                         <div class="text-warning mr-2">
@@ -1636,7 +1636,7 @@
                             <div class="card-body px-4 py-2">
                                 <a href="{{ route('Tous.single',$item->ma_tour) }}" class="d-block">
                                     <div class="mb-1 d-flex align-items-center font-size-14 text-gray-1">
-                                        <i class="icon flaticon-pin-1 mr-2 font-size-15"></i> Istanbul, Turkey
+                                        
                                     </div>
                                 </a>
                                 <a href="{{ route('Tous.single',$item->ma_tour) }}"

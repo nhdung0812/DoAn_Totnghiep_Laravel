@@ -379,19 +379,7 @@
                             <h5 class="font-size-21 font-weight-bold text-dark mb-6">
                                 Viết đánh giá
                             </h5>
-                            <div class="row">
-                                <div class="col-md-4 mb-6">
-                                    <h6 class="font-weight-bold text-dark mb-1">
-                                        Location
-                                    </h6>
-                                    <span class="text-primary font-size-50 letter-spacing-3">
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile"></small>
-                                        <small class="far fa-smile text-muted"></small>
-                                        <small class="far fa-smile text-muted"></small>
-                                    </span>
-                                </div>
+                            <div class="row"> 
                             </div>
                             <form class="js-validate" novalidate="novalidate" method="POST" action="/comment/{{$singletour[0]->ma_tour}}">
                                 {{ csrf_field() }}

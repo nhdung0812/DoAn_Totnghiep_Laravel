@@ -76,10 +76,9 @@
                                                                 <label class="form-label">
                                                                     Họ Và Tên
                                                                 </label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control {{ $errors->has('firstName') ? 'is-invalid' : '' }}"
                                                                     name="firstName">
-                                                                <div id="firstName-error" class=""
-                                                                    style="display: block;"></div>
+                                                                <span class="text-danger">{{ $errors->first('firstName') }}</span>
                                                             </div>
                                                         </div>
                                                         <!-- End Input -->
@@ -105,7 +104,7 @@
                                                                     Số điện thoại
                                                                 </label>
 
-                                                                <input type="number" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="phone">
+                                                                <input type="number"  class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="phone">
                                                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                                                             </div>
                                                         </div>
@@ -116,10 +115,9 @@
                                                                 <label class="form-label">
                                                                     CMND
                                                                 </label>
-                                                                <input type="number" class="form-control" name="cmnd"
+                                                                <input type="number" class="form-control form-control {{ $errors->has('cmnd') ? 'is-invalid' : '' }}" name="cmnd"
                                                                     placeholder="">
-                                                                <div id="lasstName-error" class=""
-                                                                    style="display: block;"></div>
+                                                                <span class="text-danger">{{ $errors->first('cmnd') }}</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 mb-4">
@@ -127,8 +125,9 @@
                                                                 <label class="form-label">
                                                                     Ngày sinh
                                                                 </label>
-                                                                <input class="form-control" type="date" value="" name="ngay_sinh_khach_hanh" id="ngay_sinh_khach_hanh">
-                                                                <div id="lasstName-error" class="" style="display: block;"></div>
+                                                                <input class="form-control {{ $errors->has('ngay_sinh_khach_hanh') ? 'is-invalid' : '' }}" type="date" value="" name="ngay_sinh_khach_hanh" id="ngay_sinh_khach_hanh">
+                                                                <span class="text-danger">{{ $errors->first('ngay_sinh_khach_hanh') }}</span>
+
                                                             </div>
                                                         </div>
                                                        
@@ -137,12 +136,13 @@
                                                                 <div class="form-group">
                                                                     <label for="exampleFormControlSelect1">Giới
                                                                         tính</label>
-                                                                    <select class="form-control" id="gioi_tinh_khach_hang" name="gioi_tinh_khach_hang">
+                                                                    <select class="form-control {{ $errors->has('gioi_tinh_khach_hang') ? 'is-invalid' : '' }}" id="gioi_tinh_khach_hang" name="gioi_tinh_khach_hang">
                                                                         <option selected="" disabled="">Chọn giới tính
                                                                         </option>
                                                                         <option>Nam</option>
                                                                         <option>Nữ</option>
                                                                     </select>
+                                                                    <span class="text-danger">{{ $errors->first('gioi_tinh_khach_hang') }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -151,10 +151,9 @@
                                                                 <label class="form-label">
                                                                     Địa chỉ
                                                                 </label>
-                                                                <input type="text" class="form-control" name="diachi"
+                                                                <input type="text" class="form-control {{ $errors->has('gioi_tinh_khach_hang') ? 'is-invalid' : '' }}" name="diachi"
                                                                     placeholder="">
-                                                                <div id="lasstName-error" class=""
-                                                                    style="display: block;"></div>
+                                                                    <span class="text-danger">{{ $errors->first('diachi') }}</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-3 mb-4">
@@ -254,58 +253,7 @@
                                                         </div>
                                                         <div id="form_hanh_khach" name="Form_hanh_khach"
                                                             class="row m-0">
-                                                            <div class="col-12 mt-4 mb-3 pt-2"
-                                                                style="background-color: #297cbb">
-                                                                <h3 style="color: white">Hàng Khách 1</h3>
-                                                            </div>
-                                                            <div class="col-sm-3 mb-4">
-                                                                <div class="">
-                                                                    <label class="form-label">
-                                                                        Tên Hành Khách
-                                                                    </label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="ten_hanh_khach[]" placeholder="Họ và tên">
-                                                                    <div id="lasstName-error" class=""
-                                                                        style="display: block;"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-3 mb-4">
-                                                                <div class="js-form-message">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleFormControlSelect1">Giới
-                                                                            tính</label>
-                                                                        <select class="form-control" id="gioi_tinh"
-                                                                            name="gioi_tinh[]">
-                                                                            <option selected disabled>Chọn giới tính
-                                                                            </option>
-                                                                            <option>Nam</option>
-                                                                            <option>Nữ</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-3 mb-4">
-                                                                <div class="">
-                                                                    <label class="form-label">
-                                                                        Ngày sinh
-                                                                    </label>
-                                                                    <input class="form-control" type="date" value=""
-                                                                        name="ngay_sinh[]" id="ngay_sinh">
-                                                                    <div id="lasstName-error" class=""
-                                                                        style="display: block;"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-3 mb-4">
-                                                                <div class="">
-                                                                    <label class="form-label">
-                                                                        Tuổi
-                                                                    </label>
-                                                                    <input type="number" class="form-control"
-                                                                        name="tuoi" placeholder="tuổi">
-                                                                    <div id="lasstName-error" class=""
-                                                                        style="display: block;"></div>
-                                                                </div>
-                                                            </div>
+                                                            
                                                         </div>
                                                         <div class="w-100"></div>
 

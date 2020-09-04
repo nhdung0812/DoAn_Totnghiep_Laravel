@@ -41,6 +41,7 @@
         formData1.append('ten_dang_nhap',$('input[name=up_ten_dang_nhap]').val()),
         formData1.append('sdt', $('input[name=up_sdt]').val())
         formData1.append('gmail',$('input[name=up_gmail]').val()),
+        formData1.append('phanquyen', $('#phanquyen_edit :selected').val())
         formData1.append('dia_chi', $('input[name=up_dia_chi]').val())
         formData1.append('up_checkbox', checkbox),
 

@@ -71,174 +71,188 @@ class DatTourController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DatTourRequest $request)
     {   
+        
         // Thêm Đặt Tour
-        // $dattour = new DatTour();
-        // $dattour->ma_tour = $request->ma_chuong_trinh;
-        // $dattour->ngay_dat = Carbon::now();
-        // $dattour->so_cho_nguoi_lon = $request->nguoi_lon ;
-        // $dattour->so_cho_tre_em = $request->tre_em ;
-        // $dattour->so_cho_tre_con = $request->tre_con ;
-        // $dattour->so_cho_so_sinh = $request->so_sinh;
-        // $dattour->thanh_tien = $request->thanh_tien;
-        // $dattour->trang_thai_thanh_toan = 0;
-        // $dattour->Phuong_thuc_thanh_toan = $request->thanh_toan;
-        // $dattour->save();
-        // // Thêm Khách Hàng
-        // $khachhanh = new KhachHang();
-        // $khachhanh->ten_kh = $request->firstName;
-        // $khachhanh->gioi_tinh = $request->gioi_tinh_khach_hang;
-        // $khachhanh->ngay_sinh = $request->ngay_sinh_khach_hanh;
-        // $khachhanh->dia_chi = $request->diachi;
-        // $khachhanh->gamil = $request->email;
-        // $khachhanh->dien_thoai = $request->phone;
-        // $khachhanh->cmnd = $request->cmnd;
-        // $khachhanh->tuoi = 25;
-        // $khachhanh->so_luong_than_nhan = $request->so_luong_than_nhan;
-        // $khachhanh->save();
+        $dattour = new DatTour();
+        $dattour->ma_tour = $request->ma_chuong_trinh;
+        $dattour->ngay_dat = Carbon::now();
+        $dattour->so_cho_nguoi_lon = $request->nguoi_lon ;
+        $dattour->so_cho_tre_em = $request->tre_em ;
+        $dattour->so_cho_tre_con = $request->tre_con ;
+        $dattour->so_cho_so_sinh = $request->so_sinh;
+        $dattour->thanh_tien = $request->thanh_tien;
+        $dattour->trang_thai_thanh_toan = 0;
+        $dattour->Phuong_thuc_thanh_toan = $request->thanh_toan;
+        $dattour->save();
+        // Thêm Khách Hàng
+        $khachhanh = new KhachHang();
+        $khachhanh->ten_kh = $request->firstName;
+        $khachhanh->gioi_tinh = $request->gioi_tinh_khach_hang;
+        $khachhanh->ngay_sinh = $request->ngay_sinh_khach_hanh;
+        $khachhanh->dia_chi = $request->diachi;
+        $khachhanh->gamil = $request->email;
+        $khachhanh->dien_thoai = $request->phone;
+        $khachhanh->cmnd = $request->cmnd;
+        $khachhanh->tuoi = 25;
+        $khachhanh->so_luong_than_nhan = $request->so_luong_than_nhan;
+        $khachhanh->save();
 
-        // // Thêm Chi tiết 
-        // $chitietdat = new ChiTietDatTour();
-        // $chitietdat->ma_dat_tour = $dattour->ma_dat_tour;
-        // $chitietdat->ma_khach_hang = $khachhanh->ma_khach_hang;
-        // $chitietdat->save();
+        // Thêm Chi tiết 
+        $chitietdat = new ChiTietDatTour();
+        $chitietdat->ma_dat_tour = $dattour->ma_dat_tour;
+        $chitietdat->ma_khach_hang = $khachhanh->ma_khach_hang;
+        $chitietdat->save();
 
-        // // Hành Khách
-        // for($i = 0 ; $i < count($request->hanh_khach); $i++)
-        // {
-        //     $hanhkhach = new ThanhNhan();
-        //     $hanhkhach->ten_than_nha = $request->hanh_khach[$i];
-        //     $hanhkhach->gioi_tinh = $request->gioi_tinh[$i];
-        //     $hanhkhach->ngay_sinh = $request->ngay_sinh[$i];
-        //     $hanhkhach->ma_khach_hang = $khachhanh->ma_khach_hang;
-        //     $hanhkhach->tuoi = 20;
-        //     $hanhkhach->save();
-        //     $ds_hanhkhach = new DanhSachHanhKhach();
-        //     $ds_hanhkhach->ma_hanh_khach =  $hanhkhach->ma_than_nhan;
-        //     $ds_hanhkhach->ma_tour = $request->ma_chuong_trinh;
-        //     $ds_hanhkhach->save();
-        // }
-        // Danh sách hành khách
-        // Mail::send('Admin/Mail.Form_Mail', $data, function ($message) {
+        // Hành Khách
+        for($i = 0 ; $i < count($request->hanh_khach); $i++)
+        {
+            $hanhkhach = new ThanhNhan();
+            $hanhkhach->ten_than_nha = $request->hanh_khach[$i];
+            $hanhkhach->gioi_tinh = $request->gioi_tinh[$i];
+            $hanhkhach->ngay_sinh = $request->ngay_sinh[$i];
+            $hanhkhach->ma_khach_hang = $khachhanh->ma_khach_hang;
+            $hanhkhach->tuoi = 20;
+            $hanhkhach->save();
+            $ds_hanhkhach = new DanhSachHanhKhach();
+            $ds_hanhkhach->ma_hanh_khach =  $hanhkhach->ma_than_nhan;
+            $ds_hanhkhach->ma_tour = $request->ma_chuong_trinh;
+            $ds_hanhkhach->save();
+        }
+        $data = [
+            'ten' => $hanhkhach->ten_than_nha,
+            'sotien' =>$dattour->thanh_tien,
+        ];
+        //Gửi mail
+        // Mail::send('Admin/Mail.Form_Mail', $data , function ($message) {
         //     $message->from('meomeo171717@gmail.com', 'Hoá đơn đặt Tour');
         //     $message->subject('Đặt Tour Du Lịch');
         //     $message->to('huydung0505@gmail.com', 'CHó');
         // });
 
-        // 
-        $accessKey = "iXDTgMQgX9uVsooH";
-        $partnerCode = "MOMOFZSK20200804";
-        $requestType = "captureMoMoWallet";
-        $notifyUrl = "https://test-payment.momo.vn/gw_payment/payment/qr";
-        $secretkey = "iXvmrY8NjLPWW2Xyhd8uOQWK3AATaLtZ";
-        $returnUrl = "http://localhost:8000/return-momo";
-        $orderId = 'MM1540456472575';
-        $amount = 50000000;
-        $orderInfo = 'SDK team.';
-        $requestId = 'MM1540456472575';
-        $extraData = "email=abc@gmail.com";
-        $hashdata = "partnerCode=". $partnerCode . "&accessKey=". $accessKey ."&requestId=" . $requestId . "&amount=". $amount ."&orderId=" . $orderId . "&orderInfo=" . $orderInfo ."&returnUrl=" . $returnUrl . "&extraData=". $extraData ;
-        //dd($hashdata);  
+        // // 
+        // $accessKey = "iXDTgMQgX9uVsooH";
+        // $partnerCode = "MOMOFZSK20200804";
+        // $requestType = "captureMoMoWallet";
+        // $notifyUrl = "https://test-payment.momo.vn/gw_payment/payment/qr";
+        // $secretkey = "iXvmrY8NjLPWW2Xyhd8uOQWK3AATaLtZ";
+        // $returnUrl = "http://localhost:8000/return-momo";
+        // $orderId = 'MM1540456472575';
+        // $amount = 50000000;
+        // $orderInfo = 'SDK team.';
+        // $requestId = 'MM1540456472575';
+        // $extraData = "email=abc@gmail.com";
+        // $hashdata = "partnerCode=". $partnerCode . "&accessKey=". $accessKey ."&requestId=" . $requestId . "&amount=". $amount ."&orderId=" . $orderId . "&orderInfo=" . $orderInfo ."&returnUrl=" . $returnUrl . "&extraData=". $extraData ;
+        // //dd($hashdata);  
 
-        $signature = hash_hmac('sha256', $hashdata, $secretkey );
-        $inputDataMoMo = [
-            "partnerCode" => $partnerCode,
-            "accessKey" => $accessKey ,
-            "requestId" => $requestId,
-            "amount" => $amount,
-            "orderId" => $orderId,
-            "signature" => $signature,
-            "orderInfo" => $orderInfo,
-            "returnUrl"=> $returnUrl, 
-            "notifyUrl"=> $notifyUrl,
-            "extraData" => $extraData,
-            "requestType" => $requestType,
+        // $signature = hash_hmac('sha256', $hashdata, $secretkey );
+        // $inputDataMoMo = [
+        //     "partnerCode" => $partnerCode,
+        //     "accessKey" => $accessKey ,
+        //     "requestId" => $requestId,
+        //     "amount" => $amount,
+        //     "orderId" => $orderId,
+        //     "signature" => $signature,
+        //     "orderInfo" => $orderInfo,
+        //     "returnUrl"=> $returnUrl, 
+        //     "notifyUrl"=> $notifyUrl,
+        //     "extraData" => $extraData,
+        //     "requestType" => $requestType,
             
-        ];
-        $data = "";
-        foreach ($inputDataMoMo as $key => $value) {    
-            $data .= $key."=".$value."&" ;
-        }
-        //dd($data);
-        $notifyUrl = $notifyUrl . "?" . $data;
-        return redirect($notifyUrl);
+        // ];
+        // $data = "";
+        // foreach ($inputDataMoMo as $key => $value) {    
+        //     $data .= $key."=".$value."&" ;
+        // }
+        // //dd($data);
+        // $notifyUrl = $notifyUrl . "?" . $data;
+        // return redirect($notifyUrl);
         
         // Thanh toán vnpay
-        // if($request->thanh_toan == '1')
-        // {
-        //     session(['cost_id' => 1]);
-        //     session(['url_prev' => url()->previous()]);
-        //     session(['key' => $dattour->ma_dat_tour]);
-        //     $vnp_TmnCode = "9MXKG8FY"; //Mã website tại VNPAY 
-        //     $vnp_HashSecret = "FWNFSAZQLGPDTZECSOHGBEOWYUMIWPDW"; //Chuỗi bí mật
-        //     $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        //     $vnp_Returnurl = "http://localhost:8000/return-vnpay";
-        //     $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-        //     $vnp_OrderInfo = "Thanh toán hóa đơn Tour Du Lịch";
-        //     $vnp_OrderType = 'billpayment';
-        //     $vnp_Amount = $dattour->thanh_tien *100;
-        //     $vnp_Locale = 'vn';
-        //     $vnp_IpAddr = request()->ip();
+        if($request->thanh_toan == '1')
+        {
+            session(['cost_id' => 1]);
+            session(['url_prev' => url()->previous()]);
+            session(['key' => $dattour->ma_dat_tour]);
+            $vnp_TmnCode = "9MXKG8FY"; //Mã website tại VNPAY 
+            $vnp_HashSecret = "FWNFSAZQLGPDTZECSOHGBEOWYUMIWPDW"; //Chuỗi bí mật
+            $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+            $vnp_Returnurl = "http://localhost:8000/return-vnpay";
+            $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+            $vnp_OrderInfo = "Thanh toán hóa đơn Tour Du Lịch";
+            $vnp_OrderType = 'billpayment';
+            $vnp_Amount = $dattour->thanh_tien *100;
+            $vnp_Locale = 'vn';
+            $vnp_IpAddr = request()->ip();
 
-        //     $inputData = array(
-        //         "vnp_Version" => "2.0.0",
-        //         "vnp_TmnCode" => $vnp_TmnCode,
-        //         "vnp_Amount" => $vnp_Amount,
-        //         "vnp_Command" => "pay",
-        //         "vnp_CreateDate" => date('YmdHis'),
-        //         "vnp_CurrCode" => "VND",
-        //         "vnp_IpAddr" => $vnp_IpAddr,
-        //         "vnp_Locale" => $vnp_Locale,
-        //         "vnp_OrderInfo" => $vnp_OrderInfo,
-        //         "vnp_OrderType" => $vnp_OrderType,
-        //         "vnp_ReturnUrl" => $vnp_Returnurl,
-        //         "vnp_TxnRef" => $vnp_TxnRef,
-        //     );
+            $inputData = array(
+                "vnp_Version" => "2.0.0",
+                "vnp_TmnCode" => $vnp_TmnCode,
+                "vnp_Amount" => $vnp_Amount,
+                "vnp_Command" => "pay",
+                "vnp_CreateDate" => date('YmdHis'),
+                "vnp_CurrCode" => "VND",
+                "vnp_IpAddr" => $vnp_IpAddr,
+                "vnp_Locale" => $vnp_Locale,
+                "vnp_OrderInfo" => $vnp_OrderInfo,
+                "vnp_OrderType" => $vnp_OrderType,
+                "vnp_ReturnUrl" => $vnp_Returnurl,
+                "vnp_TxnRef" => $vnp_TxnRef,
+            );
 
-        //     if (isset($vnp_BankCode) && $vnp_BankCode != "") {
-        //         $inputData['vnp_BankCode'] = $vnp_BankCode;
-        //     }
-        //     ksort($inputData);
-        //     $query = "";
-        //     $i = 0;
-        //     $hashdata = "";
-        //     foreach ($inputData as $key => $value) {
-        //         if ($i == 1) {
-        //             $hashdata .= '&' . $key . "=" . $value;
-        //         } else {
-        //             $hashdata .= $key . "=" . $value;
-        //             $i = 1;
-        //         }
-        //         $query .= urlencode($key) . "=" . urlencode($value) . '&';
-        //     }
+            if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+                $inputData['vnp_BankCode'] = $vnp_BankCode;
+            }
+            ksort($inputData);
+            $query = "";
+            $i = 0;
+            $hashdata = "";
+            foreach ($inputData as $key => $value) {
+                if ($i == 1) {
+                    $hashdata .= '&' . $key . "=" . $value;
+                } else {
+                    $hashdata .= $key . "=" . $value;
+                    $i = 1;
+                }
+                $query .= urlencode($key) . "=" . urlencode($value) . '&';
+            }
 
-        //     $vnp_Url = $vnp_Url . "?" . $query;
-        //     if (isset($vnp_HashSecret)) {
-        //     // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
-        //         $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
-        //         $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
-        //     }
-        //     //$test = redirect($vnp_Url);     
-        // }
-        // return  redirect($vnp_Url)->with('id', $dattour->id);
+            $vnp_Url = $vnp_Url . "?" . $query;
+            if (isset($vnp_HashSecret)) {
+            // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
+                $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
+                $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+            }
+            //$test = redirect($vnp_Url);     
+        }
+        return  redirect($vnp_Url)->with('id', $dattour->id);
     }
+
+    // Kiểm tra trạng thái (VNPAY)
     public function return(Request $request)
     {
         $id = session('key');
         $url = session('url','/');
-        
         //dd(session($request->_previous));
+        
         if($request->vnp_ResponseCode == "00") {
             $dattour = DatTour::find($id);
             $dattour->trang_thai_thanh_toan = 1;
             $dattour->save();
             Mail::send('Admin/Mail.Form_Mail',['Tour Nè'] ,function ($message) {
-                $message->from('meomeo171717@gmail.com', 'Hoá đơn thanh toán đặt Tour');
+                $message->from('tourne@nhdung.com', 'Hoá đơn thanh toán đặt Tour');
                 $message->subject('Đặt Tour Du Lịch');
                 $message->to('huydung0505@gmail.com', 'CHó');
             });
             return redirect()->route('Tous.hoadon')->with('success' ,'Đã thanh toán thành công!!');
+        }
+        else
+        {
+            return redirect()->back();
+            $dattour = DatTour::find($id);
+            $dattour->trang_thai_thanh_toan = 0;
+            $dattour->save();
         }
         session()->forget('url_prev');
         return redirect($url)->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
@@ -287,8 +301,7 @@ class DatTourController extends Controller
     {
         //
     }
-    // Báo cáo
-    // Lấy tháng
+    // Lấy dư liệu theo tháng
     public function getBaoCao()
     {
         $month_array = array();
@@ -306,12 +319,15 @@ class DatTourController extends Controller
         }
         return $month_array;
     }
-    // 
+
+    // Lấy tháng tạo đơn hàng 
     public function getMonthlyPostCount($month)
     {
         $monthly   = DatTour::whereMonth('created_at', $month)->get()->count();
         return $monthly;
     } 
+
+    // Xuất mảng dữ kiệu báo cáo 
     public function getMonthlyPostData()
     {
         $monthly_post_count_array = array();

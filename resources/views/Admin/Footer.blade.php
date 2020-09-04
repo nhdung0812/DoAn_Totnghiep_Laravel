@@ -60,7 +60,7 @@
             Custom functionality including Blocks/Layout API as well as other vital and optional helpers
             webpack is putting everything together at assets/_es6/main/app.js
         -->
-        <script src="{{ asset ('Admin/js/codebase.app.min.js')}}"></script>
+        
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <!-- Page JS Plugins -->
         <script src="{{ asset ('Admin/js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
@@ -74,6 +74,7 @@
                 $('#textbox1').val(this.checked);
             });
         </script>
+        <script src="{{ asset ('Admin/js/codebase.app.min.js')}}"></script>
         <script src="{{ asset('Admin/dropzone/dist/min/dropzone.min.js')}}" type="text/javascript"></script>
         <script src="{{ asset('Admin/js/plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
         <script src="{{ asset('Admin/js/plugins/pwstrength-bootstrap/pwstrength-bootstrap.min.js')}}"></script>
@@ -97,7 +98,7 @@
         <script src="{{ asset('Admin/js/plugins/simplemde/simplemde.min.js')}}"></script>
         <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
         <!-- Page JS Helpers (Summernote + CKEditor + SimpleMDE plugins) -->
-
+        
         <script>
             Pusher.logToConsole = true;
             var pusher = new Pusher('5babdb48d0c7f7018945', {

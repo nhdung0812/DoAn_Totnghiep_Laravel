@@ -124,6 +124,7 @@ class DiaDiemController extends Controller
         $hinhanh = HinhAnh::where('ma_dia_diem',$request->ma_dia_diem)
                             ->where('ma_hinh_anh',$request->hinh)
                             ->update(['Hinh_anh_1' => $name]);
+            
         return redirect()->route('Quantri.ds_hinh');
     }
     

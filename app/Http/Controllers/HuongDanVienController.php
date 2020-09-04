@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\ChuongTrinhTour;
-use App\LichTrinh;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class LichTrinhController extends Controller
+class HuongDanVienController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,7 @@ class LichTrinhController extends Controller
     public function index()
     {
         //
-        $lichtrinh = LichTrinh::all();
-        return view('Admin.ListLichTrinh',compact('lichtrinh'));
+        return view('Admin.ListHuongDanVien');
     }
 
     /**
@@ -29,17 +25,8 @@ class LichTrinhController extends Controller
     public function create()
     {
         //
-        $chuong_trinh = ChuongTrinhTour::all();
-        return view('Admin.Form_add_lich_trinh',compact('chuong_trinh'));
     }
-    public function layso(Request $request)
-    {
-        $chuong_trinh = DB::table('chuongtrinhtour')
-                            ->select('*')
-                            ->where('ma_tour', '=', $request->ID)
-                            ->get();
-        return response()->json(['data' => $chuong_trinh]);
-    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,16 +35,7 @@ class LichTrinhController extends Controller
      */
     public function store(Request $request)
     {
-        for($i = 0 ; $i < count($request->ten_lich_trinh); $i++)
-        {
-            $lichtrinh = new LichTrinh;
-            $lichtrinh->ma_chuong_trinh = $request->chuong_trinh;
-            $lichtrinh->noi_dung_lich_trinh = $request->lich_trinh[$i];
-            $lichtrinh->tieu_de = $request->ten_lich_trinh[$i];
-            $lichtrinh->save();
-        }
-
-        return redirect()->route('Quantri.ds_lich_trinh')->with('message', 'Thêm Thành Công');
+        //
     }
 
     /**

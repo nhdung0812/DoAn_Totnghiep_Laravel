@@ -9,11 +9,11 @@
         <!-- Table Sections (.js-table-sections class is initialized in Helpers.tableToolsSections()) -->
         <h2 class="content-heading">DANH SÁCH ĐẶT TOUR</h2>
         <div class="block">
-            <div class="block-header block-header-default">
+            {{-- <div class="block-header block-header-default">
                 <a href="{{route('Quantri.box-trash-dia-diem')}}" type="button" class="show-trash btn btn-danger mr-5 mb-5">
                     <i class="fa fa-trash-o mr-5"></i>Thùng rác
                 </a>
-            </div>
+            </div> --}}
             <div class="block-content block-content-full">
                 <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
                 <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->

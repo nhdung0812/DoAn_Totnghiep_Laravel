@@ -34,13 +34,13 @@ class AuthController extends Controller
         $ten_dang_nhap = $request->email;
         $mat_khau = $request->password;
         //dd(Auth::guard('quantriviens')->attempt(['gmail' => $ten_dang_nhap, 'password' => $mat_khau, 'deleted_at' => null, 'trang_thai' => 1]));
-        if(Auth::guard('quantriviens')->attempt(['gmail' => $ten_dang_nhap, 'password' => $mat_khau, 'deleted_at' => null, 'trang_thai' => 1]))
+        if(Auth::guard('quantriviens')->attempt(['gmail' => $ten_dang_nhap, 'password' => $mat_khau, 'deleted_at' => null]))
         {
             return Redirect()->route('Quantri.Admin');
         }
-        // else{
-        //     event(new NotificationEvent('Đăng nhập thành công'));
-        // }
+        else{
+            return Redirect()->back()->with('login', 'Tài Khoản Hoặc Mật Khẩu Không Chính Xác!');
+        }
 
 
     }

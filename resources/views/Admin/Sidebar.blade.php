@@ -93,11 +93,7 @@
                                         </ul>
                                 </ul>
                             </li>
-<<<<<<< HEAD
-                        
-                           
-                            
-                                <li>
+                             <li>
                                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-folder-open"></i><span class="sidebar-mini-hide">Quản lý </span></a>
                                     <ul>
                                         <li>
@@ -123,6 +119,22 @@
                                                 </li>
                                             </ul>
                                         </li>
+                                        <li>
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản Lý Comment</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('Quantri.list_comment') }}"><span class="sidebar-mini-hide">Comment</span></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản Lý Hướng Dẫn Viên</span></a>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('Quantri.list_hdv') }}"><span class="sidebar-mini-hide">Hướng Dẫn Viên </span></a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
@@ -134,6 +146,7 @@
                                 <li>
                                     <a  href="{{ route('Quantri.dsDatTour') }}"><i class="fa fa-shopping-cart"></i><span class="sidebar-mini-hide">Đặt TOUR</span></a>
                                 </li>
+                                @can('check')
                                 <li>
                                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-users"></i><span class="sidebar-mini-hide">Khách hàng</span></a>
                                     <ul>
@@ -146,21 +159,9 @@
                                             </ul>
                                     </ul>
                                 </li>
+                                @endcan
+                                
                            
-=======
-                            <li>
-                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Hội Viên</span></a>
-                                <ul>
-                                    <li>
-                                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Quản lý Hội Viên</span></a>
-                                        <ul>
-                                            <li>
-                                                <a href="{{route('Quantri.list_hoi_vien')}}"><span class="sidebar-mini-hide">Danh sách hội viên</span></a>
-                                            </li>
-                                        </ul>
-                                </ul>
-                            </li>
->>>>>>> 75eddbe7774275e606d475f7b5d4f6a079996da4
                         </ul>
                     </div>
                     <!-- END Side Navigation -->
